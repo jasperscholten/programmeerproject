@@ -10,8 +10,6 @@
 - UIKit
 - Firebase
 
-## Data sources
-
 ## Database tables and fields
 
 ***gebruiker***
