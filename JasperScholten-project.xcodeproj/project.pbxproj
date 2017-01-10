@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32D2ACAC91D49DB01D2F5246 /* Pods_JasperScholten_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E191C0B00AF4FE431497717 /* Pods_JasperScholten_project.framework */; };
 		A44A84D31E24D7B90059F971 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44A84D21E24D7B90059F971 /* AppDelegate.swift */; };
 		A44A84D51E24D7B90059F971 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44A84D41E24D7B90059F971 /* ViewController.swift */; };
 		A44A84D81E24D7B90059F971 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A44A84D61E24D7B90059F971 /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E191C0B00AF4FE431497717 /* Pods_JasperScholten_project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasperScholten_project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		70A9456A4A13E77E3E3E7CE0 /* Pods-JasperScholten-project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasperScholten-project.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasperScholten-project/Pods-JasperScholten-project.debug.xcconfig"; sourceTree = "<group>"; };
+		923E38BF60ECF7CC9110B455 /* Pods-JasperScholten-project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasperScholten-project.release.xcconfig"; path = "Pods/Target Support Files/Pods-JasperScholten-project/Pods-JasperScholten-project.release.xcconfig"; sourceTree = "<group>"; };
 		A44A84CF1E24D7B90059F971 /* JasperScholten-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JasperScholten-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A44A84D21E24D7B90059F971 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A44A84D41E24D7B90059F971 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32D2ACAC91D49DB01D2F5246 /* Pods_JasperScholten_project.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				A44A84D11E24D7B90059F971 /* JasperScholten-project */,
 				A44A84D01E24D7B90059F971 /* Products */,
+				EBD8A7F9C529B2CE5C947259 /* Pods */,
+				B5B5D70497DA8C274DA595F4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = "JasperScholten-project";
 			sourceTree = "<group>";
 		};
+		B5B5D70497DA8C274DA595F4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4E191C0B00AF4FE431497717 /* Pods_JasperScholten_project.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EBD8A7F9C529B2CE5C947259 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				70A9456A4A13E77E3E3E7CE0 /* Pods-JasperScholten-project.debug.xcconfig */,
+				923E38BF60ECF7CC9110B455 /* Pods-JasperScholten-project.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A44A84E11E24D7B90059F971 /* Build configuration list for PBXNativeTarget "JasperScholten-project" */;
 			buildPhases = (
+				02387E3A46C3CA05A1F666D9 /* [CP] Check Pods Manifest.lock */,
 				A44A84CB1E24D7B80059F971 /* Sources */,
 				A44A84CC1E24D7B80059F971 /* Frameworks */,
 				A44A84CD1E24D7B80059F971 /* Resources */,
+				00D9F062C2F45DD115BC4FEB /* [CP] Embed Pods Frameworks */,
+				E11AB9CCDBFBB3E2E68A92F4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00D9F062C2F45DD115BC4FEB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JasperScholten-project/Pods-JasperScholten-project-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		02387E3A46C3CA05A1F666D9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E11AB9CCDBFBB3E2E68A92F4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JasperScholten-project/Pods-JasperScholten-project-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A44A84CB1E24D7B80059F971 /* Sources */ = {
@@ -259,6 +334,7 @@
 		};
 		A44A84E21E24D7B90059F971 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70A9456A4A13E77E3E3E7CE0 /* Pods-JasperScholten-project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3F7K5ABT44;
@@ -272,6 +348,7 @@
 		};
 		A44A84E31E24D7B90059F971 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 923E38BF60ECF7CC9110B455 /* Pods-JasperScholten-project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3F7K5ABT44;

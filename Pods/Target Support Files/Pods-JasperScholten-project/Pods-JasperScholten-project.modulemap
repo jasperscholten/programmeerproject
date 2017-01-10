@@ -1,0 +1,6 @@
+framework module Pods_JasperScholten_project {
+  umbrella header "Pods-JasperScholten-project-umbrella.h"
+
+  export *
+  module * { export * }
+}
