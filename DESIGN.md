@@ -2,8 +2,44 @@
 ###Jasper Scholten, 11157887
 
 ## Modules or classes
+***ViewControllers***
+- loginVC
+- signUpVC
+- homeMasterVC
+- settingsVC
+- reviewEmployeeVC
+- reviewFormsVC
+- addReviewVC
+- addFormVC
+- scheduleMasterVC
+- addTimeVC
+- newsMasterVC
+- addNewsVC
+- resultsMasterVC
+- resultEmployeeVC
+- resultMomentVC
+- homeVC
+- newsVC
+- newsItemVC
+- scheduleVC
+- reviewListVC
+- reviewVC
+
+***Models***
+- user
+- review
+- formItem
+- scheduleItem
+- newsItem
 
 ## Sketches of your UI
+
+Prioriteit in functionaliteit:
+
+1. Kunnen beoordelen, rolverdeling (medewerker/leidinggevende), resultaten kunnen inzien
+2. Nieuws kunnen plaatsen en kunnen lezen
+3. Rooster functionaliteit (lijkt het meest lastig)
+
 <img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/AdvancedSketches.jpg"></br>
 
 ## APIs and frameworks or plugins
