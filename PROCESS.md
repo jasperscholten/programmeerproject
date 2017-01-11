@@ -5,4 +5,6 @@
 - Kalender View in het rooster bestaat geen standaard view in Xcode voor, maar heb goede hoop dat het wel gaat lukken met een op Cocoapods gevonden framework.
 
 <img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/AdvancedSketches.jpg" width="200px"></br>
-Afbeelding van schetsen van all views. <a href="https://github.com/jasperscholten/programmeerproject/blob/master/doc/AdvancedSketches.jpg">Klik hier voor de originele grootte.</a>
+Afbeelding van schetsen van alle views. <a href="https://github.com/jasperscholten/programmeerproject/blob/master/doc/AdvancedSketches.jpg">Klik hier voor de originele grootte.</a>
+
+## Day 3
