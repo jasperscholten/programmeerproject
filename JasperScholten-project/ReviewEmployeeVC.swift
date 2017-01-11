@@ -10,7 +10,7 @@ import UIKit
 
 class ReviewEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    let employees = ["Hans Beerekamp", "Ineke Bosch", "Niels Pel", "Marinus Zeekoe", "Emma Post", "Henk van Ingrid", "Ingrid van Henk"]
+    let employees = ["Hans Beerekamp", "Ineke Bosch", "Niels Pel", "Marinus Zeekoe", "Emma Post", "Henk van Ingrid", "Ingrid van Henk", "Jan Janssen"]
     
     @IBOutlet weak var employeesTableView: UITableView!
     
