@@ -25,6 +25,8 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: TableView Population
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItems.count
     }
@@ -35,6 +37,10 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         cell.menuItem.text = menuItems[indexPath.row]
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: menuItems[indexPath.row], sender: self)
     }
 
 }

@@ -16,6 +16,10 @@
 		A48593CE1E26406B007B86AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A48593CD1E26406B007B86AB /* GoogleService-Info.plist */; };
 		A48593D01E265939007B86AB /* MainMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593CF1E265939007B86AB /* MainMenuCell.swift */; };
 		A48593D41E265A86007B86AB /* MainMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593D31E265A86007B86AB /* MainMenuVC.swift */; };
+		A48593D61E2669AB007B86AB /* ReviewEmployeeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593D51E2669AB007B86AB /* ReviewEmployeeVC.swift */; };
+		A48593D81E266C20007B86AB /* EmployeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593D71E266C20007B86AB /* EmployeeCell.swift */; };
+		A48593DB1E267328007B86AB /* NewReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593DA1E267328007B86AB /* NewReviewVC.swift */; };
+		A48593DD1E26771B007B86AB /* NewReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593DC1E26771B007B86AB /* NewReviewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		A48593CD1E26406B007B86AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A48593CF1E265939007B86AB /* MainMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuCell.swift; sourceTree = "<group>"; };
 		A48593D31E265A86007B86AB /* MainMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuVC.swift; sourceTree = "<group>"; };
+		A48593D51E2669AB007B86AB /* ReviewEmployeeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewEmployeeVC.swift; sourceTree = "<group>"; };
+		A48593D71E266C20007B86AB /* EmployeeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeCell.swift; sourceTree = "<group>"; };
+		A48593DA1E267328007B86AB /* NewReviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewReviewVC.swift; sourceTree = "<group>"; };
+		A48593DC1E26771B007B86AB /* NewReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewReviewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +92,8 @@
 			children = (
 				A44A84D41E24D7B90059F971 /* LoginVC.swift */,
 				A48593D31E265A86007B86AB /* MainMenuVC.swift */,
+				A48593D51E2669AB007B86AB /* ReviewEmployeeVC.swift */,
+				A48593DA1E267328007B86AB /* NewReviewVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -92,6 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				A48593CF1E265939007B86AB /* MainMenuCell.swift */,
+				A48593D71E266C20007B86AB /* EmployeeCell.swift */,
+				A48593DC1E26771B007B86AB /* NewReviewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -240,6 +252,10 @@
 			files = (
 				A44A84D51E24D7B90059F971 /* LoginVC.swift in Sources */,
 				A48593D01E265939007B86AB /* MainMenuCell.swift in Sources */,
+				A48593DD1E26771B007B86AB /* NewReviewCell.swift in Sources */,
+				A48593D61E2669AB007B86AB /* ReviewEmployeeVC.swift in Sources */,
+				A48593DB1E267328007B86AB /* NewReviewVC.swift in Sources */,
+				A48593D81E266C20007B86AB /* EmployeeCell.swift in Sources */,
 				A48593D41E265A86007B86AB /* MainMenuVC.swift in Sources */,
 				A44A84D31E24D7B90059F971 /* AppDelegate.swift in Sources */,
 			);
