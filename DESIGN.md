@@ -55,6 +55,7 @@ Prioriteit in functionaliteit:
 - e-mailadres (uniek)
 - wachtwoord
 - personeelsnummer
+- organisatie ID
 - winkel ID
 - naam
 - rol (medewerker/leidinggevende)
