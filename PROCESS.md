@@ -10,3 +10,5 @@ Afbeelding van schetsen van alle views. <a href="https://github.com/jasperscholt
 ## Day 3
 
 - Winkel ID toevoegen, zodat met meerdere vestigingen gewerkt kan worden.
+- Organisatie ID toevoegen, zodat de app door meerdere bedrijven gebruikt kan worden.
+- Zelfde mainmenu gebruiken voor zowel leidnggevenden als medewerkers, alleen onderscheid maken in de cellen (opties) die zij te zien krijgen.
