@@ -12,3 +12,4 @@ Afbeelding van schetsen van alle views. <a href="https://github.com/jasperscholt
 - Winkel ID toevoegen, zodat met meerdere vestigingen gewerkt kan worden.
 - Organisatie ID toevoegen, zodat de app door meerdere bedrijven gebruikt kan worden.
 - Zelfde mainmenu gebruiken voor zowel leidnggevenden als medewerkers, alleen onderscheid maken in de cellen (opties) die zij te zien krijgen.
+- Je moet kunnen verdergaan met een beoordeling die je hebt stopgezet.
