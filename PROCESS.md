@@ -8,3 +8,5 @@
 Afbeelding van schetsen van alle views. <a href="https://github.com/jasperscholten/programmeerproject/blob/master/doc/AdvancedSketches.jpg">Klik hier voor de originele grootte.</a>
 
 ## Day 3
+
+- Winkel ID toevoegen, zodat met meerdere vestigingen gewerkt kan worden.
