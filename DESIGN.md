@@ -1,12 +1,86 @@
 #Design Document
 ###Jasper Scholten, 11157887
 
-**TODO:** 
-* a diagram of modules or classes that you’ve decided to implement, in appropriate detail
-* advanced sketches of your UI that clearly explain which features are connected to which underlying part of the code
+## Modules or classes
+***ViewControllers***
+- loginVC
+- signUpVC
+- homeMasterVC
+- settingsVC
+- reviewEmployeeVC
+- reviewFormsVC
+- addReviewVC
+- addFormVC
+- scheduleMasterVC
+- addTimeVC
+- newsMasterVC
+- addNewsVC
+- resultsMasterVC
+- resultEmployeeVC
+- resultMomentVC
+- homeVC
+- newsVC
+- newsItemVC
+- scheduleVC
+- reviewListVC
+- reviewVC
 
-<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/AdvancedSketches.jpg"></br></br>
+***Models***
+- user
+- review
+- formItem
+- scheduleItem
+- newsItem
 
-* a list of APIs and frameworks or plugins that you will be using to provide functionality in your app
-* a list of data sources if you will get data from an external source
-* a list of database tables and fields (and their types) if you will use a database
+## Sketches of your UI
+
+Prioriteit in functionaliteit:
+
+1. Kunnen beoordelen, rolverdeling (medewerker/leidinggevende), resultaten kunnen inzien
+2. Nieuws kunnen plaatsen en kunnen lezen
+3. Rooster functionaliteit (lijkt het meest lastig)
+
+<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/AdvancedSketches.jpg"></br>
+
+## APIs and frameworks or plugins
+- UIKit
+- Firebase
+- CalendarView (https://cocoapods.org/pods/CalendarView, http://blog.karmadust.com/lets-create-a-calendar-using-a-uicollectionview/, https://developer.apple.com/reference/eventkit)
+- Push Notifications (https://www.appcoda.com/push-notification-ios/ - Alhoewel lastig, dan wel niet onmogelijk, binnen dit project te implementeren).
+
+## Database tables and fields
+
+***gebruiker***
+- gebruiker ID (uniek)
+- e-mailadres (uniek)
+- wachtwoord
+- personeelsnummer
+- organisatie ID
+- winkel ID
+- naam
+- rol (medewerker/leidinggevende)
+
+***formulierregel***
+- beoordelingsformulier ID (uniek)
+- Vraag
+
+***beoordeling***
+- beoordeling ID (uniek)
+- beoordelingsformulier ID
+- medewerker ID (gebruiker ID medewerker)
+- observator ID (gebruiker ID leidinggevende)
+- winkel ID
+- datum en tijd
+- vraag statussen (true/false)
+- opmerkingen
+
+***rooster-item***
+- medewerker ID (gebruiker ID medewerker)
+- Datum en Tijd
+- Koppelen aan kalender framework?
+
+***nieuws-item:***
+- item ID
+- item titel
+- item afbeelding
+- item tekst
