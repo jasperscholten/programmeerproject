@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		32D2ACAC91D49DB01D2F5246 /* Pods_JasperScholten_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E191C0B00AF4FE431497717 /* Pods_JasperScholten_project.framework */; };
 		A44A84D31E24D7B90059F971 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44A84D21E24D7B90059F971 /* AppDelegate.swift */; };
-		A44A84D51E24D7B90059F971 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44A84D41E24D7B90059F971 /* ViewController.swift */; };
+		A44A84D51E24D7B90059F971 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44A84D41E24D7B90059F971 /* LoginVC.swift */; };
 		A44A84D81E24D7B90059F971 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A44A84D61E24D7B90059F971 /* Main.storyboard */; };
 		A44A84DA1E24D7B90059F971 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A44A84D91E24D7B90059F971 /* Assets.xcassets */; };
 		A44A84DD1E24D7B90059F971 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A44A84DB1E24D7B90059F971 /* LaunchScreen.storyboard */; };
+		A48593CE1E26406B007B86AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A48593CD1E26406B007B86AB /* GoogleService-Info.plist */; };
+		A48593D01E265939007B86AB /* MainMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593CF1E265939007B86AB /* MainMenuCell.swift */; };
+		A48593D41E265A86007B86AB /* MainMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593D31E265A86007B86AB /* MainMenuVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +24,14 @@
 		923E38BF60ECF7CC9110B455 /* Pods-JasperScholten-project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasperScholten-project.release.xcconfig"; path = "Pods/Target Support Files/Pods-JasperScholten-project/Pods-JasperScholten-project.release.xcconfig"; sourceTree = "<group>"; };
 		A44A84CF1E24D7B90059F971 /* JasperScholten-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JasperScholten-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A44A84D21E24D7B90059F971 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A44A84D41E24D7B90059F971 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A44A84D41E24D7B90059F971 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		A44A84D71E24D7B90059F971 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A44A84D91E24D7B90059F971 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A44A84DC1E24D7B90059F971 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A44A84DE1E24D7B90059F971 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A48593CD1E26406B007B86AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A48593CF1E265939007B86AB /* MainMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuCell.swift; sourceTree = "<group>"; };
+		A48593D31E265A86007B86AB /* MainMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,14 +67,33 @@
 		A44A84D11E24D7B90059F971 /* JasperScholten-project */ = {
 			isa = PBXGroup;
 			children = (
+				A48593D21E265975007B86AB /* Cells */,
+				A48593D11E26596A007B86AB /* ViewControllers */,
 				A44A84D21E24D7B90059F971 /* AppDelegate.swift */,
-				A44A84D41E24D7B90059F971 /* ViewController.swift */,
 				A44A84D61E24D7B90059F971 /* Main.storyboard */,
 				A44A84D91E24D7B90059F971 /* Assets.xcassets */,
 				A44A84DB1E24D7B90059F971 /* LaunchScreen.storyboard */,
 				A44A84DE1E24D7B90059F971 /* Info.plist */,
+				A48593CD1E26406B007B86AB /* GoogleService-Info.plist */,
 			);
 			path = "JasperScholten-project";
+			sourceTree = "<group>";
+		};
+		A48593D11E26596A007B86AB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A44A84D41E24D7B90059F971 /* LoginVC.swift */,
+				A48593D31E265A86007B86AB /* MainMenuVC.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A48593D21E265975007B86AB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A48593CF1E265939007B86AB /* MainMenuCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		B5B5D70497DA8C274DA595F4 /* Frameworks */ = {
@@ -152,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A44A84DD1E24D7B90059F971 /* LaunchScreen.storyboard in Resources */,
+				A48593CE1E26406B007B86AB /* GoogleService-Info.plist in Resources */,
 				A44A84DA1E24D7B90059F971 /* Assets.xcassets in Resources */,
 				A44A84D81E24D7B90059F971 /* Main.storyboard in Resources */,
 			);
@@ -212,7 +238,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A44A84D51E24D7B90059F971 /* ViewController.swift in Sources */,
+				A44A84D51E24D7B90059F971 /* LoginVC.swift in Sources */,
+				A48593D01E265939007B86AB /* MainMenuCell.swift in Sources */,
+				A48593D41E265A86007B86AB /* MainMenuVC.swift in Sources */,
 				A44A84D31E24D7B90059F971 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +407,7 @@
 				A44A84E31E24D7B90059F971 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>307924825939-fapn8u08l4ldajomhhjo7unjm4lph83c.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.307924825939-fapn8u08l4ldajomhhjo7unjm4lph83c</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDG27v50vQfTgViTj3t7p_0kvjrRUdmrs8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>307924825939</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>nl.mprog.JasperScholten-project</string>
+	<key>PROJECT_ID</key>
+	<string>beoordeling-4d8e2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>beoordeling-4d8e2.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:307924825939:ios:c6c16514b9c2689b</string>
+	<key>DATABASE_URL</key>
+	<string>https://beoordeling-4d8e2.firebaseio.com</string>
+</dict>
+</plist>
