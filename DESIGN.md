@@ -55,6 +55,7 @@ Prioriteit in functionaliteit:
 - e-mailadres (uniek)
 - wachtwoord
 - personeelsnummer
+- winkel ID
 - naam
 - rol (medewerker/leidinggevende)
 
@@ -67,6 +68,7 @@ Prioriteit in functionaliteit:
 - beoordelingsformulier ID
 - medewerker ID (gebruiker ID medewerker)
 - observator ID (gebruiker ID leidinggevende)
+- winkel ID
 - datum en tijd
 - vraag statussen (true/false)
 - opmerkingen
