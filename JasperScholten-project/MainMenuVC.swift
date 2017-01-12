@@ -54,6 +54,15 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             // Segue details of current user
             employeeResults.employee = "Niels (huidige gebruiker)"
         }
+        if let news = segue.destination as? NewsAdminVC {
+            news.admin = admin
+        }
+    }
+    
+    // MARK: - Action
+    // Kan weg wanneer kan worden uitgelogd met Firebase
+    @IBAction func signOut(_ sender: Any) {
+        self.dismiss(animated: true, completion: {})
     }
 
 }

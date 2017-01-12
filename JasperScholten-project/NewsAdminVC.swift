@@ -12,6 +12,7 @@ class NewsAdminVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     
     @IBOutlet weak var newsTableView: UITableView!
 
+    var admin = Bool()
     let newsTitles = ["Nieuwjaarsborrel groot succes.", "De vriezer is weer aangevuld met nieuwe maaltijden.", "Keurige omzet periode 12.", "De kerstpakketten liggen klaar."]
     let newsDate = ["07-01-17", "03-01-17", "22-12-16", "15-12-16"]
     let textSample = ["Bla bla dingen nieuwjaarsborrel was een succes ja dat zeggen ze altijd maar wel gewonnen met bowlen.", "Lekker hoor eten hertenstoofvlees met pompoencompote en appel veenbessen echt waar.", "Nou gefeliciteerd joh gaan we vieren.", "Bla bla hopelijk gaat V&D dit jaar niet failliet waardoor de bonnen niets meer waard zijn."]
@@ -20,7 +21,12 @@ class NewsAdminVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        //http://stackoverflow.com/questions/27887218/how-to-hide-a-bar-button-item-for-certain-users
+        if admin == false {
+            self.navigationItem.rightBarButtonItem = nil
+        } /*else {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+        }*/
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,5 +60,11 @@ class NewsAdminVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
             news.itemText = textSample[indexPath!.row]
             news.image = image[indexPath!.row] as! UIImage
         }
+    }
+    
+    // MARK: - Action
+    
+    @IBAction func addNewsItem(_ sender: Any) {
+        performSegue(withIdentifier: "addNewsItem", sender: nil)
     }
 }

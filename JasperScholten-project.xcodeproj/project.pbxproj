@@ -29,6 +29,8 @@
 		A48593E11E277E53007B86AB /* ReviewResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593E01E277E53007B86AB /* ReviewResultsCell.swift */; };
 		A48593E31E2787D9007B86AB /* ReviewResultsEmployeeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593E21E2787D9007B86AB /* ReviewResultsEmployeeVC.swift */; };
 		A48593E91E278AE1007B86AB /* ReviewResultsEmployeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593E81E278AE1007B86AB /* ReviewResultsEmployeeCell.swift */; };
+		A4C2A91D1E281577002A6ACD /* AddNewsItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C2A91C1E281577002A6ACD /* AddNewsItemVC.swift */; };
+		A4C2A91F1E281F3C002A6ACD /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C2A91E1E281F3C002A6ACD /* RegisterVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		A48593E01E277E53007B86AB /* ReviewResultsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewResultsCell.swift; sourceTree = "<group>"; };
 		A48593E21E2787D9007B86AB /* ReviewResultsEmployeeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewResultsEmployeeVC.swift; sourceTree = "<group>"; };
 		A48593E81E278AE1007B86AB /* ReviewResultsEmployeeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewResultsEmployeeCell.swift; sourceTree = "<group>"; };
+		A4C2A91C1E281577002A6ACD /* AddNewsItemVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewsItemVC.swift; sourceTree = "<group>"; };
+		A4C2A91E1E281F3C002A6ACD /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,8 @@
 				A40C6C461E2796B800CCDA3F /* ReviewResultFormVC.swift */,
 				A40C6C4C1E27B15E00CCDA3F /* NewsAdminVC.swift */,
 				A40C6C4E1E27BB5500CCDA3F /* NewsItemAdminVC.swift */,
+				A4C2A91C1E281577002A6ACD /* AddNewsItemVC.swift */,
+				A4C2A91E1E281F3C002A6ACD /* RegisterVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -286,9 +292,11 @@
 				A40C6C4B1E27B12C00CCDA3F /* NewsItemAdminCell.swift in Sources */,
 				A48593D61E2669AB007B86AB /* ReviewEmployeeVC.swift in Sources */,
 				A48593E91E278AE1007B86AB /* ReviewResultsEmployeeCell.swift in Sources */,
+				A4C2A91F1E281F3C002A6ACD /* RegisterVC.swift in Sources */,
 				A40C6C451E2795EE00CCDA3F /* ReviewResultFormCell.swift in Sources */,
 				A48593DB1E267328007B86AB /* NewReviewVC.swift in Sources */,
 				A40C6C4F1E27BB5500CCDA3F /* NewsItemAdminVC.swift in Sources */,
+				A4C2A91D1E281577002A6ACD /* AddNewsItemVC.swift in Sources */,
 				A40C6C4D1E27B15E00CCDA3F /* NewsAdminVC.swift in Sources */,
 				A48593D81E266C20007B86AB /* EmployeeCell.swift in Sources */,
 				A48593D41E265A86007B86AB /* MainMenuVC.swift in Sources */,

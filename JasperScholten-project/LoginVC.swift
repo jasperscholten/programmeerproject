@@ -21,16 +21,17 @@ class LoginVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationNavigationController = segue.destination as! UINavigationController
+        if segue.identifier != "signin" {
+            let destinationNavigationController = segue.destination as! UINavigationController
         
-        if let role = destinationNavigationController.topViewController as? MainMenuVC {
-            if segue.identifier == "adminLogin" {
-                role.admin = true
-            } else {
-                role.admin = false
+            if let role = destinationNavigationController.topViewController as? MainMenuVC {
+                if segue.identifier == "adminLogin" {
+                    role.admin = true
+                } else {
+                    role.admin = false
+                }
             }
         }
     }
-
 }
 
