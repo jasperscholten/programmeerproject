@@ -17,3 +17,5 @@ Afbeelding van schetsen van alle views. <a href="https://github.com/jasperscholt
 ## Day 4 12-01-17
 
 - Ontdekt dat afbeeldingen op een iets andere manier moeten worden opgeslagen in Firebase, dan bijvoorbeeld gewone tekst. https://firebase.google.com/docs/storage/ios/start
+- Manier om placeholder te maken in text view: http://stackoverflow.com/questions/27652227/text-view-placeholder-swift
+- Foto maken om toe te voegen aan nieuwitem kan nog lastig worden. https://turbofuture.com/cell-phones/Access-Photo-Camera-and-Library-in-Swift
