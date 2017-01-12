@@ -193,10 +193,10 @@
             </objects>
             <point key="canvasLocation" x="2590" y="-485"/>
         </scene>
-        <!--View Controller-->
+        <!--Nieuws-->
         <scene sceneID="MIV-Zl-eyT">
             <objects>
-                <viewController id="r5Q-Mv-si1" sceneMemberID="viewController">
+                <viewController title="Nieuws" id="r5Q-Mv-si1" customClass="NewsAdminVC" customModule="JasperScholten_project" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ENw-sz-Pqy"/>
                         <viewControllerLayoutGuide type="bottom" id="OXu-8K-h9K"/>
@@ -205,20 +205,127 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nieuws (admin)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFv-7X-gBI">
-                                <rect key="frame" x="128" y="323" width="119" height="21"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kyr-RP-56J">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newsItemAdmin" id="TgJ-FJ-hE5" customClass="NewsItemAdminCell" customModule="JasperScholten_project" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TgJ-FJ-hE5" id="KGU-PS-c71">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="39"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDc-6m-KlS">
+                                                    <rect key="frame" x="16" y="8" width="275" height="23"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="275" id="U9C-ri-HCu"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="da-tu-mm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8h-RY-HgA">
+                                                    <rect key="frame" x="302" y="12" width="57.5" height="15.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="CDc-6m-KlS" firstAttribute="bottom" secondItem="KGU-PS-c71" secondAttribute="bottomMargin" id="HB7-2e-OId"/>
+                                                <constraint firstItem="J8h-RY-HgA" firstAttribute="top" secondItem="KGU-PS-c71" secondAttribute="topMargin" constant="4" id="Onc-pd-NVB"/>
+                                                <constraint firstItem="CDc-6m-KlS" firstAttribute="top" secondItem="KGU-PS-c71" secondAttribute="topMargin" id="b0J-mg-Bs1"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="J8h-RY-HgA" secondAttribute="bottom" constant="4" id="vdA-bn-8VP"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="J8h-RY-HgA" secondAttribute="trailing" constant="8" id="wGW-CN-HXt"/>
+                                                <constraint firstItem="CDc-6m-KlS" firstAttribute="leading" secondItem="KGU-PS-c71" secondAttribute="leadingMargin" constant="8" id="wdW-av-LjN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="date" destination="J8h-RY-HgA" id="r1F-Y1-DqP"/>
+                                            <outlet property="title" destination="CDc-6m-KlS" id="82G-FH-rXm"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="r5Q-Mv-si1" id="VHY-IE-5tJ"/>
+                                    <outlet property="delegate" destination="r5Q-Mv-si1" id="oOF-gn-F9x"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Nieuws" id="VWe-ml-u7S">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="87i-xD-Rzk"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="newsTableView" destination="Kyr-RP-56J" id="81A-lX-elp"/>
+                        <segue destination="XtL-1N-bVI" kind="show" identifier="showNewsItem" id="Gw1-66-Twa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P79-J2-8c4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2590" y="170"/>
+            <point key="canvasLocation" x="2589.5999999999999" y="169.56521739130437"/>
+        </scene>
+        <!--News Item AdminVC-->
+        <scene sceneID="12y-P0-r9Z">
+            <objects>
+                <viewController id="XtL-1N-bVI" customClass="NewsItemAdminVC" customModule="JasperScholten_project" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ArR-D8-4if"/>
+                        <viewControllerLayoutGuide type="bottom" id="1bC-mS-j2U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Ra-Le-aaI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bQe-2x-DrL">
+                                <rect key="frame" x="0.0" y="64" width="375" height="175"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="175" id="inx-Z9-btA"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="TITEL" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANI-G9-2aY">
+                                <rect key="frame" x="16" y="247" width="343" height="70"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="0Vf-h6-RYj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bzv-rr-L6y">
+                                <rect key="frame" x="16" y="325" width="343" height="334"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">DA-TU-MM - Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bQe-2x-DrL" secondAttribute="trailing" id="9jo-Cz-DZN"/>
+                            <constraint firstItem="Bzv-rr-L6y" firstAttribute="trailing" secondItem="0Ra-Le-aaI" secondAttribute="trailingMargin" id="JF1-sp-TJw"/>
+                            <constraint firstItem="Bzv-rr-L6y" firstAttribute="leading" secondItem="0Ra-Le-aaI" secondAttribute="leadingMargin" id="bVe-aq-ZKy"/>
+                            <constraint firstItem="ANI-G9-2aY" firstAttribute="trailing" secondItem="0Ra-Le-aaI" secondAttribute="trailingMargin" id="d9V-eY-VYS"/>
+                            <constraint firstItem="1bC-mS-j2U" firstAttribute="top" secondItem="Bzv-rr-L6y" secondAttribute="bottom" constant="8" id="f2h-Zk-NfI"/>
+                            <constraint firstItem="bQe-2x-DrL" firstAttribute="leading" secondItem="0Ra-Le-aaI" secondAttribute="leading" id="h1d-uY-fLX"/>
+                            <constraint firstItem="Bzv-rr-L6y" firstAttribute="top" secondItem="ANI-G9-2aY" secondAttribute="bottom" constant="8" id="hq8-LA-DkT"/>
+                            <constraint firstItem="ANI-G9-2aY" firstAttribute="leading" secondItem="0Ra-Le-aaI" secondAttribute="leadingMargin" id="n55-t2-d4Z"/>
+                            <constraint firstItem="ANI-G9-2aY" firstAttribute="top" secondItem="bQe-2x-DrL" secondAttribute="bottom" constant="8" id="tX2-Lq-FBj"/>
+                            <constraint firstItem="bQe-2x-DrL" firstAttribute="top" secondItem="ArR-D8-4if" secondAttribute="bottom" id="zog-71-Mov"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="newsItemImage" destination="bQe-2x-DrL" id="VWB-BV-Ca1"/>
+                        <outlet property="newsItemText" destination="Bzv-rr-L6y" id="QLa-iv-kcR"/>
+                        <outlet property="newsItemTitle" destination="ANI-G9-2aY" id="it7-Dm-e30"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tiZ-GT-VHn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3340" y="169.56521739130437"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="1Qn-IV-HK3">

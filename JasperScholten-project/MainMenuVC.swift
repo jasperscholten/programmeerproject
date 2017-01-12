@@ -17,7 +17,6 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("ADMIN: \(admin)")
         if admin == true {
             menuItems = ["Beoordelen", "Resultaten", "Stel lijst samen", "Rooster (admin)", "Nieuws (admin)"]
         } else {
