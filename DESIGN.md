@@ -44,7 +44,7 @@ Prioriteit in functionaliteit:
 
 ## APIs and frameworks or plugins
 - UIKit
-- Firebase
+- Firebase (ook Firebase Storage https://firebase.google.com/docs/storage/ios/start)
 - CalendarView (https://cocoapods.org/pods/CalendarView, http://blog.karmadust.com/lets-create-a-calendar-using-a-uicollectionview/, https://developer.apple.com/reference/eventkit)
 - Push Notifications (https://www.appcoda.com/push-notification-ios/ - Alhoewel lastig, dan wel niet onmogelijk, binnen dit project te implementeren).
 
