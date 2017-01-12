@@ -13,3 +13,7 @@ Afbeelding van schetsen van alle views. <a href="https://github.com/jasperscholt
 - Organisatie ID toevoegen, zodat de app door meerdere bedrijven gebruikt kan worden.
 - Zelfde mainmenu gebruiken voor zowel leidnggevenden als medewerkers, alleen onderscheid maken in de cellen (opties) die zij te zien krijgen.
 - Je moet kunnen verdergaan met een beoordeling die je hebt stopgezet.
+
+## Day 4
+
+- Ontdekt dat afbeeldingen op een iets andere manier moeten worden opgeslagen in Firebase, dan bijvoorbeeld gewone tekst. https://firebase.google.com/docs/storage/ios/start
