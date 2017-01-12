@@ -10,14 +10,19 @@ import UIKit
 
 class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    let menuItems = ["Beoordelen", "Resultaten", "Stel lijst samen", "Rooster (admin)", "Nieuws (admin)", "Beoordelingen", "Rooster", "Nieuws"]
+    var admin = Bool()
+    var menuItems = [String]()
     
     @IBOutlet weak var menuTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        print("ADMIN: \(admin)")
+        if admin == true {
+            menuItems = ["Beoordelen", "Resultaten", "Stel lijst samen", "Rooster (admin)", "Nieuws (admin)"]
+        } else {
+            menuItems = ["Beoordelingen", "Rooster", "Nieuws"]
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,7 +30,7 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: TableView Population
+    // MARK: - TableView Population
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItems.count
@@ -41,6 +46,15 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: menuItems[indexPath.row], sender: self)
+    }
+    
+    // MARK: - Segue user details
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let employeeResults = segue.destination as? ReviewResultsEmployeeVC {
+            // Segue details of current user
+            employeeResults.employee = "Niels (huidige gebruiker)"
+        }
     }
 
 }

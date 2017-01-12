@@ -19,6 +19,18 @@ class LoginVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationNavigationController = segue.destination as! UINavigationController
+        
+        if let role = destinationNavigationController.topViewController as? MainMenuVC {
+            if segue.identifier == "adminLogin" {
+                role.admin = true
+            } else {
+                role.admin = false
+            }
+        }
+    }
 
 }
 

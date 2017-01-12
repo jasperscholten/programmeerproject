@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		32D2ACAC91D49DB01D2F5246 /* Pods_JasperScholten_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E191C0B00AF4FE431497717 /* Pods_JasperScholten_project.framework */; };
+		A40C6C451E2795EE00CCDA3F /* ReviewResultFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C6C441E2795EE00CCDA3F /* ReviewResultFormCell.swift */; };
+		A40C6C471E2796B800CCDA3F /* ReviewResultFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C6C461E2796B800CCDA3F /* ReviewResultFormVC.swift */; };
 		A44A84D31E24D7B90059F971 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44A84D21E24D7B90059F971 /* AppDelegate.swift */; };
 		A44A84D51E24D7B90059F971 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44A84D41E24D7B90059F971 /* LoginVC.swift */; };
 		A44A84D81E24D7B90059F971 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A44A84D61E24D7B90059F971 /* Main.storyboard */; };
@@ -20,12 +22,18 @@
 		A48593D81E266C20007B86AB /* EmployeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593D71E266C20007B86AB /* EmployeeCell.swift */; };
 		A48593DB1E267328007B86AB /* NewReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593DA1E267328007B86AB /* NewReviewVC.swift */; };
 		A48593DD1E26771B007B86AB /* NewReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593DC1E26771B007B86AB /* NewReviewCell.swift */; };
+		A48593DF1E277CA7007B86AB /* ReviewResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593DE1E277CA7007B86AB /* ReviewResultsVC.swift */; };
+		A48593E11E277E53007B86AB /* ReviewResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593E01E277E53007B86AB /* ReviewResultsCell.swift */; };
+		A48593E31E2787D9007B86AB /* ReviewResultsEmployeeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593E21E2787D9007B86AB /* ReviewResultsEmployeeVC.swift */; };
+		A48593E91E278AE1007B86AB /* ReviewResultsEmployeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593E81E278AE1007B86AB /* ReviewResultsEmployeeCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4E191C0B00AF4FE431497717 /* Pods_JasperScholten_project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasperScholten_project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70A9456A4A13E77E3E3E7CE0 /* Pods-JasperScholten-project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasperScholten-project.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasperScholten-project/Pods-JasperScholten-project.debug.xcconfig"; sourceTree = "<group>"; };
 		923E38BF60ECF7CC9110B455 /* Pods-JasperScholten-project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasperScholten-project.release.xcconfig"; path = "Pods/Target Support Files/Pods-JasperScholten-project/Pods-JasperScholten-project.release.xcconfig"; sourceTree = "<group>"; };
+		A40C6C441E2795EE00CCDA3F /* ReviewResultFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewResultFormCell.swift; sourceTree = "<group>"; };
+		A40C6C461E2796B800CCDA3F /* ReviewResultFormVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewResultFormVC.swift; sourceTree = "<group>"; };
 		A44A84CF1E24D7B90059F971 /* JasperScholten-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JasperScholten-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A44A84D21E24D7B90059F971 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A44A84D41E24D7B90059F971 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -40,6 +48,10 @@
 		A48593D71E266C20007B86AB /* EmployeeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeCell.swift; sourceTree = "<group>"; };
 		A48593DA1E267328007B86AB /* NewReviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewReviewVC.swift; sourceTree = "<group>"; };
 		A48593DC1E26771B007B86AB /* NewReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewReviewCell.swift; sourceTree = "<group>"; };
+		A48593DE1E277CA7007B86AB /* ReviewResultsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewResultsVC.swift; sourceTree = "<group>"; };
+		A48593E01E277E53007B86AB /* ReviewResultsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewResultsCell.swift; sourceTree = "<group>"; };
+		A48593E21E2787D9007B86AB /* ReviewResultsEmployeeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewResultsEmployeeVC.swift; sourceTree = "<group>"; };
+		A48593E81E278AE1007B86AB /* ReviewResultsEmployeeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewResultsEmployeeCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +106,9 @@
 				A48593D31E265A86007B86AB /* MainMenuVC.swift */,
 				A48593D51E2669AB007B86AB /* ReviewEmployeeVC.swift */,
 				A48593DA1E267328007B86AB /* NewReviewVC.swift */,
+				A48593DE1E277CA7007B86AB /* ReviewResultsVC.swift */,
+				A48593E21E2787D9007B86AB /* ReviewResultsEmployeeVC.swift */,
+				A40C6C461E2796B800CCDA3F /* ReviewResultFormVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -104,6 +119,9 @@
 				A48593CF1E265939007B86AB /* MainMenuCell.swift */,
 				A48593D71E266C20007B86AB /* EmployeeCell.swift */,
 				A48593DC1E26771B007B86AB /* NewReviewCell.swift */,
+				A48593E01E277E53007B86AB /* ReviewResultsCell.swift */,
+				A48593E81E278AE1007B86AB /* ReviewResultsEmployeeCell.swift */,
+				A40C6C441E2795EE00CCDA3F /* ReviewResultFormCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -250,13 +268,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A48593E11E277E53007B86AB /* ReviewResultsCell.swift in Sources */,
+				A40C6C471E2796B800CCDA3F /* ReviewResultFormVC.swift in Sources */,
+				A48593E31E2787D9007B86AB /* ReviewResultsEmployeeVC.swift in Sources */,
 				A44A84D51E24D7B90059F971 /* LoginVC.swift in Sources */,
 				A48593D01E265939007B86AB /* MainMenuCell.swift in Sources */,
 				A48593DD1E26771B007B86AB /* NewReviewCell.swift in Sources */,
 				A48593D61E2669AB007B86AB /* ReviewEmployeeVC.swift in Sources */,
+				A48593E91E278AE1007B86AB /* ReviewResultsEmployeeCell.swift in Sources */,
+				A40C6C451E2795EE00CCDA3F /* ReviewResultFormCell.swift in Sources */,
 				A48593DB1E267328007B86AB /* NewReviewVC.swift in Sources */,
 				A48593D81E266C20007B86AB /* EmployeeCell.swift in Sources */,
 				A48593D41E265A86007B86AB /* MainMenuVC.swift in Sources */,
+				A48593DF1E277CA7007B86AB /* ReviewResultsVC.swift in Sources */,
 				A44A84D31E24D7B90059F971 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
