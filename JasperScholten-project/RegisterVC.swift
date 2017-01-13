@@ -22,9 +22,8 @@ class RegisterVC: UIViewController {
     }
     
     // MARK: - Action
-    // Kan weg wanneer kan worden uitgelogd met Firebase
-    @IBAction func cancelRegister(_ sender: Any) {
+
+    @IBAction func cancelRegistration(_ sender: Any) {
         self.dismiss(animated: true, completion: {})
     }
-
 }
