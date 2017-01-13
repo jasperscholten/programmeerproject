@@ -23,3 +23,4 @@ Afbeelding van schetsen van alle views. <a href="https://github.com/jasperscholt
 ## Day 5 // 13-01-17
 
 - Toon een melding wanneer ervoor wordt gekozen een admin te registreren (weet je het zeker?). Vervolgens, wanneer op registreren wordt geklikt, automatisch een e-mail sturen naar de geregistreerde medewerker met daarin gebruikersnaam en wachtwoord. **Deze moet hij dan eigenlijk zelf nog kunnen aanpassen.** Gebruik voor sturen mails MessageUI framework. https://www.hackingwithswift.com/example-code/uikit/how-to-send-an-email
+- Presentatie Feedback: Prioriteiten stellen - wat wil je echt hebben, wat is extra? Denk ook na over de toegevoegde waarde van exporteren.
