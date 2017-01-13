@@ -19,6 +19,7 @@
 		A44A84DA1E24D7B90059F971 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A44A84D91E24D7B90059F971 /* Assets.xcassets */; };
 		A44A84DD1E24D7B90059F971 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A44A84DB1E24D7B90059F971 /* LaunchScreen.storyboard */; };
 		A467BF591E28D5F600F4AF68 /* AddEmployeeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467BF581E28D5F600F4AF68 /* AddEmployeeVC.swift */; };
+		A467BF5F1E28F78B00F4AF68 /* PasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467BF5E1E28F78B00F4AF68 /* PasswordVC.swift */; };
 		A48593CE1E26406B007B86AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A48593CD1E26406B007B86AB /* GoogleService-Info.plist */; };
 		A48593D01E265939007B86AB /* MainMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593CF1E265939007B86AB /* MainMenuCell.swift */; };
 		A48593D41E265A86007B86AB /* MainMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593D31E265A86007B86AB /* MainMenuVC.swift */; };
@@ -51,6 +52,7 @@
 		A44A84DC1E24D7B90059F971 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A44A84DE1E24D7B90059F971 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A467BF581E28D5F600F4AF68 /* AddEmployeeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEmployeeVC.swift; sourceTree = "<group>"; };
+		A467BF5E1E28F78B00F4AF68 /* PasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordVC.swift; sourceTree = "<group>"; };
 		A48593CD1E26406B007B86AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A48593CF1E265939007B86AB /* MainMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuCell.swift; sourceTree = "<group>"; };
 		A48593D31E265A86007B86AB /* MainMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuVC.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				A4C2A91C1E281577002A6ACD /* AddNewsItemVC.swift */,
 				A4C2A91E1E281F3C002A6ACD /* RegisterVC.swift */,
 				A467BF581E28D5F600F4AF68 /* AddEmployeeVC.swift */,
+				A467BF5E1E28F78B00F4AF68 /* PasswordVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				A40C6C471E2796B800CCDA3F /* ReviewResultFormVC.swift in Sources */,
 				A48593E31E2787D9007B86AB /* ReviewResultsEmployeeVC.swift in Sources */,
 				A44A84D51E24D7B90059F971 /* LoginVC.swift in Sources */,
+				A467BF5F1E28F78B00F4AF68 /* PasswordVC.swift in Sources */,
 				A48593D01E265939007B86AB /* MainMenuCell.swift in Sources */,
 				A48593DD1E26771B007B86AB /* NewReviewCell.swift in Sources */,
 				A40C6C4B1E27B12C00CCDA3F /* NewsItemAdminCell.swift in Sources */,

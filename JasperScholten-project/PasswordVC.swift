@@ -1,5 +1,5 @@
 //
-//  AddEmployeeVC.swift
+//  PasswordVC.swift
 //  JasperScholten-project
 //
 //  Created by Jasper Scholten on 13-01-17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddEmployeeVC: UIViewController {
+class PasswordVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +19,12 @@ class AddEmployeeVC: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func cancelPasswordChange(_ sender: Any) {
+        self.dismiss(animated: true, completion: {})
     }
 
 }

@@ -44,6 +44,7 @@ class ReviewResultsEmployeeVC: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showDateResult", sender: self)
+        reviewResultsTableView.deselectRow(at: indexPath, animated: true)
     }
 
 }

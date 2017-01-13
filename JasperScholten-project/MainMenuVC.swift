@@ -45,6 +45,7 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: menuItems[indexPath.row], sender: self)
+        menuTableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: - Segue user details

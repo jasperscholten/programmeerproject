@@ -41,5 +41,9 @@ class ReviewResultFormVC: UIViewController, UITableViewDataSource, UITableViewDe
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        reviewFormTableView.deselectRow(at: indexPath, animated: true)
+    }
 
 }
