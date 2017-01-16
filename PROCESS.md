@@ -23,3 +23,32 @@ Afbeelding van schetsen van alle views. <a href="https://github.com/jasperscholt
 ## Day 5 // 13-01-17
 
 - Toon een melding wanneer ervoor wordt gekozen een admin te registreren (weet je het zeker?). Vervolgens, wanneer op registreren wordt geklikt, automatisch een e-mail sturen naar de geregistreerde medewerker met daarin gebruikersnaam en wachtwoord. **Deze moet hij dan eigenlijk zelf nog kunnen aanpassen.** Gebruik voor sturen mails MessageUI framework. https://www.hackingwithswift.com/example-code/uikit/how-to-send-an-email
+- Presentatie Feedback: Prioriteiten stellen - wat wil je echt hebben, wat is extra? Denk ook na over de toegevoegde waarde van exporteren.
+
+## Day 6 // 16-01-17
+
+- Voor iedere user wil ik een aantal elementen in de Firebase opslaan. Ik krijg nu echter een error: Return from inititalizer without initializing all stored properties. Dit komt waarschijnlijk doordat ik bij authData niet alle elementen initialiseer; het is alleen volgens mij helemaal niet de bedoeling om dat daar te doen, omdat ik niet alle onderdelen nodig zijn om als gebruiker in te loggen. Ik heb hoe dan ook (eisen aan) de structuur van dit bestand nog niet helemaal door. --> Gebruik Optionals
+
+```Swift
+struct User {
+    
+    let uid: String
+    let email: String
+    
+    //let name: String
+    //let role: Bool
+    //let employeeNr: String
+    //let organisationID: String
+    //let locationID: String
+    
+    var name: String?
+    var role: Bool?
+    var employeeNr: String?
+    var organisationID: String?
+    var locationID: String?
+    
+   ...
+}
+```
+
+- Nog niet uit hoe ik een datum en tijd wil gaan opslaan in Firebase, en dit ook goed wil communiceren tussen de app en de database. http://stackoverflow.com/questions/29243060/trying-to-convert-firebase-timestamp-to-nsdate-in-swift --> In overleg met Julian kwam naar voren, dat ik gewoon Swift de huidige tijd kan laten genereren en deze dan als string kan opslaan (hoef er later ook geen berekeningen meer op uit te voeren).
