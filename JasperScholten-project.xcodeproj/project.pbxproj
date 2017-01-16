@@ -18,6 +18,10 @@
 		A44A84D81E24D7B90059F971 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A44A84D61E24D7B90059F971 /* Main.storyboard */; };
 		A44A84DA1E24D7B90059F971 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A44A84D91E24D7B90059F971 /* Assets.xcassets */; };
 		A44A84DD1E24D7B90059F971 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A44A84DB1E24D7B90059F971 /* LaunchScreen.storyboard */; };
+		A45ADE451E2CD79900005C6E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45ADE441E2CD79900005C6E /* User.swift */; };
+		A45ADE481E2CDE0500005C6E /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45ADE471E2CDE0500005C6E /* Form.swift */; };
+		A45ADE4A1E2CE46000005C6E /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45ADE491E2CE46000005C6E /* Review.swift */; };
+		A45ADE4C1E2CE9BD00005C6E /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45ADE4B1E2CE9BD00005C6E /* News.swift */; };
 		A467BF591E28D5F600F4AF68 /* AddEmployeeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467BF581E28D5F600F4AF68 /* AddEmployeeVC.swift */; };
 		A467BF5F1E28F78B00F4AF68 /* PasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467BF5E1E28F78B00F4AF68 /* PasswordVC.swift */; };
 		A48593CE1E26406B007B86AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A48593CD1E26406B007B86AB /* GoogleService-Info.plist */; };
@@ -51,6 +55,11 @@
 		A44A84D91E24D7B90059F971 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A44A84DC1E24D7B90059F971 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A44A84DE1E24D7B90059F971 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A45ADE441E2CD79900005C6E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A45ADE461E2CD8BE00005C6E /* JasperScholten-project.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "JasperScholten-project.entitlements"; sourceTree = "<group>"; };
+		A45ADE471E2CDE0500005C6E /* Form.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
+		A45ADE491E2CE46000005C6E /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		A45ADE4B1E2CE9BD00005C6E /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		A467BF581E28D5F600F4AF68 /* AddEmployeeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEmployeeVC.swift; sourceTree = "<group>"; };
 		A467BF5E1E28F78B00F4AF68 /* PasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordVC.swift; sourceTree = "<group>"; };
 		A48593CD1E26406B007B86AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -101,16 +110,45 @@
 		A44A84D11E24D7B90059F971 /* JasperScholten-project */ = {
 			isa = PBXGroup;
 			children = (
-				A48593D21E265975007B86AB /* Cells */,
+				A45ADE461E2CD8BE00005C6E /* JasperScholten-project.entitlements */,
+				A45ADE411E2CD58300005C6E /* Storyboards */,
 				A48593D11E26596A007B86AB /* ViewControllers */,
-				A44A84D21E24D7B90059F971 /* AppDelegate.swift */,
-				A44A84D61E24D7B90059F971 /* Main.storyboard */,
+				A48593D21E265975007B86AB /* Cells */,
+				A45ADE431E2CD6B800005C6E /* Models */,
+				A45ADE421E2CD59600005C6E /* Other */,
 				A44A84D91E24D7B90059F971 /* Assets.xcassets */,
+			);
+			path = "JasperScholten-project";
+			sourceTree = "<group>";
+		};
+		A45ADE411E2CD58300005C6E /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A44A84D61E24D7B90059F971 /* Main.storyboard */,
 				A44A84DB1E24D7B90059F971 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		A45ADE421E2CD59600005C6E /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				A44A84D21E24D7B90059F971 /* AppDelegate.swift */,
 				A44A84DE1E24D7B90059F971 /* Info.plist */,
 				A48593CD1E26406B007B86AB /* GoogleService-Info.plist */,
 			);
-			path = "JasperScholten-project";
+			name = Other;
+			sourceTree = "<group>";
+		};
+		A45ADE431E2CD6B800005C6E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A45ADE441E2CD79900005C6E /* User.swift */,
+				A45ADE471E2CDE0500005C6E /* Form.swift */,
+				A45ADE491E2CE46000005C6E /* Review.swift */,
+				A45ADE4B1E2CE9BD00005C6E /* News.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		A48593D11E26596A007B86AB /* ViewControllers */ = {
@@ -201,6 +239,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 3F7K5ABT44;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -299,11 +342,15 @@
 				A40C6C4B1E27B12C00CCDA3F /* NewsItemAdminCell.swift in Sources */,
 				A48593D61E2669AB007B86AB /* ReviewEmployeeVC.swift in Sources */,
 				A467BF591E28D5F600F4AF68 /* AddEmployeeVC.swift in Sources */,
+				A45ADE451E2CD79900005C6E /* User.swift in Sources */,
 				A48593E91E278AE1007B86AB /* ReviewResultsEmployeeCell.swift in Sources */,
 				A4C2A91F1E281F3C002A6ACD /* RegisterVC.swift in Sources */,
 				A40C6C451E2795EE00CCDA3F /* ReviewResultFormCell.swift in Sources */,
+				A45ADE481E2CDE0500005C6E /* Form.swift in Sources */,
 				A48593DB1E267328007B86AB /* NewReviewVC.swift in Sources */,
 				A40C6C4F1E27BB5500CCDA3F /* NewsItemAdminVC.swift in Sources */,
+				A45ADE4A1E2CE46000005C6E /* Review.swift in Sources */,
+				A45ADE4C1E2CE9BD00005C6E /* News.swift in Sources */,
 				A4C2A91D1E281577002A6ACD /* AddNewsItemVC.swift in Sources */,
 				A40C6C4D1E27B15E00CCDA3F /* NewsAdminVC.swift in Sources */,
 				A48593D81E266C20007B86AB /* EmployeeCell.swift in Sources */,
@@ -433,6 +480,7 @@
 			baseConfigurationReference = 70A9456A4A13E77E3E3E7CE0 /* Pods-JasperScholten-project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "JasperScholten-project/JasperScholten-project.entitlements";
 				DEVELOPMENT_TEAM = 3F7K5ABT44;
 				INFOPLIST_FILE = "JasperScholten-project/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -447,6 +495,7 @@
 			baseConfigurationReference = 923E38BF60ECF7CC9110B455 /* Pods-JasperScholten-project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "JasperScholten-project/JasperScholten-project.entitlements";
 				DEVELOPMENT_TEAM = 3F7K5ABT44;
 				INFOPLIST_FILE = "JasperScholten-project/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
