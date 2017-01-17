@@ -52,3 +52,7 @@ struct User {
 ```
 
 - Nog niet uit hoe ik een datum en tijd wil gaan opslaan in Firebase, en dit ook goed wil communiceren tussen de app en de database. http://stackoverflow.com/questions/29243060/trying-to-convert-firebase-timestamp-to-nsdate-in-swift --> In overleg met Julian kwam naar voren, dat ik gewoon Swift de huidige tijd kan laten genereren en deze dan als string kan opslaan (hoef er later ook geen berekeningen meer op uit te voeren).
+
+## Day 7 // 17-01-17
+
+- Eigenlijk vooral problemen met het gebruikers laten aanmaken door andere gebruikers, omdat hierbij automatisch wordt ingelogd op de account van de nieuwe gebruiker. Dit is echter niet gewenst, maar ik kan nergens een oplossing vinden om dit te voorkomen. Mogelijk hier iets? --> https://firebase.google.com/docs/auth/ios/manage-users#re-authenticate_a_user
