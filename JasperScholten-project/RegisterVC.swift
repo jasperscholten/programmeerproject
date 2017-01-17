@@ -12,7 +12,7 @@ import Firebase
 class RegisterVC: UIViewController {
     
     // MARK: Constants and variables
-    let ref = FIRDatabase.database().reference(withPath: "companyCommunication")
+    let ref = FIRDatabase.database().reference(withPath: "Users")
     
     // MARK: Outlets
     @IBOutlet weak var name: UITextField!
@@ -42,7 +42,7 @@ class RegisterVC: UIViewController {
                                     if error == nil {
                                         
                                         // Create complete user profile
-                                        let user = User(uid: <#T##String#>, email: self.mail.text!, name: self.name.text!, admin: true, employeeNr: self.employee.text!, organisationID: self.organisation.text!, locationID: self.location.text!)
+                                        let user = User(uid: (user?.uid)!, email: self.mail.text!, name: self.name.text!, admin: true, employeeNr: self.employee.text!, organisationID: self.organisation.text!, locationID: self.location.text!)
                                         
                                         let userRef = self.ref.child(self.name.text!)
                                         userRef.setValue(user.toAnyObject())

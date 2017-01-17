@@ -27,52 +27,40 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Beoordeling" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQZ-7n-YDW">
-                                        <rect key="frame" x="86" y="189" width="202" height="44"/>
+                                        <rect key="frame" x="87" y="213" width="202" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mailadres" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Swb-Pd-GW3">
-                                        <rect key="frame" x="62" y="252" width="250" height="30"/>
+                                        <rect key="frame" x="62" y="276" width="250" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Wachtwoord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UZT-fG-Lzp">
-                                        <rect key="frame" x="62" y="290" width="250" height="30"/>
+                                        <rect key="frame" x="62" y="314" width="250" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PoO-5n-sW6">
-                                        <rect key="frame" x="62" y="342" width="250" height="40"/>
+                                        <rect key="frame" x="62" y="366" width="250" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Login (admin)">
+                                        <state key="normal" title="Inloggen">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="jKY-hG-lbs" kind="show" identifier="adminLogin" id="P5s-Vx-cO9"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6j5-2C-8kA">
-                                        <rect key="frame" x="62" y="390" width="250" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Login (medewerker)">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="jKY-hG-lbs" kind="show" identifier="employeeLogin" id="SA5-ES-ocX"/>
+                                            <action selector="loginUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aab-MU-ZRE"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9y-dn-LxM">
-                                        <rect key="frame" x="62" y="438" width="250" height="40"/>
+                                        <rect key="frame" x="62" y="414" width="250" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -89,6 +77,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="mail" destination="Swb-Pd-GW3" id="EHQ-Wn-Isl"/>
+                        <outlet property="password" destination="UZT-fG-Lzp" id="Cqk-4H-FQo"/>
+                        <segue destination="jKY-hG-lbs" kind="show" identifier="loginUser" id="XyG-fT-W0j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -1062,6 +1055,9 @@
                                 <state key="normal" title="Registreren">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="registerEmployee:" destination="Iwb-3x-CfM" eventType="touchUpInside" id="s60-mi-rgc"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Naam" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mVn-Sm-xba">
                                 <rect key="frame" x="62" y="251" width="250" height="30"/>
@@ -1109,6 +1105,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="employee" destination="y2F-ur-V9o" id="OKF-og-zmH"/>
+                        <outlet property="location" destination="4dX-xn-FJn" id="6oi-V4-Vfc"/>
+                        <outlet property="mail" destination="kho-5k-lIL" id="Gey-L8-TvM"/>
+                        <outlet property="name" destination="mVn-Sm-xba" id="seH-gt-bEB"/>
+                        <outlet property="role" destination="14w-od-AmM" id="ydi-b9-vBG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSv-aS-Bmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1216,8 +1219,7 @@
         <image name="settings66" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="P5s-Vx-cO9"/>
-        <segue reference="43R-2E-qLC"/>
         <segue reference="WbN-BI-acx"/>
+        <segue reference="43R-2E-qLC"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -20,12 +20,19 @@ struct User {
     var organisationID: String?
     var locationID: String?
     
+    let key: String
+    let ref: FIRDatabaseReference?
+    
     init(authData: FIRUser) {
         uid = authData.uid
         email = authData.email!
+        
+        // Hoe dit te initialiseren
+        key = ""
+        ref = nil
     }
     
-    init(uid: String, email: String, name: String, admin: Bool, employeeNr: String, organisationID: String, locationID: String) {
+    init(uid: String, email: String, name: String, admin: Bool, employeeNr: String, organisationID: String, locationID: String, key: String = "") {
         self.uid = uid
         self.email = email
         self.name = name
@@ -33,6 +40,23 @@ struct User {
         self.employeeNr = employeeNr
         self.organisationID = organisationID
         self.locationID = locationID
+        
+        self.key = key
+        self.ref = nil
+    }
+    
+    init(snapshot: FIRDataSnapshot) {
+        let snapshotValue = snapshot.value as! [String: AnyObject]
+        self.key = snapshot.key
+        self.ref = snapshot.ref
+    
+        self.uid = snapshotValue["uid"] as! String
+        self.email = snapshotValue["email"] as! String
+        self.name = snapshotValue["name"] as! String?
+        self.admin = snapshotValue["admin"] as! Bool?
+        self.employeeNr = snapshotValue["employeeNr"] as! String?
+        self.organisationID = snapshotValue["organisationID"] as! String?
+        self.locationID = snapshotValue["locationID"] as! String?
     }
     
     func toAnyObject() -> Any {

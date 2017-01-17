@@ -7,12 +7,25 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginVC: UIViewController {
 
+    // MARK: - Outlets
+    @IBOutlet weak var mail: UITextField!
+    @IBOutlet weak var password: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
+            if user != nil {
+                self.performSegue(withIdentifier: "loginUser", sender: nil)
+                self.mail.text! = ""
+                self.password.text! = ""
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,6 +45,20 @@ class LoginVC: UIViewController {
                 }
             }
         }
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func loginUser(_ sender: Any) {
+        FIRAuth.auth()!.signIn(withEmail: mail.text!,
+                               password: password.text!) { (user, error) in
+                                if error != nil {
+                                    let alert = UIAlertController(title: "Foute invoer", message: "Het emailadres of wachtwoord dat je hebt ingevoerd is incorrect.", preferredStyle: UIAlertControllerStyle.alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                    self.present(alert, animated: true, completion: nil)
+                                }
+        }
+        
     }
 }
 

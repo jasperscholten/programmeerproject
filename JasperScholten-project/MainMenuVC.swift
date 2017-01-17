@@ -7,26 +7,38 @@
 //
 
 import UIKit
+import Firebase
 
 class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var admin = Bool()
+    //var userData: User!
     var menuItems = [String]()
+    let ref = FIRDatabase.database().reference(withPath: "Users")
     
     @IBOutlet weak var menuTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if admin == true {
-            menuItems = ["Beoordelen", "Resultaten", "Nieuws (admin)", "Rooster (admin)", "Stel lijst samen", "Nieuwe medewerker"]
-        } else {
-            menuItems = ["Beoordelingen", "Rooster", "Nieuws"]
-        }
+        
+        // Retrieve data from Firebase.
+        ref.observe(.value, with: { snapshot in
+            for item in snapshot.children {
+                let userData = User(snapshot: item as! FIRDataSnapshot)
+                if userData.uid == (FIRAuth.auth()?.currentUser?.uid)! {
+                    if userData.admin! == true {
+                        self.menuItems = ["Beoordelen", "Resultaten", "Nieuws (admin)", "Rooster (admin)", "Stel lijst samen", "Nieuwe medewerker"]
+                    } else {
+                        self.menuItems = ["Beoordelingen", "Rooster", "Nieuws"]
+                    }
+                    self.menuTableView.reloadData()
+                }
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - TableView Population
