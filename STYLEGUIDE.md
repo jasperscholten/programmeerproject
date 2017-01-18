@@ -9,6 +9,7 @@
 - In general, there should be a space following a comma.
 - There should be a space before and after a binary operator such as +, ==, or ->. There should also not be a space after a ( and before a ).
 - Respect the standard indents that Xcode puts in your code.
+- Delete all commented code - if you don't use it, you don't need it.
 - When calling a function that has many parameters, put each argument on a separate line with a single extra indentation.
 ```Swift
 someFunctionWithManyArguments(
