@@ -167,7 +167,7 @@
                         <segue destination="hQd-Fj-RKH" kind="show" identifier="Rooster" id="0Ru-bm-fBe"/>
                         <segue destination="n8D-l8-7QM" kind="show" identifier="Beoordelingen" id="WbN-BI-acx"/>
                         <segue destination="r5Q-Mv-si1" kind="show" identifier="Nieuws" id="43R-2E-qLC"/>
-                        <segue destination="Iwb-3x-CfM" kind="show" identifier="Nieuwe medewerker" id="fFQ-b4-nZe"/>
+                        <segue destination="fvq-ur-xQx" kind="show" identifier="Medewerker verzoeken" id="Kbl-nK-B0w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U0k-Ly-LnM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1174,7 +1174,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Registreren">
+                                <state key="normal" title="Accepteren">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -1217,7 +1217,7 @@
                                     <segment title="Admin"/>
                                 </segments>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Registreren" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vV-Cr-dpM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Accepteren" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vV-Cr-dpM">
                                 <rect key="frame" x="62" y="172" width="250" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
@@ -1237,7 +1237,72 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSv-aS-Bmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="484" y="931"/>
+            <point key="canvasLocation" x="484" y="1621"/>
+        </scene>
+        <!--RequestsVC-->
+        <scene sceneID="SY6-UY-f10">
+            <objects>
+                <viewController id="fvq-ur-xQx" customClass="RequestsVC" customModule="JasperScholten_project" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h19-tf-HHu"/>
+                        <viewControllerLayoutGuide type="bottom" id="No5-Br-hDa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1NI-ex-lap" customClass="Reques">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hE1-mH-HTL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="requestCell" id="mZc-bG-O6h" customClass="RequestCell" customModule="JasperScholten_project" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mZc-bG-O6h" id="Ug7-UN-9Ts">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDZ-Km-dVW">
+                                                    <rect key="frame" x="16" y="11" width="343" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="aDZ-Km-dVW" firstAttribute="leading" secondItem="Ug7-UN-9Ts" secondAttribute="leadingMargin" constant="8" id="2wB-iv-yWM"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="aDZ-Km-dVW" secondAttribute="trailing" constant="8" id="DL6-ZD-Z08"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="aDZ-Km-dVW" secondAttribute="bottom" constant="3" id="KGt-vo-mth"/>
+                                                <constraint firstItem="aDZ-Km-dVW" firstAttribute="top" secondItem="Ug7-UN-9Ts" secondAttribute="topMargin" constant="3" id="Rgn-j2-ArH"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="employee" destination="aDZ-Km-dVW" id="Gn5-Sg-jth"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="fvq-ur-xQx" id="jgD-el-kGn"/>
+                                    <outlet property="delegate" destination="fvq-ur-xQx" id="WwN-pk-ckp"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="No5-Br-hDa" firstAttribute="top" secondItem="hE1-mH-HTL" secondAttribute="bottom" id="CU2-CD-FJE"/>
+                            <constraint firstItem="hE1-mH-HTL" firstAttribute="leading" secondItem="1NI-ex-lap" secondAttribute="leading" id="GHA-Id-mFe"/>
+                            <constraint firstItem="hE1-mH-HTL" firstAttribute="top" secondItem="1NI-ex-lap" secondAttribute="top" id="foM-zO-F1g"/>
+                            <constraint firstAttribute="trailing" secondItem="hE1-mH-HTL" secondAttribute="trailing" id="hRy-Mf-umH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="requestsTableView" destination="hE1-mH-HTL" id="C3w-tT-8RE"/>
+                        <segue destination="Iwb-3x-CfM" kind="show" identifier="acceptRequest" id="LhZ-Qm-sPk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P2y-Li-ufC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="484" y="930.58470764617698"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="BYD-Kx-Ee4">

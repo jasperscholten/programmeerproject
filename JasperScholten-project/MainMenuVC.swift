@@ -29,7 +29,7 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 
                 if userData.uid == (FIRAuth.auth()?.currentUser?.uid)! {
                     if userData.admin! == true {
-                        self.menuItems = ["Beoordelen", "Resultaten", "Nieuws (admin)", "Rooster (admin)", "Stel lijst samen", "Nieuwe medewerker"]
+                        self.menuItems = ["Beoordelen", "Resultaten", "Nieuws (admin)", "Rooster (admin)", "Stel lijst samen", "Medewerker verzoeken"]
                     } else {
                         self.menuItems = ["Beoordelingen", "Rooster", "Nieuws"]
                     }
