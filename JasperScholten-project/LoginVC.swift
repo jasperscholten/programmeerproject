@@ -11,6 +11,9 @@ import Firebase
 
 class LoginVC: UIViewController {
 
+    // MARK: - Constants and variables
+    let ref = FIRDatabase.database().reference(withPath: "Users")
+    
     // MARK: - Outlets
     @IBOutlet weak var mail: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -20,12 +23,18 @@ class LoginVC: UIViewController {
         
         FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
             if user != nil {
-                self.performSegue(withIdentifier: "loginUser", sender: nil)
-                self.mail.text! = ""
-                self.password.text! = ""
+                self.ref.observe(.value, with: { snapshot in
+                    for item in snapshot.children {
+                        let userData = User(snapshot: item as! FIRDataSnapshot)
+                        if userData.accepted == true {
+                            self.performSegue(withIdentifier: "loginUser", sender: nil)
+                            self.mail.text! = ""
+                            self.password.text! = ""
+                        }
+                    }
+                })
             }
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,32 +42,56 @@ class LoginVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier != "signin" {
-            let destinationNavigationController = segue.destination as! UINavigationController
-        
-            if let role = destinationNavigationController.topViewController as? MainMenuVC {
-                if segue.identifier == "adminLogin" {
-                    role.admin = true
-                } else {
-                    role.admin = false
-                }
-            }
-        }
-    }
-    
     // MARK: - Actions
     
     @IBAction func loginUser(_ sender: Any) {
-        FIRAuth.auth()!.signIn(withEmail: mail.text!,
-                               password: password.text!) { (user, error) in
-                                if error != nil {
-                                    let alert = UIAlertController(title: "Foute invoer", message: "Het emailadres of wachtwoord dat je hebt ingevoerd is incorrect.", preferredStyle: UIAlertControllerStyle.alert)
-                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                                    self.present(alert, animated: true, completion: nil)
-                                }
+        
+        // Retrieve data from Firebase.
+        ref.observe(.value, with: { snapshot in
+            for item in snapshot.children {
+                let userData = User(snapshot: item as! FIRDataSnapshot)
+                if userData.uid == (FIRAuth.auth()?.currentUser?.uid)! {
+                    if userData.accepted == true {
+                        FIRAuth.auth()!.signIn(withEmail: self.mail.text!,
+                                               password: self.password.text!) { (user, error) in
+                                                if error != nil {
+                                                    let alert = UIAlertController(title: "Foute invoer", message: "Het emailadres of wachtwoord dat je hebt ingevoerd is incorrect.", preferredStyle: UIAlertControllerStyle.alert)
+                                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                                    self.present(alert, animated: true, completion: nil)
+                                                }
+                        }
+                    } else {
+                        let alert = UIAlertController(title: "Geen toegang", message: "Het verzoek dat je hebt ingediend bij je werkgever, is nog niet geaccepteerd. Probeer het later nog een keer en/of neem contact op met je leidinggevende.", preferredStyle: UIAlertControllerStyle.alert)
+                        
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+            }
+        })
+    }
+    
+    @IBAction func registerUser(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Registreren",
+                                      message: "Wil je je als medewerker aanmelden bij een bestaande organisatie, kies dan 'medewerker'. Ben je nieuw bij deze app en ga je het gebruiken voor een nieuwe organisatie, kies dan 'organisatie'.",
+                                      preferredStyle: .alert)
+        
+        let employeeAction = UIAlertAction(title: "Medewerker",
+                                       style: .default) { action in
+                                        self.performSegue(withIdentifier: "employeeRegistration", sender: nil)
         }
         
+        let organisationAction = UIAlertAction(title: "Organisatie",
+                                         style: .default) { action in
+                                            self.performSegue(withIdentifier: "organisationRegistration", sender: nil)
+        }
+        
+        alert.addAction(employeeAction)
+        alert.addAction(organisationAction)
+        present(alert, animated: true, completion: nil)
+        
     }
+    
 }
 

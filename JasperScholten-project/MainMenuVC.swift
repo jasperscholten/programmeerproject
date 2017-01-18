@@ -11,11 +11,12 @@ import Firebase
 
 class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    // MARK: - Constants and variables
     var admin = Bool()
-    //var userData: User!
     var menuItems = [String]()
     let ref = FIRDatabase.database().reference(withPath: "Users")
     
+    // MARK: - Outlets
     @IBOutlet weak var menuTableView: UITableView!
     
     override func viewDidLoad() {
@@ -25,6 +26,7 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         ref.observe(.value, with: { snapshot in
             for item in snapshot.children {
                 let userData = User(snapshot: item as! FIRDataSnapshot)
+                
                 if userData.uid == (FIRAuth.auth()?.currentUser?.uid)! {
                     if userData.admin! == true {
                         self.menuItems = ["Beoordelen", "Resultaten", "Nieuws (admin)", "Rooster (admin)", "Stel lijst samen", "Nieuwe medewerker"]

@@ -19,6 +19,7 @@ struct User {
     var employeeNr: String?
     var organisationID: String?
     var locationID: String?
+    var accepted: Bool?
     
     let key: String
     let ref: FIRDatabaseReference?
@@ -32,7 +33,7 @@ struct User {
         ref = nil
     }
     
-    init(uid: String, email: String, name: String, admin: Bool, employeeNr: String, organisationID: String, locationID: String, key: String = "") {
+    init(uid: String, email: String, name: String, admin: Bool, employeeNr: String, organisationID: String, locationID: String, accepted: Bool, key: String = "") {
         self.uid = uid
         self.email = email
         self.name = name
@@ -40,6 +41,7 @@ struct User {
         self.employeeNr = employeeNr
         self.organisationID = organisationID
         self.locationID = locationID
+        self.accepted = accepted
         
         self.key = key
         self.ref = nil
@@ -57,6 +59,7 @@ struct User {
         self.employeeNr = snapshotValue["employeeNr"] as! String?
         self.organisationID = snapshotValue["organisationID"] as! String?
         self.locationID = snapshotValue["locationID"] as! String?
+        self.accepted = snapshotValue["accepted"] as! Bool?
     }
     
     func toAnyObject() -> Any {
@@ -67,7 +70,8 @@ struct User {
             "admin": admin ?? false,
             "employeeNr": employeeNr ?? "Geen nummer",
             "organisationID": organisationID ?? "Geen organisatie",
-            "locationID": locationID ?? "Geen locatie"
+            "locationID": locationID ?? "Geen locatie",
+            "accepted": accepted ?? false
         ]
     }
     

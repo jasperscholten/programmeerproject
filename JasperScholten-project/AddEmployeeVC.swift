@@ -24,7 +24,7 @@ class AddEmployeeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Retrieve data from Firebase.
         ref.observe(.value, with: { snapshot in
             for item in snapshot.children {
@@ -44,8 +44,6 @@ class AddEmployeeVC: UIViewController {
     
     @IBAction func registerEmployee(_ sender: Any) {
         
-        print("CURRENT USER: \((FIRAuth.auth()?.currentUser?.uid)!)")
-        
         // password random genereren?
         FIRAuth.auth()!.createUser(withEmail: mail.text!, password: "test123") { user, error in
             if error == nil {
@@ -56,7 +54,7 @@ class AddEmployeeVC: UIViewController {
                 }
                 
                 // Create complete user profile
-                let user = User(uid: (user?.uid)!, email: self.mail.text!, name: self.name.text!, admin: admin, employeeNr: self.employee.text!, organisationID: self.organisation, locationID: self.location.text!)
+                let user = User(uid: (user?.uid)!, email: self.mail.text!, name: self.name.text!, admin: admin, employeeNr: self.employee.text!, organisationID: self.organisation, locationID: self.location.text!, accepted: true)
                 
                 let userRef = self.ref.child(self.name.text!)
                 userRef.setValue(user.toAnyObject())
@@ -68,5 +66,4 @@ class AddEmployeeVC: UIViewController {
             }
         }
     }
-    
 }

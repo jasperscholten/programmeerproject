@@ -39,22 +39,31 @@ class RegisterVC: UIViewController {
     
     @IBAction func registerUser(_ sender: Any) {
         FIRAuth.auth()!.createUser(withEmail: mail.text!, password: password.text!) { user, error in
-                                    if error == nil {
+            if error == nil {
+                // Create complete user profile
+                let user = User(uid: (user?.uid)!,
+                                email: self.mail.text!,
+                                name: self.name.text!,
+                                admin: true,
+                                employeeNr: self.employee.text!,
+                                organisationID: self.organisation.text!,
+                                locationID: self.location.text!,
+                                accepted: true)
+                
+                let userRef = self.ref.child(self.name.text!)
+                userRef.setValue(user.toAnyObject())
                                         
-                                        // Create complete user profile
-                                        let user = User(uid: (user?.uid)!, email: self.mail.text!, name: self.name.text!, admin: true, employeeNr: self.employee.text!, organisationID: self.organisation.text!, locationID: self.location.text!)
-                                        
-                                        let userRef = self.ref.child(self.name.text!)
-                                        userRef.setValue(user.toAnyObject())
-                                        
-                                        // Automatically login after registering.
-                                        FIRAuth.auth()!.signIn(withEmail: self.mail.text!,
-                                                               password: self.password.text!)
-                                    } else {
-                                        let alert = UIAlertController(title: "Foute invoer", message: "Het emailadres of wachtwoord dat je hebt ingevoerd bestaat al of voldoet niet aan de eisen. Een wachtwoord moet bestaan uit minmaal 6 karakters.", preferredStyle: UIAlertControllerStyle.alert)
-                                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                                        self.present(alert, animated: true, completion: nil)
-                                    }
+                // Automatically login after registering.
+                FIRAuth.auth()!.signIn(withEmail: self.mail.text!,
+                                       password: self.password.text!)
+                self.dismiss(animated: true, completion: {})
+            
+            } else {
+                let alert = UIAlertController(title: "Foute invoer", message: "Het emailadres of wachtwoord dat je hebt ingevoerd bestaat al of voldoet niet aan de eisen. Een wachtwoord moet bestaan uit minmaal 6 karakters.", preferredStyle: UIAlertControllerStyle.alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
