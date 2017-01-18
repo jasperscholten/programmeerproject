@@ -24,6 +24,18 @@ someDictionaryArgument: [
         "dictionary key 2": "some value 2"
     ]
 ```
+- Let the flow of the app (what happens first) dictate the flow of your code.
+```Swift
+//Preferred
+getData() { /*...*/ }
+manipulateData() { /*...*/ }
+exportData() { /*...*/ }
+
+//Not-Preferred
+exportData() { /*...*/ }
+getData() { /*...*/ }
+manipulateData() { /*...*/ }
+```
 
 ### Standard layout of a ViewController
 - Use MARK to mark a block of associated code.
