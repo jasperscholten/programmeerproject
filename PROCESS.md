@@ -56,3 +56,4 @@ struct User {
 ## Day 7 // 17-01-17
 
 - Eigenlijk vooral problemen met het gebruikers laten aanmaken door andere gebruikers, omdat hierbij automatisch wordt ingelogd op de account van de nieuwe gebruiker. Dit is echter niet gewenst, maar ik kan nergens een oplossing vinden om dit te voorkomen. Mogelijk hier iets? --> https://firebase.google.com/docs/auth/ios/manage-users#re-authenticate_a_user
+  - Misschien moet het proces omgegooid worden. Een admin kan medewerkers een toegangscode toesturen, waarmee zij kunnen een eigen account kunnen registreren. Vervolgens kan een admin de waarden van die accounts aanpassen (bv. bepaalde gebruikers admin maken).
