@@ -59,17 +59,5 @@ class RequestsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         requestsTableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "acceptRequest", sender: nil)
     }
-    
-    // MARK: - Segue user details
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let employeeResults = segue.destination as? ReviewResultsEmployeeVC {
-            // Segue details of current user
-            employeeResults.employee = "Niels (huidige gebruiker)"
-        }
-        if let news = segue.destination as? NewsAdminVC {
-            news.admin = admin
-        }
-    }
 
 }

@@ -16,8 +16,8 @@ class AddEmployeeVC: UIViewController {
     var organisation = String()
     
     // MARK: - Outlets
-    @IBOutlet weak var name: UITextField!
-    @IBOutlet weak var mail: UITextField!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var mail: UILabel!
     @IBOutlet weak var employee: UITextField!
     @IBOutlet weak var location: UITextField!
     @IBOutlet weak var role: UISegmentedControl!
