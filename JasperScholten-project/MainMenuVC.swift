@@ -80,6 +80,12 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         if let requests = segue.destination as? RequestsVC {
             requests.organisation = currentOrganisation
         }
+        if let forms = segue.destination as? FormsListVC {
+            forms.organisation = currentOrganisation
+        }
+        if let employees = segue.destination as? ReviewEmployeeVC {
+            employees.organisation = currentOrganisation
+        }
     }
     
     // MARK: - Action

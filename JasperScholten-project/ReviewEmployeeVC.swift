@@ -7,17 +7,39 @@
 //
 
 import UIKit
+import Firebase
 
 class ReviewEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    let employees = ["Hans Beerekamp", "Ineke Bosch", "Niels Pel", "Marinus Zeekoe", "Emma Post", "Henk van Ingrid", "Ingrid van Henk", "Jan Janssen"]
+    // MARK: - Constants and variables
+    let ref = FIRDatabase.database().reference(withPath: "Users")
+    var employees = [User]()
+    var organisation = String()
     
     @IBOutlet weak var employeesTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
+            if user != nil {
+                self.ref.observe(.value, with: { snapshot in
+                    
+                    var newEmployees: [User] = []
+                    
+                    for item in snapshot.children {
+                        let userData = User(snapshot: item as! FIRDataSnapshot)
+                        if userData.accepted == true {
+                            if userData.organisationID == self.organisation {
+                                newEmployees.append(userData)
+                            }
+                        }
+                    }
+                    self.employees = newEmployees
+                    self.employeesTableView.reloadData()
+                })
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,7 +55,7 @@ class ReviewEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDele
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = employeesTableView.dequeueReusableCell(withIdentifier: "employeeCell", for: indexPath) as! EmployeeCell
         
-        cell.employeeName.text = employees[indexPath.row]
+        cell.employeeName.text = employees[indexPath.row].name
         
         return cell
     }
@@ -46,7 +68,7 @@ class ReviewEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDele
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let newReview = segue.destination as? NewReviewVC {
             let indexPath = self.employeesTableView.indexPathForSelectedRow
-            newReview.employee = employees[indexPath!.row]
+            newReview.employee = employees[indexPath!.row].name!
         }
     }
 

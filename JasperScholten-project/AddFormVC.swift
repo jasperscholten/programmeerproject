@@ -7,19 +7,38 @@
 //
 
 import UIKit
+import Firebase
 
 class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Constants and variables
-    let questions = ["Vraag 1", "Vraag 2"]
+    let ref = FIRDatabase.database().reference(withPath: "Questions")
+    var form = String()
+    var organisation = String()
+    var questions = [Questions]()
     
     // MARK: - Outlets
     @IBOutlet weak var newFormTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // Retrieve data from Firebase.
+        ref.observe(.value, with: { snapshot in
+            
+            var newQuestions: [Questions] = []
+            
+            for item in snapshot.children {
+                let questionData = Questions(snapshot: item as! FIRDataSnapshot)
+                if questionData.organisationID == self.organisation {
+                    if questionData.formName == self.form {
+                        newQuestions.append(questionData)
+                    }
+                }
+            }
+            self.questions = newQuestions
+            self.newFormTableView.reloadData()
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,7 +46,8 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
+    // MARK: - TableView
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return questions.count
     }
@@ -35,12 +55,63 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = newFormTableView.dequeueReusableCell(withIdentifier: "newFormQuestion", for: indexPath) as! FormQuestionCell
         
-        cell.newQuestion.text = questions[indexPath.row]
+        cell.newQuestion.text = questions[indexPath.row].question
         
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         newFormTableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func newQuestion(_ sender: Any) {
+        addNewQuestion()
+    }
+    
+    func addNewQuestion() {
+        let alert = UIAlertController(title: "Nieuwe vraag",
+                                      message: "",
+                                      preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Vraag"
+        }
+        
+        let newQuestionAction = UIAlertAction(title: "OK",
+                                          style: .default) { action in
+                                            var text = alert.textFields?[0].text
+                                            if text != nil && text!.characters.count>0 {
+                                                // '.' '#' '$' '[' or ']' ".#$[]"
+                                                // Hier gaat het nog fout --> Blijven er wel in staan
+                                                
+                                                print("TEXT: \(text!)")
+                                                
+                                                let question = Questions(formName: self.form, organisationID: self.organisation, question: text!, state: false)
+                                                self.ref.child(text!).setValue(question.toAnyObject())
+                                            } else {
+                                                self.formNameError()
+                                            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Annuleren",
+                                         style: .default)
+        
+        alert.addAction(newQuestionAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func formNameError() {
+        let alert = UIAlertController(title: "Vul een vraag in",
+                                      message: "",
+                                      preferredStyle: .alert)
+        let acceptAction = UIAlertAction(title: "OK",
+                                         style: .default) { action in
+                                            self.addNewQuestion()
+        }
+        alert.addAction(acceptAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }

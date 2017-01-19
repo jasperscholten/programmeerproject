@@ -548,7 +548,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QDi-rn-dw2">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="bT6-Wb-yst"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="bT6-Wb-yst">
+                            <connections>
+                                <action selector="newQuestion:" destination="CNF-Cg-0tZ" id="cNZ-9N-2Nf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="newFormTableView" destination="E9K-V4-iuq" id="Xz6-Kf-Bpp"/>

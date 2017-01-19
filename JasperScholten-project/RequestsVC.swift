@@ -26,14 +26,17 @@ class RequestsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             if user != nil {
                 self.ref.observe(.value, with: { snapshot in
                     
+                    var newEmployees: [User] = []
+                    
                     for item in snapshot.children {
                         let userData = User(snapshot: item as! FIRDataSnapshot)
                         if userData.accepted == false {
                             if userData.organisationID == self.organisation {
-                                self.employees.append(userData)
+                                newEmployees.append(userData)
                             }
                         }
                     }
+                    self.employees = newEmployees
                     self.requestsTableView.reloadData()
                 })
             }
