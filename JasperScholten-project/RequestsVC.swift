@@ -56,8 +56,16 @@ class RequestsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        requestsTableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "acceptRequest", sender: nil)
+        requestsTableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "acceptRequest" {
+            let nextVC = segue.destination as! AddEmployeeVC
+            let indexPath = requestsTableView.indexPathForSelectedRow
+            nextVC.user = employees[indexPath!.row]
+        }
     }
 
 }

@@ -49,8 +49,8 @@ class RegisterVC: UIViewController {
                                 organisationID: self.organisation.text!,
                                 locationID: self.location.text!,
                                 accepted: true)
-                
-                let userRef = self.ref.child(self.name.text!)
+
+                let userRef = self.ref.child(user.uid)
                 userRef.setValue(user.toAnyObject())
                                         
                 // Automatically login after registering.

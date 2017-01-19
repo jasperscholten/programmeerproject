@@ -25,6 +25,7 @@ class LoginVC: UIViewController {
             if user != nil {
                 self.ref.observe(.value, with: { snapshot in
                     for item in snapshot.children {
+                        print("ITEM: \(item)")
                         let userData = User(snapshot: item as! FIRDataSnapshot)
                         if userData.accepted == true {
                             self.performSegue(withIdentifier: "loginUser", sender: nil)
@@ -50,7 +51,7 @@ class LoginVC: UIViewController {
         ref.observe(.value, with: { snapshot in
             for item in snapshot.children {
                 let userData = User(snapshot: item as! FIRDataSnapshot)
-                if userData.uid == (FIRAuth.auth()?.currentUser?.uid)! {
+                if userData.email == self.mail.text! {
                     if userData.accepted == true {
                         FIRAuth.auth()!.signIn(withEmail: self.mail.text!,
                                                password: self.password.text!) { (user, error) in
@@ -74,7 +75,7 @@ class LoginVC: UIViewController {
     @IBAction func registerUser(_ sender: Any) {
         
         let alert = UIAlertController(title: "Registreren",
-                                      message: "Wil je je als medewerker aanmelden bij een bestaande organisatie, kies dan 'medewerker'. Ben je nieuw bij deze app en ga je het gebruiken voor een nieuwe organisatie, kies dan 'organisatie'.",
+                                      message: "Wil je je als medewerker aanmelden bij een bestaande organisatie, of ben je nieuw bij deze app en ga je het gebruiken voor een nieuwe organisatie?",
                                       preferredStyle: .alert)
         
         let employeeAction = UIAlertAction(title: "Medewerker",
@@ -87,8 +88,12 @@ class LoginVC: UIViewController {
                                             self.performSegue(withIdentifier: "organisationRegistration", sender: nil)
         }
         
+        let cancelAction = UIAlertAction(title: "Annuleren",
+                                         style: .default)
+        
         alert.addAction(employeeAction)
         alert.addAction(organisationAction)
+        alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
         
     }

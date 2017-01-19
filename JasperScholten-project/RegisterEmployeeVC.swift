@@ -78,7 +78,7 @@ class RegisterEmployeeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                                 locationID: self.location[self.locationPicker.selectedRow(inComponent: 0)],
                                 accepted: false)
                 
-                let userRef = self.ref.child(self.name.text!)
+                let userRef = self.ref.child(user.uid)
                 userRef.setValue(user.toAnyObject())
 
                 self.dismiss(animated: true, completion: {})

@@ -13,6 +13,7 @@ class AddEmployeeVC: UIViewController {
 
     // MARK: Constants and variables
     let ref = FIRDatabase.database().reference(withPath: "Users")
+    var user = User(uid: "", email: "", name: "", admin: false, employeeNr: "", organisationID: "", locationID: "", accepted: false, key: "")
     var organisation = String()
     
     // MARK: - Outlets
@@ -24,6 +25,10 @@ class AddEmployeeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        name.text = user.name!
+        mail.text = user.email
+        employee.text = user.employeeNr!
         
         // Retrieve data from Firebase.
         ref.observe(.value, with: { snapshot in
@@ -44,27 +49,23 @@ class AddEmployeeVC: UIViewController {
     
     @IBAction func registerEmployee(_ sender: Any) {
         
-        // password random genereren?
-        FIRAuth.auth()!.createUser(withEmail: mail.text!, password: "test123") { user, error in
-            if error == nil {
-                
-                var admin = false
-                if self.role.selectedSegmentIndex == 1 {
-                    admin = true
-                }
-                
-                // Create complete user profile
-                let user = User(uid: (user?.uid)!, email: self.mail.text!, name: self.name.text!, admin: admin, employeeNr: self.employee.text!, organisationID: self.organisation, locationID: self.location.text!, accepted: true)
-                
-                let userRef = self.ref.child(self.name.text!)
-                userRef.setValue(user.toAnyObject())
-                
-            } else {
-                let alert = UIAlertController(title: "Foute invoer", message: "Het emailadres dat je hebt ingevoerd bestaat al of voldoet niet aan de eisen.", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
+        var admin = false
+        
+        if role.selectedSegmentIndex == 1 {
+            admin = true
         }
+        
+        print(user)
+        
+        ref.child(user.uid).updateChildValues(["uid":user.uid,
+                                               "email":user.email,
+                                               "name":user.name!,
+                                               "admin":admin,
+                                               "employeeNr":employee.text!,
+                                               "organisationID":user.organisationID!,
+                                               "locationID":user.locationID!,
+                                               "accepted":true])
+        
     }
     
 }
