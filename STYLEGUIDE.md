@@ -1,8 +1,14 @@
 # Programmeerproject Style Guide
 
-## Code Formatting
+*Inspiration for this Style Guide comes from:*
 
-**Inspiration from:** https://github.com/linkedin/swift-style-guide#3-coding-style
+- <a href="https://github.com/linkedin/swift-style-guide#3-coding-style">LinkedIn Swift Style Guide<a>
+- <a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/index.html#//apple_ref/doc/uid/TP40014097-CH3-ID0">Apple Official Swift Documentation<a>
+- <a href="https://github.com/raywenderlich/swift-style-guide">Ray Wenderlich Swift Style Guide<a>
+
+*If you don't find what you're looking for in our Style Guide, please go through these three Style Guides (in the given order, starting with Apple's official documentation).*
+
+## Code Formatting
 
 - Make functions as short as possible; separate pieces of code if they serve other purposes.
 - Add a newline after each function.
@@ -56,8 +62,8 @@ override func viewDidLoad() {
    super.viewDidLoad()
 }
 override func didReceiveMemoryWarning() {
-   super.didReceiveMemoryWarning()
-}
+   super.didReceiveMemoryWarning()
+3}
 
 // MARK: - ...
 // Put some other code block here
@@ -72,10 +78,58 @@ override func didReceiveMemoryWarning() {
 
 ## Naming
 
+### General
+
+- Clarity at the point of use. 
+- Use US English spelling to match Apple's API.
+- Clear naming and avoid ambigous words.
+- Do not abbreviate, use shortened names, or single letter names.
+- Using names based on roles not on types
+- Every word  in a name should convey salient information.
+- Protocols that describe what something is should read as nouns.
+- protocols that describe a capability should be names using suffixes.
+- Stick to the established meaning. 
+- Using terms that don't surprise experts or confuse beginners. 
+- avoid abbreviations.
+- Using camel case.
+- Using uppercase for types (and protocols), lowercase for everything else. 
+
+
+### Methods
+- Name functions and methods according to their side affects.
+- Uses of boolean methods and properties should read as assertions.
+- Giving the same base nae to methods that share the same meaning.
+- Begin factory methods with make.
+
+## Documentation
+
+### Additional MarkDown Files.
+It is generally considered to be the standard to add a DESIGN.md file describing;
+ome parts that you may describe here:
+
+- a diagram of modules or classes that you’ve decided to implement, in appropriate detail
+- advanced sketches of your UI that clearly explain which features are connected to which underlying part of the code
+- a list of APIs and frameworks or plugins that you will be using to provide functionality in your app
+- a list of data sources if you will get data from an external source
+- a list of database tables and fields (and their types) if you will use a database
+
+As well as a README.md that should be the first thing a visitor will see when opening your repository containing;
+- The name of your app.
+- A table of content.
+- Basics of your app.
+- Data and resources.
+- Database; tables and variables used.
+- Or use the Apple guideline: https://developer.apple.com/library/content/samplecode/Lister/Listings/README_md.html
+
 ## Comments
 
+- Prefer well written code over comments: the code must explain itself. When they are needed, use comments to explain why a particular piece of code does something. Comments must be kept up-to-date or deleted.
+- Avoid block comments inline with code, as the code should be as self-documenting as possible. Exception: This does not apply to those comments used to generate documentation.
+- For complicated classes, describe the usage of the class with some potential examples as seems appropriate. Remember that markdown syntax is valid in Swift's comment docs. Newlines, lists, etc. are therefore appropriate.
+- Always leave a space after //.
+- Always leave comments on their own line.
 - Use MARK to mark a block of associated code.
-- Prefer well written code over comments: the code must explain itself. 
+- When using // MARK: - whatever, leave a newline after the comment.
 
 ###References
 ```Swift
