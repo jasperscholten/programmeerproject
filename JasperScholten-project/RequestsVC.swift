@@ -14,6 +14,7 @@ class RequestsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - Constants and variables
     let ref = FIRDatabase.database().reference(withPath: "Users")
     var employees = [User]()
+    var organisation = String()
     
     // MARK: - Outlets
     @IBOutlet weak var requestsTableView: UITableView!
@@ -24,10 +25,13 @@ class RequestsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
             if user != nil {
                 self.ref.observe(.value, with: { snapshot in
+                    
                     for item in snapshot.children {
                         let userData = User(snapshot: item as! FIRDataSnapshot)
                         if userData.accepted == false {
-                            self.employees.append(userData)
+                            if userData.organisationID == self.organisation {
+                                self.employees.append(userData)
+                            }
                         }
                     }
                     self.requestsTableView.reloadData()

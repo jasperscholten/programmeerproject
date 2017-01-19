@@ -25,7 +25,6 @@ class LoginVC: UIViewController {
             if user != nil {
                 self.ref.observe(.value, with: { snapshot in
                     for item in snapshot.children {
-                        print("ITEM: \(item)")
                         let userData = User(snapshot: item as! FIRDataSnapshot)
                         if userData.accepted == true {
                             self.performSegue(withIdentifier: "loginUser", sender: nil)

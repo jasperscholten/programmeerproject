@@ -55,8 +55,6 @@ class AddEmployeeVC: UIViewController {
             admin = true
         }
         
-        print(user)
-        
         ref.child(user.uid).updateChildValues(["uid":user.uid,
                                                "email":user.email,
                                                "name":user.name!,
@@ -65,7 +63,6 @@ class AddEmployeeVC: UIViewController {
                                                "organisationID":user.organisationID!,
                                                "locationID":user.locationID!,
                                                "accepted":true])
-        
     }
     
 }
