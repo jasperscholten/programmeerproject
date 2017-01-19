@@ -8,6 +8,8 @@
 
 *If you don't find what you're looking for in our Style Guide, please go through these three Style Guides (in the given order, starting with Apple's official documentation).*
 
+### For Code Style, refer to that section in <a href="https://github.com/linkedin/swift-style-guide/blob/master/README.md#3-coding-style">LinkedIn Swift Style Guide<a>
+
 ## Code Formatting
 
 - Make functions as short as possible; separate pieces of code if they serve other purposes.
@@ -74,7 +76,17 @@ override func didReceiveMemoryWarning() {
 }
 ```
 
-## Code Style
+### Spacing
+
+- Indent code with tabs, not with spaces.
+- An empty line at the end of files.
+- Method braces and other braces (if/else/switch/while etc.) always open on the
+same line as the statement but close on a new line.
+- Vertical spaces should be used in long methods to separate its name from implementation.
+   - You may also want to use vertical spaces to divide code into logical chunks.
+   - Shorter methods (one or two lines) don't need such spacing.
+- Don’t leave trailing whitespace.
+   - Not even leading indentation on blank lines.
 
 ## Naming
 

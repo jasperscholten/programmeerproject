@@ -64,3 +64,16 @@ struct User {
 
 <img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/newSignupRoutine.jpg" width="600px"></br>
 <a href="https://github.com/jasperscholten/programmeerproject/blob/master/doc/newSignupRoutine.jpg">Klik hier voor de originele grootte.</a>
+
+## DAY 9 // 19-01
+
+- Behoorlijk zitten knoeien met Firebase; hij vond steeds 'nil while unwrapping'. Uiteindelijk bleek o.a. dat de write and read rules nog niet op true stonden (tussendoor, onbewust, automatisch aangepast) en heb ik 'persistence enabled' verwijderd uit de AppDelegate. Vervolgens werd er alleen bij veranderingen (updateChildValues) steeds een nieuwe child node aangemaakt - dit heb ik opgelost door een kleine verandering aan te brengen:
+
+```Swift
+let ref = FIRDatabase.database().reference(withPath: "Users")
+
+// ref.child("Users").child(user.uid).updateChildValues( /*...*/ )
+ref.child(user.uid).updateChildValues( /*...*/ )
+```
+
+
