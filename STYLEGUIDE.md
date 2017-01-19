@@ -1,8 +1,9 @@
 # Programmeerproject Style Guide
 
 *Inspiration for this Style Guide comes from:*
-- <a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/index.html#//apple_ref/doc/uid/TP40014097-CH3-ID0">Apple Official Swift Documentation<a>
+
 - <a href="https://github.com/linkedin/swift-style-guide#3-coding-style">LinkedIn Swift Style Guide<a>
+- <a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/index.html#//apple_ref/doc/uid/TP40014097-CH3-ID0">Apple Official Swift Documentation<a>
 - <a href="https://github.com/raywenderlich/swift-style-guide">Ray Wenderlich Swift Style Guide<a>
 
 *If you don't find what you're looking for in our Style Guide, please go through these three Style Guides (in the given order, starting with Apple's official documentation).*
