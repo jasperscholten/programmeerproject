@@ -76,4 +76,7 @@ let ref = FIRDatabase.database().reference(withPath: "Users")
 ref.child(user.uid).updateChildValues( /*...*/ )
 ```
 
+## DAY 10 // 20-01
 
+- Ontdekt dat heel vaak .childByAutoId gebruikt moet worden, om ervoor te zorgen dat alleen data wordt getoond voor specifieke bedrijven, formulieren, etc. Dit is nu op veel plaatsen geïmplementeerd.
+- Lastig om verschillende karakters in een String te laten filteren. Dit doe ik nu in meerdere stappen, iedere keer een nieuwe string maken waarin één type karakter is vervangen, maar dat zou ik liever in één stap willen doen.
