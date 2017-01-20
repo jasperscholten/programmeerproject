@@ -61,14 +61,16 @@ class ReviewEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "newReview", sender: self)
+        performSegue(withIdentifier: "chooseForm", sender: self)
         employeesTableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let newReview = segue.destination as? NewReviewVC {
+        if let newReview = segue.destination as? ChooseReviewFormVC {
             let indexPath = self.employeesTableView.indexPathForSelectedRow
             newReview.employee = employees[indexPath!.row].name!
+            newReview.employeeID = employees[indexPath!.row].uid
+            newReview.organisation = organisation
         }
     }
 

@@ -883,12 +883,77 @@
                     </view>
                     <connections>
                         <outlet property="employeesTableView" destination="IVa-9s-ta3" id="dIq-k6-ZEj"/>
-                        <segue destination="XWc-Jq-Z5J" kind="show" identifier="newReview" id="LQX-ua-bo0"/>
+                        <segue destination="jnx-VC-hbc" kind="show" identifier="chooseForm" id="Yh3-FQ-30r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EcF-jk-dkL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2589.5999999999999" y="-2457.1214392803599"/>
+        </scene>
+        <!--Choose Review FormVC-->
+        <scene sceneID="7wZ-z0-5cQ">
+            <objects>
+                <viewController id="jnx-VC-hbc" customClass="ChooseReviewFormVC" customModule="JasperScholten_project" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KDN-Gf-1zV"/>
+                        <viewControllerLayoutGuide type="bottom" id="lwD-SR-fbh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rUh-Z1-Z6H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Aab-9l-sTg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reviewForms" id="I2L-Oa-cc0" customClass="ReviewFormsCell" customModule="JasperScholten_project" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I2L-Oa-cc0" id="Pqe-fs-fhd">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rec-o4-9OV">
+                                                    <rect key="frame" x="16" y="11" width="343" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Rec-o4-9OV" secondAttribute="trailing" constant="8" id="6bp-ln-A6R"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Rec-o4-9OV" secondAttribute="bottom" constant="3" id="G3H-du-zsA"/>
+                                                <constraint firstItem="Rec-o4-9OV" firstAttribute="leading" secondItem="Pqe-fs-fhd" secondAttribute="leadingMargin" constant="8" id="qvx-Vu-r4C"/>
+                                                <constraint firstItem="Rec-o4-9OV" firstAttribute="top" secondItem="Pqe-fs-fhd" secondAttribute="topMargin" constant="3" id="w7h-pL-jop"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="form" destination="Rec-o4-9OV" id="vCl-6w-3RA"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="jnx-VC-hbc" id="faz-7v-B0r"/>
+                                    <outlet property="delegate" destination="jnx-VC-hbc" id="JLg-qS-6Gr"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lwD-SR-fbh" firstAttribute="top" secondItem="Aab-9l-sTg" secondAttribute="bottom" id="B6U-Pl-K3h"/>
+                            <constraint firstAttribute="trailing" secondItem="Aab-9l-sTg" secondAttribute="trailing" id="G5a-fg-oBS"/>
+                            <constraint firstItem="Aab-9l-sTg" firstAttribute="leading" secondItem="rUh-Z1-Z6H" secondAttribute="leading" id="bG2-9m-HJY"/>
+                            <constraint firstItem="Aab-9l-sTg" firstAttribute="top" secondItem="rUh-Z1-Z6H" secondAttribute="top" id="lgm-QR-o0s"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="formListTableView" destination="Aab-9l-sTg" id="RPf-Dr-0mj"/>
+                        <segue destination="XWc-Jq-Z5J" kind="show" identifier="newReview" id="kup-g4-pat"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Gz-V1-kz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3340" y="-2457"/>
         </scene>
         <!--New ReviewVC-->
         <scene sceneID="BwO-dp-i7f">
@@ -1026,7 +1091,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ddU-Uv-WFw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3340" y="-2457.1214392803599"/>
+            <point key="canvasLocation" x="4089" y="-2457"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tHa-ct-kLW">

@@ -7,19 +7,44 @@
 //
 
 import UIKit
+import Firebase
 
 class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    // MARK: - Constants and variables
+    var employee = String()
+    var employeeID = String()
+    var form = String()
+    var formID = String()
+    var organisation = String()
+    let ref = FIRDatabase.database().reference(withPath: "Questions")
+    var questions = [Questions]()
+    
+    // MARK: - outlets
     @IBOutlet weak var tableViewTitle: UILabel!
     @IBOutlet weak var reviewTableView: UITableView!
-    
-    var employee: String = "Medewerker"
-    let questions = ["Klanten worden door de medewerker opgemerkt.", "Klanten worden door de medewerker begroet.", "De medewerker spreekt de klanten aan.", "De medewerker opent het gesprek.", "De medewerker toont de geadviseerde producten.", "De medewerker heeft gevraagd of hij de klant nog ergens anders mee kan helpen.", "De medewerker heeft afscheid genomen van de klant."]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableViewTitle.text = employee
+        tableViewTitle.text = "\(form) - \(employee)"
+        
+        // Retrieve data from Firebase.
+        ref.observe(.value, with: { snapshot in
+            
+            var newQuestions: [Questions] = []
+            
+            for item in snapshot.children {
+                let questionData = Questions(snapshot: item as! FIRDataSnapshot)
+                if questionData.organisationID == self.organisation {
+                    if questionData.formName == self.form {
+                        newQuestions.append(questionData)
+                    }
+                }
+            }
+            self.questions = newQuestions
+            self.reviewTableView.reloadData()
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,7 +59,7 @@ class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = reviewTableView.dequeueReusableCell(withIdentifier: "questionCell", for: indexPath) as! NewReviewCell
         
-        cell.questionView.text = questions[indexPath.row]
+        cell.questionView.text = questions[indexPath.row].question
         
         return cell
     }

@@ -86,8 +86,12 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
                                             if text != nil && text!.characters.count>0 {
                                                 self.nameInput = text!
                                                 
-                                                let form = Form(formName: text!, organisationID: self.organisation)
-                                                self.ref.child(text!).setValue(form.toAnyObject())
+                                                // http://stackoverflow.com/questions/39691818/firebase-swift-how-to-create-a-child-and-add-its-id-to-another-ref-property
+                                                let newRef = self.ref.childByAutoId()
+                                                let newID = newRef.key
+                                                
+                                                let form = Form(formName: text!, formID: newID, organisationID: self.organisation)
+                                                newRef.setValue(form.toAnyObject())
                                                 
                                                 self.performSegue(withIdentifier: "newForm", sender: nil)
                                             } else {

@@ -81,15 +81,19 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         let newQuestionAction = UIAlertAction(title: "OK",
                                           style: .default) { action in
-                                            var text = alert.textFields?[0].text
+                                            let text = alert.textFields?[0].text
                                             if text != nil && text!.characters.count>0 {
-                                                // '.' '#' '$' '[' or ']' ".#$[]"
-                                                // Hier gaat het nog fout --> Blijven er wel in staan
                                                 
-                                                print("TEXT: \(text!)")
+                                                // let replaceString = ".#$[]"
+                                                // Onderstaande werkt, maar is misschien niet heel elegant
+                                                let deleteDot = text?.replacingOccurrences(of: ".", with: "")
+                                                let deleteHash = deleteDot?.replacingOccurrences(of: "#", with: "")
+                                                let deleteDollar = deleteHash?.replacingOccurrences(of: "$", with: "")
+                                                let deleteBracket = deleteDollar?.replacingOccurrences(of: "[", with: "")
+                                                let newText = deleteBracket?.replacingOccurrences(of: "]", with: "")
                                                 
-                                                let question = Questions(formName: self.form, organisationID: self.organisation, question: text!, state: false)
-                                                self.ref.child(text!).setValue(question.toAnyObject())
+                                                let question = Questions(formName: self.form, organisationID: self.organisation, question: newText!, state: false)
+                                                self.ref.childByAutoId().setValue(question.toAnyObject())
                                             } else {
                                                 self.formNameError()
                                             }
