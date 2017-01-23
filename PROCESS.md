@@ -87,4 +87,5 @@ ref.child(user.uid).updateChildValues( /*...*/ )
   - Overigens ook nog steeds het probleem, dat wanneer wordt uitgelogd en de app wordt afgesloten (cmd+shft+H, dan simulator stoppen en weer runnen) er bij opnieuw openen automatisch weer wordt ingelogd bij de vorige gebruiker.
   - <a href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/55">Hier de oplossing kunnen vinden.</a>
 - Soms, op ogenschijnlijk willekeurige momenten, crashte de app bij het opslaan van een nieuwe review. Bij debuggen kwam deze situatie op een gegeven moment echter niet meer voor; ik weet echte rniet of dat betekent dat het nu is opgelost...
-- Moet er voor zorgen dat een organisatienaam maar een keer gekozen kan worden, zodat er geen schijnorganisaties kunnen komen.
+- Moet er voor zorgen dat een organisatienaam maar één keer gekozen kan worden, zodat er geen schijnorganisaties kunnen komen.
+- Problemen met het opslaan van locaties: het lukt nu niet om een nieuwe locatie op te slaan (er wordt overschreven, bij verwijderen van een eerder crasht de app). Het lijkt hierbij vooral een probleem dat het geheel als array wordt opgeslagen en dynamisch moet zijn (geen vooraf bepaalde keys heeft).
