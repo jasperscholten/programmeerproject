@@ -80,3 +80,8 @@ ref.child(user.uid).updateChildValues( /*...*/ )
 
 - Ontdekt dat heel vaak .childByAutoId gebruikt moet worden, om ervoor te zorgen dat alleen data wordt getoond voor specifieke bedrijven, formulieren, etc. Dit is nu op veel plaatsen geïmplementeerd.
 - Lastig om verschillende karakters in een String te laten filteren. Dit doe ik nu in meerdere stappen, iedere keer een nieuwe string maken waarin één type karakter is vervangen, maar dat zou ik liever in één stap willen doen.
+
+## DAY 11 // 23-01
+
+- Nu nog steeds een probleem dat vaak (niet altijd) twee keer achter elkaar wordt ingelogd, waardoor mainMenu twee keer verschijnt (en er dus ook twee keer uitgelogd moet worden). Mogelijk is <a href="http://stackoverflow.com/questions/40874825/viewcontroller-is-appearing-2-5-times-on-push-login-screen-using-firebase-vide">dit het probleem</a>, maar hoe dat op te lossen? 
+- Soms, op ogenschijnlijk willekeurige momenten, crashte de app bij het opslaan van een nieuwe review. Bij debuggen kwam deze situatie op een gegeven moment echter niet meer voor; ik weet echte rniet of dat betekent dat het nu is opgelost...
