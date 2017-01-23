@@ -80,9 +80,9 @@
                     <connections>
                         <outlet property="mail" destination="Swb-Pd-GW3" id="EHQ-Wn-Isl"/>
                         <outlet property="password" destination="UZT-fG-Lzp" id="Cqk-4H-FQo"/>
-                        <segue destination="jKY-hG-lbs" kind="show" identifier="loginUser" id="XyG-fT-W0j"/>
                         <segue destination="xt2-YF-ZYQ" kind="show" identifier="organisationRegistration" id="rLv-Hd-Wn8"/>
                         <segue destination="DCJ-IW-PC3" kind="show" identifier="employeeRegistration" id="waA-bi-alK"/>
+                        <segue destination="jKY-hG-lbs" kind="show" identifier="loginUser" id="qpK-YO-vXU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -817,7 +817,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="commentField" destination="gJc-pn-UTo" id="Quh-f9-nSF"/>
+                        <outlet property="remarkField" destination="gJc-pn-UTo" id="Luw-zo-E3I"/>
                         <outlet property="reviewFormTableView" destination="gqB-zg-ilw" id="app-GU-dyV"/>
                     </connections>
                 </viewController>
@@ -1084,7 +1084,20 @@
                             <constraint firstItem="C6i-l6-7gG" firstAttribute="top" secondItem="vY8-oN-vrD" secondAttribute="top" id="eJx-dg-UwK"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="pto-Ie-XRu">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="5nb-7R-lgN">
+                            <connections>
+                                <action selector="cancelReview:" destination="XWc-Jq-Z5J" id="XI9-2e-fYD"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="90c-5e-Thf">
+                            <connections>
+                                <action selector="saveReview:" destination="XWc-Jq-Z5J" id="HPp-tP-O5l"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="remarkBox" destination="fyc-uc-nEy" id="Vs3-gU-Zrs"/>
                         <outlet property="reviewTableView" destination="C6i-l6-7gG" id="keN-xM-bKd"/>
                         <outlet property="tableViewTitle" destination="4QQ-9N-ZGa" id="l7j-Iv-A5X"/>
                     </connections>
@@ -1172,7 +1185,7 @@
                                 <rect key="frame" x="61" y="61" width="250" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdD-Zq-kKc">
@@ -1204,7 +1217,6 @@
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3CJ-La-GnU">
                                 <rect key="frame" x="49" y="116" width="275" height="78"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="DCJ-IW-PC3" id="WXu-Sx-QoR"/>
                                     <outlet property="delegate" destination="DCJ-IW-PC3" id="tj9-qi-K88"/>
@@ -1213,14 +1225,13 @@
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HeW-ja-QvW">
                                 <rect key="frame" x="49" y="202" width="275" height="78"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="DCJ-IW-PC3" id="NjD-FA-F3m"/>
                                     <outlet property="delegate" destination="DCJ-IW-PC3" id="sua-tf-6Jh"/>
                                 </connections>
                             </pickerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="employeeNr" destination="n9e-Hs-kY2" id="P1F-S5-2kP"/>
@@ -1598,7 +1609,7 @@
         <image name="settings66" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WbN-BI-acx"/>
         <segue reference="43R-2E-qLC"/>
+        <segue reference="Mli-wh-WzW"/>
     </inferredMetricsTieBreakers>
 </document>

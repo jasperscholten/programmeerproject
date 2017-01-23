@@ -7,20 +7,42 @@
 //
 
 import UIKit
+import Firebase
 
 class ReviewResultFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var reviewFormTableView: UITableView!
-    @IBOutlet weak var commentField: UITextView!
+    // MARK: - Constants and variables
+    let ref = FIRDatabase.database().reference(withPath: "Reviews")
+    var reviewID = String()
     
-    let questions = ["Klanten worden door de medewerker opgemerkt.", "Klanten worden door de medewerker begroet.", "De medewerker spreekt de klanten aan.", "De medewerker opent het gesprek.", "De medewerker toont de geadviseerde producten.", "De medewerker heeft gevraagd of hij de klant nog ergens anders mee kan helpen.", "De medewerker heeft afscheid genomen van de klant."]
-    let result = [true, true, true, true, false, false, true]
-    let comment = "De basis staat, nu nog verderwerken aan de details."
+    var review = [Review]()
+    var result = [String: Bool]()
+    var questions = [String]()
+    var states = [Bool]()
+    
+    // MARK: - Outlets
+    @IBOutlet weak var reviewFormTableView: UITableView!
+    @IBOutlet weak var remarkField: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        commentField.text = comment
+        
+        print(reviewID)
+        
+        FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
+            if user != nil {
+                self.ref.observe(.value, with: { snapshot in
+                    
+                    for item in snapshot.children {
+                        let reviewData = Review(snapshot: item as! FIRDataSnapshot)
+                        if reviewData.reviewID == self.reviewID {
+                            self.populateTable(newResult: reviewData.result)
+                            self.remarkField.text = reviewData.remark
+                        }
+                    }
+                })
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,16 +50,26 @@ class ReviewResultFormVC: UIViewController, UITableViewDataSource, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Tableview
+
+    func populateTable(newResult: [String: Bool]){
+        result = newResult
+        for (key, value) in result {
+            questions.append(key)
+            states.append(value)
+        }
+        reviewFormTableView.reloadData()
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return questions.count
+        return result.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = reviewFormTableView.dequeueReusableCell(withIdentifier: "reviewFormCell", for: indexPath) as! ReviewResultFormCell
         
         cell.questionField.text = questions[indexPath.row]
-        cell.answerSwitch.isOn = result[indexPath.row]
+        cell.answerSwitch.isOn = states[indexPath.row]
         
         return cell
     }
@@ -45,5 +77,4 @@ class ReviewResultFormVC: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         reviewFormTableView.deselectRow(at: indexPath, animated: true)
     }
-
 }

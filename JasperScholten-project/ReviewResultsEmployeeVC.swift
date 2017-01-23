@@ -7,20 +7,44 @@
 //
 
 import UIKit
+import Firebase
 
 class ReviewResultsEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    // MARK: - Constants and variables
+    var employee = String()
+    var employeeID = String()
+    let ref = FIRDatabase.database().reference(withPath: "Reviews")
+    var reviews = [Review]()
+    
+    // MARK: - Outlets
     @IBOutlet weak var employeeName: UILabel!
     @IBOutlet weak var reviewResultsTableView: UITableView!
-    
-    var employee: String = "Medewerker"
-    let dates = ["25-02-2016", "13-05-2016", "20-08-2016", "01-12-2016"]
-    let result = ["7.0", "8.0", "8.0", "7.5"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         employeeName.text = employee
+        
+        // ALS NOG GEEN REVIEWS, geef dat aan in de eerste cell.
+        
+        FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
+            if user != nil {
+                self.ref.observe(.value, with: { snapshot in
+                    
+                    var newReviews: [Review] = []
+                    
+                    for item in snapshot.children {
+                        let reviewData = Review(snapshot: item as! FIRDataSnapshot)
+                        if reviewData.employeeID == self.employeeID {
+                            newReviews.append(reviewData)
+                        }
+                    }
+                    self.reviews = newReviews
+                    self.reviewResultsTableView.reloadData()
+                })
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,16 +52,17 @@ class ReviewResultsEmployeeVC: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
-
+    // MARK: - Tableview
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dates.count
+        return reviews.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = reviewResultsTableView.dequeueReusableCell(withIdentifier: "reviewResultEmployee", for: indexPath) as! ReviewResultsEmployeeCell
         
-        cell.reviewDate.text = dates[indexPath.row]
-        cell.reviewResult.text = result[indexPath.row]
+        cell.reviewDate.text = reviews[indexPath.row].date
+        cell.reviewResult.text = reviews[indexPath.row].formName
         
         return cell
     }
@@ -46,5 +71,11 @@ class ReviewResultsEmployeeVC: UIViewController, UITableViewDataSource, UITableV
         performSegue(withIdentifier: "showDateResult", sender: self)
         reviewResultsTableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let chosenReview = segue.destination as? ReviewResultFormVC {
+            let indexPath = self.reviewResultsTableView.indexPathForSelectedRow
+            chosenReview.reviewID = reviews[(indexPath?.row)!].reviewID
+        }
+    }
 }

@@ -14,6 +14,7 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - Constants and variables
     let ref = FIRDatabase.database().reference(withPath: "Questions")
     var form = String()
+    var formID = String()
     var organisation = String()
     var questions = [Questions]()
     
@@ -23,6 +24,8 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("ID \(formID)")
+        
         // Retrieve data from Firebase.
         ref.observe(.value, with: { snapshot in
             
@@ -31,7 +34,7 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             for item in snapshot.children {
                 let questionData = Questions(snapshot: item as! FIRDataSnapshot)
                 if questionData.organisationID == self.organisation {
-                    if questionData.formName == self.form {
+                    if questionData.formID == self.formID {
                         newQuestions.append(questionData)
                     }
                 }
@@ -92,8 +95,11 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                                                 let deleteBracket = deleteDollar?.replacingOccurrences(of: "[", with: "")
                                                 let newText = deleteBracket?.replacingOccurrences(of: "]", with: "")
                                                 
-                                                let question = Questions(formName: self.form, organisationID: self.organisation, question: newText!, state: false)
-                                                self.ref.childByAutoId().setValue(question.toAnyObject())
+                                                let newRef = self.ref.childByAutoId()
+                                                let newID = newRef.key
+                                                
+                                                let question = Questions(questionID: newID, formID: self.formID, organisationID: self.organisation, question: newText!, state: false)
+                                                newRef.setValue(question.toAnyObject())
                                             } else {
                                                 self.formNameError()
                                             }

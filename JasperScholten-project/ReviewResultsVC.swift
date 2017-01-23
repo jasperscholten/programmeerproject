@@ -7,18 +7,40 @@
 //
 
 import UIKit
+import Firebase
 
 class ReviewResultsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var resultListTableView: UITableView!
+    // MARK: - Constants and variables
+    let ref = FIRDatabase.database().reference(withPath: "Users")
+    var employees = [User]()
+    var organisation = String()
     
-    let employees = ["Hans Beerekamp", "Ineke Bosch", "Niels Pel", "Marinus Zeekoe", "Emma Post", "Henk van Ingrid", "Ingrid van Henk", "Jan Janssen"]
-    let results = ["9.0", "7.5", "6.5", "8.0", "7.0", "8.0", "7.5", "9.0"]
+    // MARK: - Outlets
+    @IBOutlet weak var resultListTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
+            if user != nil {
+                self.ref.observe(.value, with: { snapshot in
+                    
+                    var newEmployees: [User] = []
+                    
+                    for item in snapshot.children {
+                        let userData = User(snapshot: item as! FIRDataSnapshot)
+                        if userData.accepted == true {
+                            if userData.organisationID == self.organisation {
+                                newEmployees.append(userData)
+                            }
+                        }
+                    }
+                    self.employees = newEmployees
+                    self.resultListTableView.reloadData()
+                })
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,8 +56,7 @@ class ReviewResultsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = resultListTableView.dequeueReusableCell(withIdentifier: "resultListID", for: indexPath) as! ReviewResultsCell
         
-        cell.employeeName.text = employees[indexPath.row]
-        cell.employeeResult.text = results[indexPath.row]
+        cell.employeeName.text = employees[indexPath.row].name
         
         return cell
     }
@@ -48,7 +69,8 @@ class ReviewResultsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let employeeResults = segue.destination as? ReviewResultsEmployeeVC {
             let indexPath = self.resultListTableView.indexPathForSelectedRow
-            employeeResults.employee = employees[indexPath!.row]
+            employeeResults.employee = employees[indexPath!.row].name!
+            employeeResults.employeeID = employees[indexPath!.row].uid
         }
     }
 

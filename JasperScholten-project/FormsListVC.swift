@@ -16,6 +16,7 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     var nameInput = String()
     var organisation = String()
     var forms = [Form]()
+    var formID = String()
     
     // MARK: - Outlets
     @IBOutlet weak var formsListTableView: UITableView!
@@ -63,6 +64,7 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         formsListTableView.deselectRow(at: indexPath, animated: true)
         nameInput = forms[indexPath.row].formName
+        formID = forms[indexPath.row].formID
         performSegue(withIdentifier: "newForm", sender: nil)
     }
     
@@ -88,9 +90,9 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
                                                 
                                                 // http://stackoverflow.com/questions/39691818/firebase-swift-how-to-create-a-child-and-add-its-id-to-another-ref-property
                                                 let newRef = self.ref.childByAutoId()
-                                                let newID = newRef.key
+                                                let formID = newRef.key
                                                 
-                                                let form = Form(formName: text!, formID: newID, organisationID: self.organisation)
+                                                let form = Form(formName: text!, formID: formID, organisationID: self.organisation)
                                                 newRef.setValue(form.toAnyObject())
                                                 
                                                 self.performSegue(withIdentifier: "newForm", sender: nil)
@@ -123,6 +125,7 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         if let choice = segue.destination as? AddFormVC {
             choice.form = nameInput
             choice.organisation = organisation
+            choice.formID = formID
         }
     }
 

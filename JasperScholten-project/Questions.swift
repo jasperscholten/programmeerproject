@@ -11,13 +11,15 @@ import Firebase
 
 struct Questions {
     
-    let formName: String
+    let questionID: String
+    let formID: String
     let organisationID: String
     let question: String
     let state: Bool
     
-    init(formName: String, organisationID: String, question: String, state: Bool) {
-        self.formName = formName
+    init(questionID: String, formID: String, organisationID: String, question: String, state: Bool) {
+        self.questionID = questionID
+        self.formID = formID
         self.organisationID = organisationID
         self.question = question
         self.state = state
@@ -26,7 +28,8 @@ struct Questions {
     init(snapshot: FIRDataSnapshot) {
         let snapshotValue = snapshot.value as! [String: AnyObject]
         
-        self.formName = snapshotValue["formName"] as! String
+        self.questionID = snapshotValue["questionID"] as! String
+        self.formID = snapshotValue["formID"] as! String
         self.organisationID = snapshotValue["organisationID"] as! String
         self.question = snapshotValue["question"] as! String
         self.state = snapshotValue["state"] as! Bool
@@ -34,7 +37,8 @@ struct Questions {
     
     func toAnyObject() -> Any {
         return [
-            "formName": formName,
+            "questionID": questionID,
+            "formID": formID,
             "organisationID": organisationID,
             "question": question,
             "state": state

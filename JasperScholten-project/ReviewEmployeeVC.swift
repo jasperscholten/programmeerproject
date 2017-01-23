@@ -15,6 +15,7 @@ class ReviewEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDele
     let ref = FIRDatabase.database().reference(withPath: "Users")
     var employees = [User]()
     var organisation = String()
+    var observatorName = String()
     
     @IBOutlet weak var employeesTableView: UITableView!
     
@@ -33,6 +34,9 @@ class ReviewEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDele
                             if userData.organisationID == self.organisation {
                                 newEmployees.append(userData)
                             }
+                        }
+                        if userData.uid == FIRAuth.auth()?.currentUser?.uid {
+                            self.observatorName = userData.name!
                         }
                     }
                     self.employees = newEmployees
@@ -70,7 +74,9 @@ class ReviewEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDele
             let indexPath = self.employeesTableView.indexPathForSelectedRow
             newReview.employee = employees[indexPath!.row].name!
             newReview.employeeID = employees[indexPath!.row].uid
+            newReview.observatorName = observatorName
             newReview.organisation = organisation
+            newReview.location = employees[indexPath!.row].locationID!
         }
     }
 

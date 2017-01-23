@@ -86,6 +86,10 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         if let employees = segue.destination as? ReviewEmployeeVC {
             employees.organisation = currentOrganisation
         }
+        if let results = segue.destination as? ReviewResultsVC {
+            results.organisation = currentOrganisation
+        }
+    
     }
     
     // MARK: - Action
