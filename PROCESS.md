@@ -83,5 +83,6 @@ ref.child(user.uid).updateChildValues( /*...*/ )
 
 ## DAY 11 // 23-01
 
-- Nu nog steeds een probleem dat vaak (niet altijd) twee keer achter elkaar wordt ingelogd, waardoor mainMenu twee keer verschijnt (en er dus ook twee keer uitgelogd moet worden). Mogelijk is <a href="http://stackoverflow.com/questions/40874825/viewcontroller-is-appearing-2-5-times-on-push-login-screen-using-firebase-vide">dit het probleem</a>, maar hoe dat op te lossen? 
+- Nu nog steeds een probleem dat vaak (niet altijd) twee keer achter elkaar wordt ingelogd, waardoor mainMenu twee keer verschijnt (en er dus ook twee keer uitgelogd moet worden). Mogelijk is <a href="http://stackoverflow.com/questions/40874825/viewcontroller-is-appearing-2-5-times-on-push-login-screen-using-firebase-vide">dit het probleem</a>, maar hoe dat op te lossen?
+  - Overigens ook nog steeds het probleem, dat wanneer wordt uitgelogd en de app wordt afgesloten (cmd+shft+H, dan simulator stoppen en weer runnen) er bij opnieuw openen automatisch weer wordt ingelogd bij de vorige gebruiker.
 - Soms, op ogenschijnlijk willekeurige momenten, crashte de app bij het opslaan van een nieuwe review. Bij debuggen kwam deze situatie op een gegeven moment echter niet meer voor; ik weet echte rniet of dat betekent dat het nu is opgelost...
