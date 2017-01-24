@@ -89,3 +89,7 @@ ref.child(user.uid).updateChildValues( /*...*/ )
 - Soms, op ogenschijnlijk willekeurige momenten, crashte de app bij het opslaan van een nieuwe review. Bij debuggen kwam deze situatie op een gegeven moment echter niet meer voor; ik weet echte rniet of dat betekent dat het nu is opgelost...
 - Moet er voor zorgen dat een organisatienaam maar één keer gekozen kan worden, zodat er geen schijnorganisaties kunnen komen.
 - Problemen met het opslaan van locaties: het lukt nu niet om een nieuwe locatie op te slaan (er wordt overschreven, bij verwijderen van een eerder crasht de app). Het lijkt hierbij vooral een probleem dat het geheel als array wordt opgeslagen en dynamisch moet zijn (geen vooraf bepaalde keys heeft).
+
+## DAY 12 // 24-01
+
+- Vandaag de kwestie 'locaties toevoegen' (waarschijnlijk) opgelost. Veel lopen stoeien met de correcte vorm voor het opslaan van deze data en hoe dit dan gelinkt moest worden aan alle gebruikers. Daarnaast op een paar plaatsen met autoID's in plaats van namen gaan werken, wat nog een behoorlijke klus opleverde om dit op alle plaatsen goed door te werken.
