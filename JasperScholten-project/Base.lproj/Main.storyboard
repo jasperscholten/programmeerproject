@@ -1418,14 +1418,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X4d-ba-aJm">
-                                <rect key="frame" x="62" y="369" width="250" height="69"/>
+                                <rect key="frame" x="0.0" y="369" width="375" height="69"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Iwb-3x-CfM" id="5hC-BC-rmY"/>
+                                    <outlet property="delegate" destination="Iwb-3x-CfM" id="P6M-mb-gIK"/>
+                                </connections>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="employee" destination="y2F-ur-V9o" id="OKF-og-zmH"/>
+                        <outlet property="location" destination="X4d-ba-aJm" id="14Q-3b-8ol"/>
                         <outlet property="mail" destination="GAO-eN-ht5" id="DhY-qe-WI4"/>
                         <outlet property="name" destination="WWl-Bf-LL4" id="tB2-8C-fYl"/>
                         <outlet property="role" destination="14w-od-AmM" id="ydi-b9-vBG"/>
@@ -1433,7 +1438,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSv-aS-Bmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="484" y="1691"/>
+            <point key="canvasLocation" x="484" y="1690.704647676162"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ONu-nV-kpP">
