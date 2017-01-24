@@ -13,7 +13,7 @@ class AddEmployeeVC: UIViewController {
 
     // MARK: Constants and variables
     let ref = FIRDatabase.database().reference(withPath: "Users")
-    var user = User(uid: "", email: "", name: "", admin: false, employeeNr: "", organisationID: "", locationID: "", accepted: false, key: "")
+    var user = User(uid: "", email: "", name: "", admin: false, employeeNr: "", organisationName: "", organisationID: "", locationID: "", accepted: false, key: "")
     var organisation = String()
     
     // MARK: - Outlets
@@ -63,6 +63,8 @@ class AddEmployeeVC: UIViewController {
                                                "organisationID":user.organisationID!,
                                                "locationID":user.locationID!,
                                                "accepted":true])
+        
+        _ = navigationController?.popViewController(animated: true)
     }
     
 }

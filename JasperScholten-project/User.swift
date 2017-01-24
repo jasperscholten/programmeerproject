@@ -17,6 +17,7 @@ struct User {
     var name: String?
     var admin: Bool?
     var employeeNr: String?
+    var organisationName: String?
     var organisationID: String?
     var locationID: String?
     var accepted: Bool?
@@ -33,12 +34,13 @@ struct User {
         ref = nil
     }
     
-    init(uid: String, email: String, name: String, admin: Bool, employeeNr: String, organisationID: String, locationID: String, accepted: Bool, key: String = "") {
+    init(uid: String, email: String, name: String, admin: Bool, employeeNr: String, organisationName: String, organisationID: String, locationID: String, accepted: Bool, key: String = "") {
         self.uid = uid
         self.email = email
         self.name = name
         self.admin = admin
         self.employeeNr = employeeNr
+        self.organisationName = organisationName
         self.organisationID = organisationID
         self.locationID = locationID
         self.accepted = accepted
@@ -57,6 +59,7 @@ struct User {
         self.name = snapshotValue["name"] as! String?
         self.admin = snapshotValue["admin"] as! Bool?
         self.employeeNr = snapshotValue["employeeNr"] as! String?
+        self.organisationName = snapshotValue["organisationName"] as! String?
         self.organisationID = snapshotValue["organisationID"] as! String?
         self.locationID = snapshotValue["locationID"] as! String?
         self.accepted = snapshotValue["accepted"] as! Bool?
@@ -69,6 +72,7 @@ struct User {
             "name": name ?? "Medewerker",
             "admin": admin ?? false,
             "employeeNr": employeeNr ?? "Geen nummer",
+            "organisationName": organisationName ?? "Geen organisatie",
             "organisationID": organisationID ?? "Geen organisatie",
             "locationID": locationID ?? "Geen locatie",
             "accepted": accepted ?? false

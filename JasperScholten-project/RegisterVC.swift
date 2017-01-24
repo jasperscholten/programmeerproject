@@ -13,6 +13,8 @@ class RegisterVC: UIViewController {
     
     // MARK: Constants and variables
     let ref = FIRDatabase.database().reference(withPath: "Users")
+    let organisationRef = FIRDatabase.database().reference(withPath: "Organisations")
+    let locationsRef = FIRDatabase.database().reference(withPath: "Locations")
     
     // MARK: Outlets
     @IBOutlet weak var name: UITextField!
@@ -40,19 +42,32 @@ class RegisterVC: UIViewController {
     @IBAction func registerUser(_ sender: Any) {
         FIRAuth.auth()!.createUser(withEmail: mail.text!, password: password.text!) { user, error in
             if error == nil {
+                
+                let orgName = self.organisation.text!
+                let locName = self.location.text!
+                
+                let orgRef = self.organisationRef.childByAutoId()
+                let orgID = orgRef.key
+                let organisation = Organisation(organisationID: orgID,
+                                                organisation: orgName)
+                orgRef.setValue(organisation.toAnyObject())
+                
                 // Create complete user profile
                 let user = User(uid: (user?.uid)!,
                                 email: self.mail.text!,
                                 name: self.name.text!,
                                 admin: true,
                                 employeeNr: self.employee.text!,
-                                organisationID: self.organisation.text!,
-                                locationID: self.location.text!,
+                                organisationName: orgName,
+                                organisationID: orgID,
+                                locationID: locName,
                                 accepted: true)
 
                 let userRef = self.ref.child(user.uid)
                 userRef.setValue(user.toAnyObject())
-                                        
+                
+                self.locationsRef.child(orgID).setValue(["\(orgName)\(locName)": locName])
+                
                 // Automatically login after registering.
                 FIRAuth.auth()!.signIn(withEmail: self.mail.text!,
                                        password: self.password.text!)

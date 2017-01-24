@@ -126,6 +126,7 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
             choice.form = nameInput
             choice.organisation = organisation
             choice.formID = formID
+            
         }
     }
 

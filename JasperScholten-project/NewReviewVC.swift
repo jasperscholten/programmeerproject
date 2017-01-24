@@ -126,6 +126,8 @@ class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     func getAnswers() {
         for questionRow in 0 ..< questions.count {
             let indexPath = IndexPath(row: questionRow, section: 0)
+            print("INDEX: \(indexPath)")
+            print("CELL: \(reviewTableView.cellForRow(at: indexPath))")
             let cell = reviewTableView.cellForRow(at: indexPath) as! NewReviewCell
             let state = cell.answerSwitch.isOn
             let question = questions[questionRow].question

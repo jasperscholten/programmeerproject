@@ -13,8 +13,11 @@ class RegisterEmployeeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDa
 
     // MARK: Constants and variables
     let ref = FIRDatabase.database().reference(withPath: "Users")
-    let organisation = ["Gamma", "Karwei", "Van Neerbos", "Hornbach", "Praxis"]
-    let location = ["Hoorn", "Grootebroek", "Alkmaar", "Purmerend", "Dronten"]
+    let organisationRef = FIRDatabase.database().reference(withPath: "Organisations")
+    let locationsRef = FIRDatabase.database().reference(withPath: "Locations")
+    var organisation = ["Geen organisatie"]
+    var organisationID = ["Geen locaties"]
+    var location = [String: [String]]()
     
     // MARK: - Outlets
     @IBOutlet weak var name: UITextField!
@@ -29,7 +32,39 @@ class RegisterEmployeeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Retrieve data from Firebase.
+        organisationRef.observe(.value, with: { snapshot in
+            var newOrganisations: [String] = []
+            var newOrganisationIDs: [String] = []
+            
+            for item in snapshot.children {
+                let organisationData = Organisation(snapshot: item as! FIRDataSnapshot)
+                newOrganisations.append(organisationData.organisation)
+                newOrganisationIDs.append(organisationData.organisationID)
+            }
+            self.organisation = newOrganisations
+            self.organisationID = newOrganisationIDs
+            self.organisationPicker.reloadAllComponents()
+        })
+        
+        locationsRef.observe(.value, with: { snapshot in
+            
+            let snapshotValue = snapshot.value as! [String: [String: String]]
+
+            var newLocations: [String: [String]] = [:]
+            
+            for (key, value) in snapshotValue {
+                var locations: [String] = []
+                for newLocation in value {
+                    locations.append(newLocation.value)
+                }
+                newLocations[key] = locations
+            }
+            
+            self.location = newLocations
+            print(self.location)
+            self.locationPicker.reloadAllComponents()
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +83,8 @@ class RegisterEmployeeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         if pickerView == organisationPicker {
             return organisation.count
         } else {
-            return location.count
+            let pickedOrganisation = organisationID[organisationPicker.selectedRow(inComponent: 0)]
+            return (location[pickedOrganisation] ?? ["Geen organisaties geladen"]).count
         }
     }
     
@@ -56,17 +92,28 @@ class RegisterEmployeeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         if pickerView == organisationPicker {
             return organisation[row]
         } else {
-            return location[row]
+            let pickedOrganisation = organisationID[organisationPicker.selectedRow(inComponent: 0)]
+            let pickedLocations = location[pickedOrganisation]
+            return pickedLocations?[row]
         }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.organisationPicker.reloadAllComponents()
+        self.locationPicker.reloadAllComponents()
     }
     
     // MARK: - Actions
     @IBAction func registerUser(_ sender: Any) {
-        print(organisation[organisationPicker.selectedRow(inComponent: 0)])
-        print(location[locationPicker.selectedRow(inComponent: 0)])
         
         FIRAuth.auth()!.createUser(withEmail: mail.text!, password: password.text!) { user, error in
             if error == nil {
+                
+                let pickedOrganisation = self.organisation[self.organisationPicker.selectedRow(inComponent: 0)]
+                
+                let pickedOrganisationID = self.organisationID[self.organisationPicker.selectedRow(inComponent: 0)]
+                let pickedLocations = self.location[pickedOrganisationID]
+                let pickedLocation = pickedLocations![self.locationPicker.selectedRow(inComponent: 0)]
                 
                 // Create complete user profile
                 let user = User(uid: (user?.uid)!,
@@ -74,8 +121,9 @@ class RegisterEmployeeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                                 name: self.name.text!,
                                 admin: false,
                                 employeeNr: self.employeeNr.text!,
-                                organisationID: self.organisation[self.organisationPicker.selectedRow(inComponent: 0)],
-                                locationID: self.location[self.locationPicker.selectedRow(inComponent: 0)],
+                                organisationName: pickedOrganisation,
+                                organisationID: pickedOrganisationID,
+                                locationID: pickedLocation,
                                 accepted: false)
                 
                 let userRef = self.ref.child(user.uid)

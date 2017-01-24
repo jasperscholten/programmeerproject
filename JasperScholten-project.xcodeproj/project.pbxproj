@@ -13,6 +13,10 @@
 		A40C6C4B1E27B12C00CCDA3F /* NewsItemAdminCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C6C4A1E27B12C00CCDA3F /* NewsItemAdminCell.swift */; };
 		A40C6C4D1E27B15E00CCDA3F /* NewsAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C6C4C1E27B15E00CCDA3F /* NewsAdminVC.swift */; };
 		A40C6C4F1E27BB5500CCDA3F /* NewsItemAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C6C4E1E27BB5500CCDA3F /* NewsItemAdminVC.swift */; };
+		A416A1DE1E364A0600036002 /* Organisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A416A1DD1E364A0600036002 /* Organisation.swift */; };
+		A416A1E01E36A26E00036002 /* LocationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A416A1DF1E36A26E00036002 /* LocationsVC.swift */; };
+		A416A1E21E36A28300036002 /* LocationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A416A1E11E36A28300036002 /* LocationsCell.swift */; };
+		A416A1E61E36A71D00036002 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A416A1E51E36A71D00036002 /* SettingsVC.swift */; };
 		A44A84D31E24D7B90059F971 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44A84D21E24D7B90059F971 /* AppDelegate.swift */; };
 		A44A84D51E24D7B90059F971 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44A84D41E24D7B90059F971 /* LoginVC.swift */; };
 		A44A84D81E24D7B90059F971 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A44A84D61E24D7B90059F971 /* Main.storyboard */; };
@@ -58,6 +62,10 @@
 		A40C6C4A1E27B12C00CCDA3F /* NewsItemAdminCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsItemAdminCell.swift; sourceTree = "<group>"; };
 		A40C6C4C1E27B15E00CCDA3F /* NewsAdminVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsAdminVC.swift; sourceTree = "<group>"; };
 		A40C6C4E1E27BB5500CCDA3F /* NewsItemAdminVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsItemAdminVC.swift; sourceTree = "<group>"; };
+		A416A1DD1E364A0600036002 /* Organisation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organisation.swift; sourceTree = "<group>"; };
+		A416A1DF1E36A26E00036002 /* LocationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsVC.swift; sourceTree = "<group>"; };
+		A416A1E11E36A28300036002 /* LocationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsCell.swift; sourceTree = "<group>"; };
+		A416A1E51E36A71D00036002 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		A44A84CF1E24D7B90059F971 /* JasperScholten-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JasperScholten-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A44A84D21E24D7B90059F971 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A44A84D41E24D7B90059F971 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -168,6 +176,7 @@
 				A45ADE491E2CE46000005C6E /* Review.swift */,
 				A45ADE4B1E2CE9BD00005C6E /* News.swift */,
 				A47053AC1E315F060086E916 /* Questions.swift */,
+				A416A1DD1E364A0600036002 /* Organisation.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -193,6 +202,8 @@
 				A45ADE531E30D86600005C6E /* FormsListVC.swift */,
 				A47053A81E30E15B0086E916 /* AddFormVC.swift */,
 				A47053AF1E320E6E0086E916 /* ChooseReviewFormVC.swift */,
+				A416A1DF1E36A26E00036002 /* LocationsVC.swift */,
+				A416A1E51E36A71D00036002 /* SettingsVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -211,6 +222,7 @@
 				A45ADE551E30D8A800005C6E /* FormListCell.swift */,
 				A47053AA1E30E1770086E916 /* FormQuestionCell.swift */,
 				A47053B11E320E830086E916 /* ReviewFormsCell.swift */,
+				A416A1E11E36A28300036002 /* LocationsCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -364,6 +376,7 @@
 			files = (
 				A48593E11E277E53007B86AB /* ReviewResultsCell.swift in Sources */,
 				A45ADE521E2FA4C700005C6E /* RequestCell.swift in Sources */,
+				A416A1E21E36A28300036002 /* LocationsCell.swift in Sources */,
 				A40C6C471E2796B800CCDA3F /* ReviewResultFormVC.swift in Sources */,
 				A47053B01E320E6E0086E916 /* ChooseReviewFormVC.swift in Sources */,
 				A45ADE561E30D8A800005C6E /* FormListCell.swift in Sources */,
@@ -381,11 +394,13 @@
 				A4C2A91F1E281F3C002A6ACD /* RegisterVC.swift in Sources */,
 				A47053A91E30E15B0086E916 /* AddFormVC.swift in Sources */,
 				A40C6C451E2795EE00CCDA3F /* ReviewResultFormCell.swift in Sources */,
+				A416A1DE1E364A0600036002 /* Organisation.swift in Sources */,
 				A45ADE481E2CDE0500005C6E /* Form.swift in Sources */,
 				A48593DB1E267328007B86AB /* NewReviewVC.swift in Sources */,
 				A40C6C4F1E27BB5500CCDA3F /* NewsItemAdminVC.swift in Sources */,
 				A45ADE501E2FA3AA00005C6E /* RequestsVC.swift in Sources */,
 				A45ADE541E30D86600005C6E /* FormsListVC.swift in Sources */,
+				A416A1E61E36A71D00036002 /* SettingsVC.swift in Sources */,
 				A45ADE4A1E2CE46000005C6E /* Review.swift in Sources */,
 				A45ADE4C1E2CE9BD00005C6E /* News.swift in Sources */,
 				A4C2A91D1E281577002A6ACD /* AddNewsItemVC.swift in Sources */,
@@ -394,6 +409,7 @@
 				A48593D81E266C20007B86AB /* EmployeeCell.swift in Sources */,
 				A48593D41E265A86007B86AB /* MainMenuVC.swift in Sources */,
 				A47053AB1E30E1770086E916 /* FormQuestionCell.swift in Sources */,
+				A416A1E01E36A26E00036002 /* LocationsVC.swift in Sources */,
 				A47053B21E320E830086E916 /* ReviewFormsCell.swift in Sources */,
 				A48593DF1E277CA7007B86AB /* ReviewResultsVC.swift in Sources */,
 				A44A84D31E24D7B90059F971 /* AppDelegate.swift in Sources */,

@@ -54,6 +54,7 @@ class ReviewResultFormVC: UIViewController, UITableViewDataSource, UITableViewDe
 
     func populateTable(newResult: [String: Bool]){
         result = newResult
+        // http://stackoverflow.com/questions/25741114/how-can-i-get-keys-value-from-dictionary-in-swift
         for (key, value) in result {
             questions.append(key)
             states.append(value)

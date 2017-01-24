@@ -15,6 +15,7 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     let ref = FIRDatabase.database().reference(withPath: "Users")
     var admin = Bool()
     var currentOrganisation = String()
+    var currentOrganisationID = String()
     var currentName = String()
     var menuItems = [String]()
     
@@ -30,13 +31,14 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 let userData = User(snapshot: item as! FIRDataSnapshot)
                 
                 if userData.uid == (FIRAuth.auth()?.currentUser?.uid)! {
-                    self.currentOrganisation = userData.organisationID!
+                    self.currentOrganisation = userData.organisationName!
+                    self.currentOrganisationID = userData.organisationID!
                     self.currentName = userData.name!
                     
                     if userData.admin! == true {
-                        self.menuItems = ["Beoordelen", "Resultaten", "Nieuws (admin)", "Rooster (admin)", "Stel lijst samen", "Medewerker verzoeken"]
+                        self.menuItems = ["Beoordelen", "Resultaten", "Nieuws (admin)", "Stel lijst samen", "Medewerker verzoeken"]
                     } else {
-                        self.menuItems = ["Beoordelingen", "Rooster", "Nieuws"]
+                        self.menuItems = ["Beoordelingen", "Nieuws"]
                     }
                     self.menuTableView.reloadData()
                 }
@@ -73,12 +75,13 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         if let employeeResults = segue.destination as? ReviewResultsEmployeeVC {
             // Segue details of current user
             employeeResults.employee = currentName
+            employeeResults.employeeID = (FIRAuth.auth()?.currentUser?.uid)!
         }
         if let news = segue.destination as? NewsAdminVC {
             news.admin = admin
         }
         if let requests = segue.destination as? RequestsVC {
-            requests.organisation = currentOrganisation
+            requests.organisation = currentOrganisationID
         }
         if let forms = segue.destination as? FormsListVC {
             forms.organisation = currentOrganisation
@@ -89,13 +92,33 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         if let results = segue.destination as? ReviewResultsVC {
             results.organisation = currentOrganisation
         }
+        if let settings = segue.destination as? SettingsVC {
+            settings.organisationName = currentOrganisation
+            settings.organisationID = currentOrganisationID
+        }
     
     }
     
     // MARK: - Action
-    // Kan weg wanneer kan worden uitgelogd met Firebase
+    
     @IBAction func signOut(_ sender: Any) {
-        self.dismiss(animated: true, completion: {})
+        if (try? FIRAuth.auth()?.signOut()) != nil {
+            print("success")
+            self.dismiss(animated: true, completion: {})
+        } else {
+            
+            let alert = UIAlertController(title: "Fout bij uitloggen",
+                                          message: "Het is niet gelukt om je correct uit te loggen. Probeer het nog een keer.",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+    }
+
+    @IBAction func showSettings(_ sender: Any) {
+        performSegue(withIdentifier: "showSettings", sender: self)
     }
 
 }

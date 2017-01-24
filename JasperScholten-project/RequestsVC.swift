@@ -23,6 +23,7 @@ class RequestsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         super.viewDidLoad()
 
         FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
+            print("USER \(user)")
             if user != nil {
                 self.ref.observe(.value, with: { snapshot in
                     
@@ -30,7 +31,9 @@ class RequestsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     
                     for item in snapshot.children {
                         let userData = User(snapshot: item as! FIRDataSnapshot)
+                        print(userData)
                         if userData.accepted == false {
+                            print("\(userData.organisationID) == \(self.organisation)")
                             if userData.organisationID == self.organisation {
                                 newEmployees.append(userData)
                             }

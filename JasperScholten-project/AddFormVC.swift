@@ -67,6 +67,20 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         newFormTableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let question = questions[indexPath.row].questionID
+            
+            //http://stackoverflow.com/questions/39631998/how-to-delete-from-firebase-database
+            ref.child(question).removeValue { (error, ref) in
+                if error != nil {
+                    print("error \(error)")
+                }
+            }
+            
+        }
+    }
+    
     // MARK: - Actions
     
     @IBAction func newQuestion(_ sender: Any) {
