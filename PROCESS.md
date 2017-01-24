@@ -80,3 +80,12 @@ ref.child(user.uid).updateChildValues( /*...*/ )
 
 - Ontdekt dat heel vaak .childByAutoId gebruikt moet worden, om ervoor te zorgen dat alleen data wordt getoond voor specifieke bedrijven, formulieren, etc. Dit is nu op veel plaatsen geïmplementeerd.
 - Lastig om verschillende karakters in een String te laten filteren. Dit doe ik nu in meerdere stappen, iedere keer een nieuwe string maken waarin één type karakter is vervangen, maar dat zou ik liever in één stap willen doen.
+
+## DAY 11 // 23-01
+
+- Nu nog steeds een probleem dat vaak (niet altijd) twee keer achter elkaar wordt ingelogd, waardoor mainMenu twee keer verschijnt (en er dus ook twee keer uitgelogd moet worden). Mogelijk is <a href="http://stackoverflow.com/questions/40874825/viewcontroller-is-appearing-2-5-times-on-push-login-screen-using-firebase-vide">dit het probleem</a>, maar hoe dat op te lossen?
+  - Overigens ook nog steeds het probleem, dat wanneer wordt uitgelogd en de app wordt afgesloten (cmd+shft+H, dan simulator stoppen en weer runnen) er bij opnieuw openen automatisch weer wordt ingelogd bij de vorige gebruiker.
+  - <a href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/55">Hier de oplossing kunnen vinden.</a>
+- Soms, op ogenschijnlijk willekeurige momenten, crashte de app bij het opslaan van een nieuwe review. Bij debuggen kwam deze situatie op een gegeven moment echter niet meer voor; ik weet echte rniet of dat betekent dat het nu is opgelost...
+- Moet er voor zorgen dat een organisatienaam maar één keer gekozen kan worden, zodat er geen schijnorganisaties kunnen komen.
+- Problemen met het opslaan van locaties: het lukt nu niet om een nieuwe locatie op te slaan (er wordt overschreven, bij verwijderen van een eerder crasht de app). Het lijkt hierbij vooral een probleem dat het geheel als array wordt opgeslagen en dynamisch moet zijn (geen vooraf bepaalde keys heeft).
