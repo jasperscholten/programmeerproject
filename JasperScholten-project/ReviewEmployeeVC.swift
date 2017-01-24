@@ -15,6 +15,7 @@ class ReviewEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDele
     let ref = FIRDatabase.database().reference(withPath: "Users")
     var employees = [User]()
     var organisation = String()
+    var organisationID = String()
     var observatorName = String()
     
     @IBOutlet weak var employeesTableView: UITableView!
@@ -31,7 +32,7 @@ class ReviewEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDele
                     for item in snapshot.children {
                         let userData = User(snapshot: item as! FIRDataSnapshot)
                         if userData.accepted == true {
-                            if userData.organisationID == self.organisation {
+                            if userData.organisationID == self.organisationID {
                                 newEmployees.append(userData)
                             }
                         }
@@ -76,6 +77,7 @@ class ReviewEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDele
             newReview.employeeID = employees[indexPath!.row].uid
             newReview.observatorName = observatorName
             newReview.organisation = organisation
+            newReview.organisationID = organisationID
             newReview.location = employees[indexPath!.row].locationID!
         }
     }

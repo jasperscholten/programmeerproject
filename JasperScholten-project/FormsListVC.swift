@@ -15,6 +15,7 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     let ref = FIRDatabase.database().reference(withPath: "Forms")
     var nameInput = String()
     var organisation = String()
+    var organisationID = String()
     var forms = [Form]()
     var formID = String()
     
@@ -31,7 +32,7 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
             
             for item in snapshot.children {
                 let formData = Form(snapshot: item as! FIRDataSnapshot)
-                if formData.organisationID == self.organisation {
+                if formData.organisationID == self.organisationID {
                     newForms.append(formData)
                 }
             }
@@ -90,10 +91,13 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
                                                 
                                                 // http://stackoverflow.com/questions/39691818/firebase-swift-how-to-create-a-child-and-add-its-id-to-another-ref-property
                                                 let newRef = self.ref.childByAutoId()
-                                                let formID = newRef.key
+                                                let newFormID = newRef.key
                                                 
-                                                let form = Form(formName: text!, formID: formID, organisationID: self.organisation)
+                                                let form = Form(formName: text!, formID: newFormID, organisationID: self.organisationID)
                                                 newRef.setValue(form.toAnyObject())
+                                                
+                                                self.nameInput = text!
+                                                self.formID = newFormID
                                                 
                                                 self.performSegue(withIdentifier: "newForm", sender: nil)
                                             } else {
@@ -125,8 +129,8 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         if let choice = segue.destination as? AddFormVC {
             choice.form = nameInput
             choice.organisation = organisation
+            choice.organisationID = organisationID
             choice.formID = formID
-            
         }
     }
 

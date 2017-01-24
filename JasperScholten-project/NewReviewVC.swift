@@ -18,6 +18,7 @@ class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     var formID = String()
     var observatorName = String()
     var organisation = String()
+    var organisationID = String()
     var location = String()
     let ref = FIRDatabase.database().reference(withPath: "Questions")
     let reviewRef = FIRDatabase.database().reference(withPath: "Reviews")
@@ -32,8 +33,6 @@ class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // EVENTUEEL EEN OPTIE: direct een kopie maken van de questions array, deze opslaan in Firebase als nieuwe Review, en vervolgens bij iedere switch verandering dit aanpassen in Firebase (updateValue). Bij druk op cancel verwijder je de hele referentie in Firebase.
-        
         tableViewTitle.text = "\(form) - \(employee)"
         
         // Retrieve data from Firebase.
@@ -43,7 +42,7 @@ class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
             
             for item in snapshot.children {
                 let questionData = Questions(snapshot: item as! FIRDataSnapshot)
-                if questionData.organisationID == self.organisation {
+                if questionData.organisationID == self.organisationID {
                     if questionData.formID == self.formID {
                         newQuestions.append(questionData)
                     }

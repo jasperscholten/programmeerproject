@@ -15,6 +15,7 @@ class ReviewResultsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     let ref = FIRDatabase.database().reference(withPath: "Users")
     var employees = [User]()
     var organisation = String()
+    var organisationID = String()
     
     // MARK: - Outlets
     @IBOutlet weak var resultListTableView: UITableView!
@@ -31,7 +32,7 @@ class ReviewResultsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
                     for item in snapshot.children {
                         let userData = User(snapshot: item as! FIRDataSnapshot)
                         if userData.accepted == true {
-                            if userData.organisationID == self.organisation {
+                            if userData.organisationID == self.organisationID {
                                 newEmployees.append(userData)
                             }
                         }

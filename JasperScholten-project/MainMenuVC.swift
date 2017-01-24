@@ -85,12 +85,15 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
         if let forms = segue.destination as? FormsListVC {
             forms.organisation = currentOrganisation
+            forms.organisationID = currentOrganisationID
         }
         if let employees = segue.destination as? ReviewEmployeeVC {
             employees.organisation = currentOrganisation
+            employees.organisationID = currentOrganisationID
         }
         if let results = segue.destination as? ReviewResultsVC {
             results.organisation = currentOrganisation
+            results.organisationID = currentOrganisationID
         }
         if let settings = segue.destination as? SettingsVC {
             settings.organisationName = currentOrganisation

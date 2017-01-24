@@ -18,6 +18,7 @@ class ChooseReviewFormVC: UIViewController, UITableViewDataSource, UITableViewDe
     var employeeID = String()
     var observatorName = String()
     var organisation = String()
+    var organisationID = String()
     var location = String()
     
     // MARK: - Outlets
@@ -33,7 +34,7 @@ class ChooseReviewFormVC: UIViewController, UITableViewDataSource, UITableViewDe
             
             for item in snapshot.children {
                 let formData = Form(snapshot: item as! FIRDataSnapshot)
-                if formData.organisationID == self.organisation {
+                if formData.organisationID == self.organisationID {
                     newForms.append(formData)
                 }
             }
@@ -61,9 +62,6 @@ class ChooseReviewFormVC: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        // Present alert om zeker te weten dat er niet voor niets een nieuwe review in de database wordt geplant. Eventueel kan je ook een optie annuleren in het formulier zetten, waardoor de huidige evaluatie weer wordt verwijderd. Alleen als op opslaan wordt gedrukt, komt 'ie in de database te staan.
-        
         performSegue(withIdentifier: "newReview", sender: self)
         formListTableView.deselectRow(at: indexPath, animated: true)
     }
@@ -77,6 +75,7 @@ class ChooseReviewFormVC: UIViewController, UITableViewDataSource, UITableViewDe
             newReview.formID = forms[indexPath!.row].formID
             newReview.observatorName = observatorName
             newReview.organisation = organisation
+            newReview.organisationID = organisationID
             newReview.location = location
         }
     }

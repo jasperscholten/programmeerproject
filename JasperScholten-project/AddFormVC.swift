@@ -16,6 +16,7 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var form = String()
     var formID = String()
     var organisation = String()
+    var organisationID = String()
     var questions = [Questions]()
     
     // MARK: - Outlets
@@ -23,9 +24,7 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("ID \(formID)")
-        
+    
         // Retrieve data from Firebase.
         ref.observe(.value, with: { snapshot in
             
@@ -33,7 +32,7 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             
             for item in snapshot.children {
                 let questionData = Questions(snapshot: item as! FIRDataSnapshot)
-                if questionData.organisationID == self.organisation {
+                if questionData.organisationID == self.organisationID {
                     if questionData.formID == self.formID {
                         newQuestions.append(questionData)
                     }
@@ -112,7 +111,7 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                                                 let newRef = self.ref.childByAutoId()
                                                 let newID = newRef.key
                                                 
-                                                let question = Questions(questionID: newID, formID: self.formID, organisationID: self.organisation, question: newText!, state: false)
+                                                let question = Questions(questionID: newID, formID: self.formID, organisationID: self.organisationID, question: newText!, state: false)
                                                 newRef.setValue(question.toAnyObject())
                                             } else {
                                                 self.formNameError()
