@@ -102,8 +102,9 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                                                 
                                                 let newRef = self.ref.childByAutoId()
                                                 let newID = newRef.key
+                                                let newText = self.filterCharacters(text: text!)
                                                 
-                                                let question = Questions(questionID: newID, formID: self.formID, organisationID: self.organisationID, question: text!, state: false)
+                                                let question = Questions(questionID: newID, formID: self.formID, organisationID: self.organisationID, question: newText, state: false)
                                                 newRef.setValue(question.toAnyObject())
                                             } else {
                                                 self.formNameError()
@@ -128,5 +129,14 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
         alert.addAction(acceptAction)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func filterCharacters(text: String) -> String {
+        let deleteDot = text.replacingOccurrences(of: ".", with: "")
+        let deleteHash = deleteDot.replacingOccurrences(of: "#", with: "")
+        let deleteDollar = deleteHash.replacingOccurrences(of: "$", with: "")
+        let deleteBracket = deleteDollar.replacingOccurrences(of: "[", with: "")
+        let newText = deleteBracket.replacingOccurrences(of: "]", with: "")
+        return newText
     }
 }

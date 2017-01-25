@@ -24,9 +24,7 @@ class NewsAdminVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         //http://stackoverflow.com/questions/27887218/how-to-hide-a-bar-button-item-for-certain-users
         if admin == false {
             self.navigationItem.rightBarButtonItem = nil
-        } /*else {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
-        }*/
+        }
     }
 
     override func didReceiveMemoryWarning() {

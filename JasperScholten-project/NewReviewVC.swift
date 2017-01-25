@@ -29,9 +29,12 @@ class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     @IBOutlet weak var tableViewTitle: UILabel!
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var remarkBox: UITextView!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        keyboardActions()
         
         tableViewTitle.text = "\(form) - \(employee)"
         remarkBox.textColor = UIColor.lightGray
@@ -164,6 +167,55 @@ class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         if textView.text.isEmpty {
             textView.text = "Overige opmerkingen"
             textView.textColor = UIColor.lightGray
+        }
+    }
+    
+    // MARK: Keyboard actions [2, 3]
+    // http://stackoverflow.com/questions/32087809/how-to-change-bottom-layout-constraint-in-ios-swift
+    
+    func keyboardActions() {
+        // Make sure all buttons and inputfields keep visible when the keyboard appears. [2]
+        NotificationCenter.default.addObserver(self, selector: #selector(NewReviewVC.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(NewReviewVC.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        // Enable user to dismiss keyboard by tapping outside of it. [3]
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewReviewVC.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    // Scroll to text view - http://stackoverflow.com/questions/25649926/trying-to-animate-a-constraint-in-swift
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.bottomConstraint.constant == 0{
+                self.bottomConstraint.constant += keyboardSize.height
+                UIView.animate(withDuration: 0.5) {
+                    self.view.layoutIfNeeded()
+                }
+                self.tableViewScrollToBottom()
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.bottomConstraint.constant == keyboardSize.height {
+                self.bottomConstraint.constant -= keyboardSize.height
+                UIView.animate(withDuration: 0.5) {
+                    self.view.layoutIfNeeded()
+                }
+            }
+        }
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    // http://stackoverflow.com/questions/26244293/scrolltorowatindexpath-with-uitableview-does-not-work
+    func tableViewScrollToBottom() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
+            let indexPath = IndexPath(row: self.questions.count-1, section: 0)
+            self.reviewTableView.scrollToRow(at: indexPath, at: .top, animated: true)
         }
     }
     

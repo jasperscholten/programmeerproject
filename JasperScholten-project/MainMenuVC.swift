@@ -25,8 +25,6 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         // Retrieve data from Firebase.
         ref.observe(.value, with: { snapshot in
             for item in snapshot.children {
@@ -41,6 +39,9 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                         self.menuItems = ["Beoordelen", "Resultaten", "Nieuws (admin)", "Stel lijst samen", "Medewerker verzoeken"]
                     } else {
                         self.menuItems = ["Beoordelingen", "Nieuws"]
+                        
+                        // Verwijderen wanneer er nuttige opties worden toegevoegd
+                        self.navigationItem.rightBarButtonItem = nil
                     }
                     self.menuTableView.reloadData()
                     self.resizeTable()

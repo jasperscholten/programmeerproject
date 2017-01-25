@@ -31,6 +31,8 @@ class RegisterVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        keyboardActions()
+        
         organisationRef.observe(.value, with: { snapshot in
             var newOrganisations: [String] = []
             
@@ -125,4 +127,44 @@ class RegisterVC: UIViewController {
         }
         return false
     }
+    
+    // MARK: Keyboard actions [2, 3]
+    
+    func keyboardActions() {
+        // Make sure all buttons and inputfields keep visible when the keyboard appears. [2]
+        NotificationCenter.default.addObserver(self, selector: #selector(RegisterVC.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(RegisterVC.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        // Enable user to dismiss keyboard by tapping outside of it. [3]
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterVC.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if view.frame.origin.y == 0{
+                self.view.frame.origin.y -= (keyboardSize.height)/3
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if view.frame.origin.y != 0 {
+                self.view.frame.origin.y += (keyboardSize.height)/3
+            }
+        }
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
 }
+
+// MARK: References
+
+/*
+ 2. http://stackoverflow.com/questions/26070242/move-view-with-keyboard-using-swift
+ 3. http://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
+ */

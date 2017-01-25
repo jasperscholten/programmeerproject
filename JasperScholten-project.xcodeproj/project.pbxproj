@@ -51,6 +51,7 @@
 		A48593E91E278AE1007B86AB /* ReviewResultsEmployeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48593E81E278AE1007B86AB /* ReviewResultsEmployeeCell.swift */; };
 		A4A304FA1E38DF4F000DDE89 /* EmployeeSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A304F91E38DF4F000DDE89 /* EmployeeSettingsVC.swift */; };
 		A4A304FC1E38DFE7000DDE89 /* EmployeeSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A304FB1E38DFE7000DDE89 /* EmployeeSettingsCell.swift */; };
+		A4A304FE1E38EEA1000DDE89 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A304FD1E38EEA1000DDE89 /* SettingsCell.swift */; };
 		A4C2A91D1E281577002A6ACD /* AddNewsItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C2A91C1E281577002A6ACD /* AddNewsItemVC.swift */; };
 		A4C2A91F1E281F3C002A6ACD /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C2A91E1E281F3C002A6ACD /* RegisterVC.swift */; };
 /* End PBXBuildFile section */
@@ -105,6 +106,7 @@
 		A48593E81E278AE1007B86AB /* ReviewResultsEmployeeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewResultsEmployeeCell.swift; sourceTree = "<group>"; };
 		A4A304F91E38DF4F000DDE89 /* EmployeeSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeSettingsVC.swift; sourceTree = "<group>"; };
 		A4A304FB1E38DFE7000DDE89 /* EmployeeSettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeSettingsCell.swift; sourceTree = "<group>"; };
+		A4A304FD1E38EEA1000DDE89 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		A4C2A91C1E281577002A6ACD /* AddNewsItemVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewsItemVC.swift; sourceTree = "<group>"; };
 		A4C2A91E1E281F3C002A6ACD /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -229,6 +231,7 @@
 				A47053B11E320E830086E916 /* ReviewFormsCell.swift */,
 				A416A1E11E36A28300036002 /* LocationsCell.swift */,
 				A4A304FB1E38DFE7000DDE89 /* EmployeeSettingsCell.swift */,
+				A4A304FD1E38EEA1000DDE89 /* SettingsCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				A48593DD1E26771B007B86AB /* NewReviewCell.swift in Sources */,
 				A40C6C4B1E27B12C00CCDA3F /* NewsItemAdminCell.swift in Sources */,
 				A48593D61E2669AB007B86AB /* ReviewEmployeeVC.swift in Sources */,
+				A4A304FE1E38EEA1000DDE89 /* SettingsCell.swift in Sources */,
 				A467BF591E28D5F600F4AF68 /* AddEmployeeVC.swift in Sources */,
 				A45ADE451E2CD79900005C6E /* User.swift in Sources */,
 				A48593E91E278AE1007B86AB /* ReviewResultsEmployeeCell.swift in Sources */,
