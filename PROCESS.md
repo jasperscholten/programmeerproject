@@ -99,6 +99,7 @@ ref.child(user.uid).updateChildValues( /*...*/ )
 - Eigenlijk zou het fijn zijn, als de functionaliteit wordt ingevoerd waarmee admins alleen de medewerkers van hun eigen vestiging kunnen inzien en beoordelen. Dit brengt echter wel de toevoeging mee, dat er ook masteraccounts moeten zijn die wél (een groter deel van) alle gebruikers kunnen inzien. Rolverdeling wordt hier een nog groter issue.
 
 - Ik ben wat aan het testen en opeens lijkt het alsof bepaalde tekens toch wel ingevoerd mogen worden, terwijl ik eerst een error van Firebase kreeg dat ze juist niet toegestaan waren. Na weghalen van de code die het probleem eerst verhielp, doet de app het nu echter evengoed...
+  - Toch weer teruggezet, omdat ik heb achterhaald waarom dit erin moet. Deze karakters kunnen namelijk wel als 'value' worden opgeslagen, maar niet als 'key'. Voor de reviews is dat echter wel het geval en daarom moeten ze er uit worden gefilterd. 
 
 ```Swift
 // let replaceString = ".#$[]"
