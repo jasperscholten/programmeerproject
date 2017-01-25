@@ -93,3 +93,18 @@ ref.child(user.uid).updateChildValues( /*...*/ )
 ## DAY 12 // 24-01
 
 - Vandaag de kwestie 'locaties toevoegen' (waarschijnlijk) opgelost. Veel lopen stoeien met de correcte vorm voor het opslaan van deze data en hoe dit dan gelinkt moest worden aan alle gebruikers. Daarnaast op een paar plaatsen met autoID's in plaats van namen gaan werken, wat nog een behoorlijke klus opleverde om dit op alle plaatsen goed door te werken.
+
+## DAY 13 // 25-01
+
+- Eigenlijk zou het fijn zijn, als de functionaliteit wordt ingevoerd waarmee admins alleen de medewerkers van hun eigen vestiging kunnen inzien en beoordelen. Dit brengt echter wel de toevoeging mee, dat er ook masteraccounts moeten zijn die wél (een groter deel van) alle gebruikers kunnen inzien. Rolverdeling wordt hier een nog groter issue.
+
+- Ik ben wat aan het testen en opeens lijkt het alsof bepaalde tekens toch wel ingevoerd mogen worden, terwijl ik eerst een error van Firebase kreeg dat ze juist niet toegestaan waren. Na weghalen van de code die het probleem eerst verhielp, doet de app het nu echter evengoed...
+
+```Swift
+// let replaceString = ".#$[]"
+let deleteDot = text?.replacingOccurrences(of: ".", with: "")
+let deleteHash = deleteDot?.replacingOccurrences(of: "#", with: "")
+let deleteDollar = deleteHash?.replacingOccurrences(of: "$", with: "")
+let deleteBracket = deleteDollar?.replacingOccurrences(of: "[", with: "")
+let newText = deleteBracket?.replacingOccurrences(of: "]", with: "")
+```
