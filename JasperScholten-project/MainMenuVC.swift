@@ -25,6 +25,8 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         // Retrieve data from Firebase.
         ref.observe(.value, with: { snapshot in
             for item in snapshot.children {
@@ -41,6 +43,7 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                         self.menuItems = ["Beoordelingen", "Nieuws"]
                     }
                     self.menuTableView.reloadData()
+                    self.resizeTable()
                 }
             }
         })
@@ -122,6 +125,15 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBAction func showSettings(_ sender: Any) {
         performSegue(withIdentifier: "showSettings", sender: self)
+    }
+    
+    // http://stackoverflow.com/questions/34161016/how-to-make-uitableview-to-fill-all-my-view
+    func resizeTable() {
+        let heightOfVisibleTableViewArea = view.bounds.height - topLayoutGuide.length - bottomLayoutGuide.length
+        let numberOfRows = menuTableView.numberOfRows(inSection: 0)
+        
+        menuTableView.rowHeight = heightOfVisibleTableViewArea / CGFloat(numberOfRows)
+        menuTableView.reloadData()
     }
 
 }

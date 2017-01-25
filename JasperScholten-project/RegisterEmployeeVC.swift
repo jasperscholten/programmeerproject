@@ -106,6 +106,26 @@ class RegisterEmployeeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     // MARK: - Actions
     @IBAction func registerUser(_ sender: Any) {
         
+        if password.text! != repeatPassword.text! {
+            addAlert(titleInput: "Wachtwoorden komen niet overeen",
+                     messageInput: "")
+            password.text! = ""
+            repeatPassword.text! = ""
+        } else if name.text! == "" || mail.text! == "" || employeeNr.text! == ""{
+            addAlert(titleInput: "Vul alle velden in", messageInput: "Vul alle velden in om een organisatie te kunnen registreren.")
+        } else {
+            createUser()
+        }
+        
+    }
+
+    @IBAction func cancelRegistration(_ sender: Any) {
+        self.dismiss(animated: true, completion: {})
+    }
+    
+    // Functions
+    
+    func createUser() {
         FIRAuth.auth()!.createUser(withEmail: mail.text!, password: password.text!) { user, error in
             if error == nil {
                 
@@ -128,19 +148,19 @@ class RegisterEmployeeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 
                 let userRef = self.ref.child(user.uid)
                 userRef.setValue(user.toAnyObject())
-
+                
                 self.dismiss(animated: true, completion: {})
                 
             } else {
-                let alert = UIAlertController(title: "Foute invoer", message: "Het emailadres of wachtwoord dat je hebt ingevoerd bestaat al of voldoet niet aan de eisen. Een wachtwoord moet bestaan uit minmaal 6 karakters.", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.addAlert(titleInput: "Foute invoer",
+                              messageInput: "Het emailadres of wachtwoord dat je hebt ingevoerd bestaat al of voldoet niet aan de eisen. Een wachtwoord moet bestaan uit minmaal 6 karakters.")
             }
         }
-        
     }
-
-    @IBAction func cancelRegistration(_ sender: Any) {
-        self.dismiss(animated: true, completion: {})
+    
+    func addAlert(titleInput: String, messageInput: String) {
+        let alert = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

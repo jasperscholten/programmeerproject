@@ -40,6 +40,23 @@ class RegisterVC: UIViewController {
     // MARK: - Action
     
     @IBAction func registerUser(_ sender: Any) {
+        if password.text! != passwordRepeat.text! {
+            addAlert(titleInput: "Wachtwoorden komen niet overeen",
+                     messageInput: "")
+            password.text! = ""
+            passwordRepeat.text! = ""
+        } else if name.text! == "" || mail.text! == "" || organisation.text! == "" || employee.text! == "" || location.text! == "" {
+            addAlert(titleInput: "Vul alle velden in", messageInput: "Vul alle velden in om een organisatie te kunnen registreren.")
+        } else {
+            createUser()
+        }
+    }
+    
+    @IBAction func cancelRegistration(_ sender: Any) {
+        self.dismiss(animated: true, completion: {})
+    }
+    
+    func createUser() {
         FIRAuth.auth()!.createUser(withEmail: mail.text!, password: password.text!) { user, error in
             if error == nil {
                 
@@ -62,7 +79,7 @@ class RegisterVC: UIViewController {
                                 organisationID: orgID,
                                 locationID: locName,
                                 accepted: true)
-
+                
                 let userRef = self.ref.child(user.uid)
                 userRef.setValue(user.toAnyObject())
                 
@@ -72,17 +89,17 @@ class RegisterVC: UIViewController {
                 FIRAuth.auth()!.signIn(withEmail: self.mail.text!,
                                        password: self.password.text!)
                 self.dismiss(animated: true, completion: {})
-            
-            } else {
-                let alert = UIAlertController(title: "Foute invoer", message: "Het emailadres of wachtwoord dat je hebt ingevoerd bestaat al of voldoet niet aan de eisen. Een wachtwoord moet bestaan uit minmaal 6 karakters.", preferredStyle: UIAlertControllerStyle.alert)
                 
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.addAlert(titleInput: "Foute invoer",
+                              messageInput: "Het emailadres of wachtwoord dat je hebt ingevoerd bestaat al of voldoet niet aan de eisen. Een wachtwoord moet bestaan uit minmaal 6 karakters.")
             }
         }
     }
     
-    @IBAction func cancelRegistration(_ sender: Any) {
-        self.dismiss(animated: true, completion: {})
+    func addAlert(titleInput: String, messageInput: String) {
+        let alert = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
