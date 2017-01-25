@@ -29,5 +29,8 @@ class SettingsVC: UIViewController {
             locations.organisationName = organisationName
             locations.organisationID = organisationID
         }
+        if let employees = segue.destination as? EmployeeSettingsVC {
+            employees.organisationID = organisationID
+        }
     }
 }

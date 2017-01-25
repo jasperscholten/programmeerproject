@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
 
     // MARK: - Constants and variables
     var employee = String()
@@ -34,6 +34,7 @@ class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         super.viewDidLoad()
         
         tableViewTitle.text = "\(form) - \(employee)"
+        remarkBox.textColor = UIColor.lightGray
         
         // Retrieve data from Firebase.
         ref.observe(.value, with: { snapshot in
@@ -125,13 +126,10 @@ class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     func getAnswers() {
         for questionRow in 0 ..< questions.count {
             let indexPath = IndexPath(row: questionRow, section: 0)
-            print("INDEX: \(indexPath)")
-            print("CELL: \(reviewTableView.cellForRow(at: indexPath))")
             let cell = reviewTableView.cellForRow(at: indexPath) as! NewReviewCell
             let state = cell.answerSwitch.isOn
             let question = questions[questionRow].question
             result[question] = state
-            print("QUESTION \(question), STATE \(state)")
         }
     }
     
@@ -150,6 +148,23 @@ class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         let review = Review(reviewID: newID, formName: form, employeeID: employeeID, employeeName: employee, observatorName: observatorName, locationID: location, date: date, remark: remarkBox.text, result: result)
         newRef.setValue(review.toAnyObject())
         
+    }
+    
+    // Make remarkBox placeholder
+    // http://stackoverflow.com/questions/27652227/text-view-placeholder-swift
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Overige opmerkingen"
+            textView.textColor = UIColor.lightGray
+        }
     }
     
 }

@@ -15,6 +15,7 @@ class RegisterVC: UIViewController {
     let ref = FIRDatabase.database().reference(withPath: "Users")
     let organisationRef = FIRDatabase.database().reference(withPath: "Organisations")
     let locationsRef = FIRDatabase.database().reference(withPath: "Locations")
+    var organisations = [String]()
     
     // MARK: Outlets
     @IBOutlet weak var name: UITextField!
@@ -29,6 +30,16 @@ class RegisterVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        organisationRef.observe(.value, with: { snapshot in
+            var newOrganisations: [String] = []
+            
+            for item in snapshot.children {
+                let organisationData = Organisation(snapshot: item as! FIRDataSnapshot)
+                newOrganisations.append(organisationData.organisation)
+            }
+            self.organisations = newOrganisations
+        })
 
     }
 
@@ -47,6 +58,9 @@ class RegisterVC: UIViewController {
             passwordRepeat.text! = ""
         } else if name.text! == "" || mail.text! == "" || organisation.text! == "" || employee.text! == "" || location.text! == "" {
             addAlert(titleInput: "Vul alle velden in", messageInput: "Vul alle velden in om een organisatie te kunnen registreren.")
+        } else if doesOrganisationExist(input: organisation.text!) == true {
+            addAlert(titleInput: "Organisatie bestaat al", messageInput: "Er is al een organisatie geregistreerd onder deze naam. Kies een andere naam om te kunnen registreren.")
+            organisation.text! = ""
         } else {
             createUser()
         }
@@ -101,5 +115,14 @@ class RegisterVC: UIViewController {
         let alert = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func doesOrganisationExist(input: String) -> Bool {
+        for element in organisations {
+            if element == input {
+                return true
+            }
+        }
+        return false
     }
 }

@@ -13,6 +13,7 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
 
     // MARK: - Constants and variables
     let ref = FIRDatabase.database().reference(withPath: "Forms")
+    let questionsRef = FIRDatabase.database().reference(withPath: "Questions")
     var nameInput = String()
     var organisation = String()
     var organisationID = String()
@@ -67,6 +68,22 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         nameInput = forms[indexPath.row].formName
         formID = forms[indexPath.row].formID
         performSegue(withIdentifier: "newForm", sender: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let form = forms[indexPath.row].formID
+            
+            //http://stackoverflow.com/questions/39631998/how-to-delete-from-firebase-database
+            ref.child(form).removeValue { (error, ref) in
+                if error != nil {
+                    print("error \(error)")
+                }
+            }
+            
+            deleteFormQuestions(formID: form)
+            
+        }
     }
     
     // MARK: - Actions
@@ -132,6 +149,21 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
             choice.organisationID = organisationID
             choice.formID = formID
         }
+    }
+    
+    func deleteFormQuestions(formID: String) {
+        questionsRef.observe(.value, with: { snapshot in
+            for item in snapshot.children {
+                let question = Questions(snapshot: item as! FIRDataSnapshot)
+                if question.formID == formID {
+                    self.questionsRef.child(question.questionID).removeValue { (error, ref) in
+                        if error != nil {
+                            print("error \(error)")
+                        }
+                    }
+                }
+            }
+        })
     }
 
 }

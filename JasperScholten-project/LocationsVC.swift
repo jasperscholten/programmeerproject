@@ -64,6 +64,20 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         locationsTableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let location = "\(organisationName)\(locations[indexPath.row])"
+            
+            //http://stackoverflow.com/questions/39631998/how-to-delete-from-firebase-database
+            locationsRef.child(organisationID).child(location).removeValue { (error, ref) in
+                if error != nil {
+                    print("error \(error)")
+                }
+            }
+            
+        }
+    }
+    
     // MARK: - Actions
 
     @IBAction func addLocations(_ sender: Any) {
@@ -86,7 +100,6 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
                                                 let locName = alert.textFields?[0].text
                                                 if locName != nil && locName!.characters.count>0 {
                                                     
-                                                    print(self.locationsFirebase)
                                                     self.locationsFirebase["\(self.organisationName)\(locName!)"] = locName
                                                     self.locationsRef.child(self.organisationID).setValue(self.locationsFirebase)
                                                     //self.locationsRef.child(self.organisationID).setValue(["\(self.organisationName)\(locName!)": locName])

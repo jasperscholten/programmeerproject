@@ -100,18 +100,10 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                                             let text = alert.textFields?[0].text
                                             if text != nil && text!.characters.count>0 {
                                                 
-                                                // let replaceString = ".#$[]"
-                                                // Onderstaande werkt, maar is misschien niet heel elegant
-                                                let deleteDot = text?.replacingOccurrences(of: ".", with: "")
-                                                let deleteHash = deleteDot?.replacingOccurrences(of: "#", with: "")
-                                                let deleteDollar = deleteHash?.replacingOccurrences(of: "$", with: "")
-                                                let deleteBracket = deleteDollar?.replacingOccurrences(of: "[", with: "")
-                                                let newText = deleteBracket?.replacingOccurrences(of: "]", with: "")
-                                                
                                                 let newRef = self.ref.childByAutoId()
                                                 let newID = newRef.key
                                                 
-                                                let question = Questions(questionID: newID, formID: self.formID, organisationID: self.organisationID, question: newText!, state: false)
+                                                let question = Questions(questionID: newID, formID: self.formID, organisationID: self.organisationID, question: text!, state: false)
                                                 newRef.setValue(question.toAnyObject())
                                             } else {
                                                 self.formNameError()

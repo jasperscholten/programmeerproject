@@ -55,10 +55,8 @@ class AddEmployeeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             self.locations = newLocations
             self.location.reloadAllComponents()
             
-            print(self.locations)
             var locationNumber = 0
             for selected in self.locations {
-                print(selected)
                 if selected == self.user.locationID {
                     self.location.selectRow(locationNumber, inComponent: 0, animated: true)
                 }
