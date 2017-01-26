@@ -109,3 +109,7 @@ let deleteDollar = deleteHash?.replacingOccurrences(of: "$", with: "")
 let deleteBracket = deleteDollar?.replacingOccurrences(of: "[", with: "")
 let newText = deleteBracket?.replacingOccurrences(of: "]", with: "")
 ```
+
+## DAY 14 // 26-01
+
+- Gisteravond heb ik de app op m'n telefoon gezet om aan anderen te laten zien, maar toen ik een review wilde opslaan crashte de app. Ik kon nu dus alleen niet in de console zien wat er precies misging - iets om nog uit te zoeken...
