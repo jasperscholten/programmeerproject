@@ -37,6 +37,7 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     
                     if userData.admin! == true {
                         self.menuItems = ["Beoordelen", "Resultaten", "Nieuws (admin)", "Stel lijst samen", "Medewerker verzoeken"]
+                        self.admin = true
                     } else {
                         self.menuItems = ["Beoordelingen", "Nieuws"]
                         
@@ -110,7 +111,6 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBAction func signOut(_ sender: Any) {
         if (try? FIRAuth.auth()?.signOut()) != nil {
-            print("success")
             self.dismiss(animated: true, completion: {})
         } else {
             

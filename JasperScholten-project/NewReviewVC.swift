@@ -111,7 +111,6 @@ class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         
         let deleteAction = UIAlertAction(title: "Sla op en ga door",
                                          style: .default) { action in
-                                            // SAVE VALUES IN DATABASE
                                             self.saveReview()
                                             _ = self.navigationController?.popViewController(animated: true)
                                             
