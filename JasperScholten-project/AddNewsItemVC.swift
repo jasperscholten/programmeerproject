@@ -26,10 +26,12 @@ class AddNewsItemVC: UIViewController, UITextViewDelegate, UIImagePickerControll
     @IBOutlet weak var addTitle: UITextView!
     @IBOutlet weak var addText: UITextView!
     @IBOutlet weak var chooseImageButton: UIButton!
+    @IBOutlet weak var uploadImage: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        uploadImage.stopAnimating()
         imagePicker.delegate = self
         
         addTitle.textColor = UIColor.lightGray
@@ -85,6 +87,8 @@ class AddNewsItemVC: UIViewController, UITextViewDelegate, UIImagePickerControll
             
         }
     }
+    
+    // ACTIVITY INDICATOR TOEVOEGEN
 
     // https://firebase.google.com/docs/storage/ios/upload-files
     //https://github.com/firebase/quickstart-ios/blob/master/storage/StorageExampleSwift/ViewController.swift
@@ -95,6 +99,7 @@ class AddNewsItemVC: UIViewController, UITextViewDelegate, UIImagePickerControll
             let imageData = UIImageJPEGRepresentation(addImage.image!, 0.05)
             
             // [START uploadimage]
+            uploadImage.startAnimating()
             self.storageRef.child(childID)
                 .put(imageData!, metadata: nil) { (metadata, error) in
                     if let error = error {
@@ -103,9 +108,12 @@ class AddNewsItemVC: UIViewController, UITextViewDelegate, UIImagePickerControll
                     }
                     print("Upload Succeeded!")
                     print("URL \((metadata?.downloadURL()?.absoluteString)!)")
+                    self.uploadImage.stopAnimating()
                     _ = self.navigationController?.popViewController(animated: true)
             }
             // [END uploadimage]
+        } else {
+            _ = self.navigationController?.popViewController(animated: true)
         }
 
     }

@@ -22,6 +22,7 @@ class NewsItemAdminVC: UIViewController {
     var admin = Bool()
     
     let storageRef = FIRStorage.storage().reference(forURL: "gs://beoordeling-4d8e2.appspot.com")
+    let newsRef = FIRDatabase.database().reference(withPath: "News")
     var newsItem = News(itemID: "", organisation: "", location: "", title: "Geen artikel", date: "", text: "Er is iets misgegaan met het laden van een nieuwsartikel")
     
     override func viewDidLoad() {
@@ -62,6 +63,27 @@ class NewsItemAdminVC: UIViewController {
     
     // MARK: - Actions
     @IBAction func deleteNewsItem(_ sender: Any) {
+        
+        newsRef.child(newsItem.itemID).removeValue { (error, ref) in
+            if error != nil {
+                print("error \(error)")
+            }
+        }
+        
+        // Create a reference to the file to delete
+        let imageRef = storageRef.child(newsItem.itemID)
+        
+        // Delete the file
+        imageRef.delete { error in
+            if let error = error {
+                // Uh-oh, an error occurred!
+            } else {
+                // File deleted successfully
+            }
+        }
+        
+        _ = self.navigationController?.popViewController(animated: true)
+        
     }
     
 }

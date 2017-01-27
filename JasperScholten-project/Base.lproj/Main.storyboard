@@ -346,6 +346,10 @@
                                     <outlet property="delegate" destination="uGX-JQ-3YY" id="Pdl-vh-hcb"/>
                                 </connections>
                             </textView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5aT-8p-koo">
+                                <rect key="frame" x="177" y="302" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -373,6 +377,7 @@
                         <outlet property="addText" destination="y1K-un-Gro" id="P6k-yI-byO"/>
                         <outlet property="addTitle" destination="bcI-5G-U3d" id="Qcz-Wk-8Sy"/>
                         <outlet property="chooseImageButton" destination="XUK-bi-Dbm" id="kOb-su-2JF"/>
+                        <outlet property="uploadImage" destination="5aT-8p-koo" id="Hdk-PW-s4w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i2c-Qf-N0H" userLabel="First Responder" sceneMemberID="firstResponder"/>
