@@ -1,4 +1,5 @@
 # Programmeerproject, Jasper Scholten, 11157887
+[![BCH compliance](https://bettercodehub.com/edge/badge/jasperscholten/programmeerproject)](https://bettercodehub.com)
 
 Uiteindelijk zal de app o.a. bestaan uit:
 * Mogelijkheid tot invullen beoordelingsformulieren (teams, teamleider, etc.)
@@ -19,3 +20,24 @@ Om dit allemaal voor elkaar te kunnen krijgen, is het belangrijk om de database 
 <img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/beoordelingen.png" width="300"></br></br>
 <img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/medewerkers.png" width="300">
 <img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/rooster.png" width="300"></br></br>
+
+## Better Code Hub
+
+<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/BetterCodeHub2701.png" width="500"></br>
+
+Write Code Once
+- NewReviewVC.swift
+- AddEmployeeVC.swift
+- RegisterEmployeeVC.swift
+- LoginVC.swift
+- RegisterVC.swift
+- ReviewEmployeeVC.swift
+- ReviewResultsVC.swift
+- ChooseReviewFormVC.swift
+- FormsListVC.swift
+- RegisterVC.swift
+
+Keep Unit Interfaces Small
+- FormsListVC.tableView(UITableView,UITableViewCellEditingStyle,IndexPath)
+- AddFormVC.tableView(UITableView,UITableViewCellEditingStyle,IndexPath)
+- LocationsVC.tableView(UITableView,UITableViewCellEditingStyle,IndexPath)
