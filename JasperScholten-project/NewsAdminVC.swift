@@ -7,16 +7,17 @@
 //
 
 import UIKit
+import Firebase
 
 class NewsAdminVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var newsTableView: UITableView!
 
     var admin = Bool()
-    let newsTitles = ["Nieuwjaarsborrel groot succes.", "De vriezer is weer aangevuld met nieuwe maaltijden.", "Keurige omzet periode 12.", "De kerstpakketten liggen klaar."]
-    let newsDate = ["07-01-17", "03-01-17", "22-12-16", "15-12-16"]
-    let textSample = ["Bla bla dingen nieuwjaarsborrel was een succes ja dat zeggen ze altijd maar wel gewonnen met bowlen.", "Lekker hoor eten hertenstoofvlees met pompoencompote en appel veenbessen echt waar.", "Nou gefeliciteerd joh gaan we vieren.", "Bla bla hopelijk gaat V&D dit jaar niet failliet waardoor de bonnen niets meer waard zijn."]
-    var image: [Any] = [#imageLiteral(resourceName: "nieuwjaar"), #imageLiteral(resourceName: "vriezer"), #imageLiteral(resourceName: "resultaat"), #imageLiteral(resourceName: "kerstpakket")]
+    var organisation = String()
+    var location = String()
+    let newsRef = FIRDatabase.database().reference(withPath: "News")
+    var newsItems = [News]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,22 @@ class NewsAdminVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         if admin == false {
             self.navigationItem.rightBarButtonItem = nil
         }
+        
+        // Retrieve data from Firebase.
+        newsRef.observe(.value, with: { snapshot in
+            
+            var newItems: [News] = []
+            
+            for item in snapshot.children {
+                let newsData = News(snapshot: item as! FIRDataSnapshot)
+                if newsData.organisation == self.organisation && newsData.location == self.location {
+                    newItems.append(newsData)
+                }
+            }
+            self.newsItems = newItems
+            self.newsTableView.reloadData()
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,14 +51,14 @@ class NewsAdminVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newsTitles.count
+        return newsItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = newsTableView.dequeueReusableCell(withIdentifier: "newsItemAdmin", for: indexPath) as! NewsItemAdminCell
         
-        cell.title.text = newsTitles[indexPath.row]
-        cell.date.text = newsDate[indexPath.row]
+        cell.title.text = newsItems[indexPath.row].title
+        cell.date.text = newsItems[indexPath.row].date
         
         return cell
     }
@@ -53,11 +70,12 @@ class NewsAdminVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let news = segue.destination as? NewsItemAdminVC {
-            let indexPath = self.newsTableView.indexPathForSelectedRow
-            news.itemTitle = newsTitles[indexPath!.row]
-            news.itemDate = newsDate[indexPath!.row]
-            news.itemText = textSample[indexPath!.row]
-            news.image = image[indexPath!.row] as! UIImage
+            let indexPath = newsTableView.indexPathForSelectedRow
+            news.newsItem = newsItems[(indexPath?.row)!]
+            news.admin = admin
+        } else if let addItem = segue.destination as? AddNewsItemVC {
+            addItem.organisation = organisation
+            addItem.location = location
         }
     }
     

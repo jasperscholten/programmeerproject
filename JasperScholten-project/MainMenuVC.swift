@@ -16,6 +16,7 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var admin = Bool()
     var currentOrganisation = String()
     var currentOrganisationID = String()
+    var currentLocation = String()
     var currentName = String()
     var menuItems = [String]()
     
@@ -33,6 +34,7 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 if userData.uid == (FIRAuth.auth()?.currentUser?.uid)! {
                     self.currentOrganisation = userData.organisationName!
                     self.currentOrganisationID = userData.organisationID!
+                    self.currentLocation = userData.locationID!
                     self.currentName = userData.name!
                     
                     if userData.admin! == true {
@@ -81,26 +83,22 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             // Segue details of current user
             employeeResults.employee = currentName
             employeeResults.employeeID = (FIRAuth.auth()?.currentUser?.uid)!
-        }
-        if let news = segue.destination as? NewsAdminVC {
+        } else if let news = segue.destination as? NewsAdminVC {
             news.admin = admin
-        }
-        if let requests = segue.destination as? RequestsVC {
+            news.organisation = currentOrganisationID
+            news.location = currentLocation
+        } else if let requests = segue.destination as? RequestsVC {
             requests.organisation = currentOrganisationID
-        }
-        if let forms = segue.destination as? FormsListVC {
+        } else if let forms = segue.destination as? FormsListVC {
             forms.organisation = currentOrganisation
             forms.organisationID = currentOrganisationID
-        }
-        if let employees = segue.destination as? ReviewEmployeeVC {
+        } else if let employees = segue.destination as? ReviewEmployeeVC {
             employees.organisation = currentOrganisation
             employees.organisationID = currentOrganisationID
-        }
-        if let results = segue.destination as? ReviewResultsVC {
+        } else if let results = segue.destination as? ReviewResultsVC {
             results.organisation = currentOrganisation
             results.organisationID = currentOrganisationID
-        }
-        if let settings = segue.destination as? SettingsVC {
+        } else if let settings = segue.destination as? SettingsVC {
             settings.organisationName = currentOrganisation
             settings.organisationID = currentOrganisationID
         }

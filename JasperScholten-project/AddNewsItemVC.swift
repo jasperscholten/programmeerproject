@@ -18,6 +18,8 @@ class AddNewsItemVC: UIViewController, UITextViewDelegate, UIImagePickerControll
     let storageRef = FIRStorage.storage().reference(forURL: "gs://beoordeling-4d8e2.appspot.com")
     let imagePicker = UIImagePickerController()
     var imageReference = URL(fileURLWithPath: "")
+    var organisation = String()
+    var location = String()
     
     // MARK: - Outlets
     @IBOutlet weak var addImage: UIImageView!
@@ -64,49 +66,48 @@ class AddNewsItemVC: UIViewController, UITextViewDelegate, UIImagePickerControll
     
     func saveNewsItem() {
         
-        // http://stackoverflow.com/questions/39513258/get-current-date-in-swift-3
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
-        let date = formatter.string(from: Date())
-        
-        let newRef = self.newsRef.childByAutoId()
-        let newID = newRef.key
-        
-        let newsItem = News(itemID: newID, title: addTitle.text, date: date, text: addText.text)
-        newRef.setValue(newsItem.toAnyObject())
-        
-        saveNewsImage(childID: newID)
-        
-        _ = self.navigationController?.popViewController(animated: true)
+        if addTitle.text == "Titel" || addText.text == "Nieuwsitem tekst" || addTitle.text == "Klik om te beginnen met typen" || addText.text == "Klik om te beginnen met typen" {
+            addAlert(titleInput: "Vul alle velden in", messageInput: "Schrijf een titel en tekst om het nieuwsitem te kunnen publiceren.")
+        } else {
+            // http://stackoverflow.com/questions/39513258/get-current-date-in-swift-3
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd-MM-yyyy"
+            let date = formatter.string(from: Date())
+            
+            let newRef = self.newsRef.childByAutoId()
+            let newID = newRef.key
+            
+            let newsItem = News(itemID: newID, organisation: organisation, location: location, title: self.addTitle.text, date: date, text: self.addText.text)
+            newRef.setValue(newsItem.toAnyObject())
+            
+            self.saveNewsImage(childID: newID)
+            
+            
+        }
     }
-    
-    
-    
-    
-    
+
     // https://firebase.google.com/docs/storage/ios/upload-files
     //https://github.com/firebase/quickstart-ios/blob/master/storage/StorageExampleSwift/ViewController.swift
     func saveNewsImage(childID: String) {
         
-        // if it's a photo from the library, not an image from the camera
-        let referenceUrl = imageReference
-        let assets = PHAsset.fetchAssets(withALAssetURLs: [referenceUrl], options: nil)
-        let asset = assets.firstObject
-        asset?.requestContentEditingInput(with: nil, completionHandler: { (contentEditingInput, info) in
-            let imageFile = contentEditingInput?.fullSizeImageURL
-
+        if addImage.image != nil {
+            // http://stackoverflow.com/questions/37603312/firebase-storage-upload-works-in-simulator-but-not-on-iphone
+            let imageData = UIImageJPEGRepresentation(addImage.image!, 0.05)
+            
             // [START uploadimage]
             self.storageRef.child(childID)
-                .putFile(imageFile!, metadata: nil) { (metadata, error) in
+                .put(imageData!, metadata: nil) { (metadata, error) in
                     if let error = error {
                         print("Error uploading: \(error)")
                         return
                     }
                     print("Upload Succeeded!")
                     print("URL \((metadata?.downloadURL()?.absoluteString)!)")
+                    _ = self.navigationController?.popViewController(animated: true)
             }
             // [END uploadimage]
-        })
+        }
+
     }
     
     
@@ -139,6 +140,14 @@ class AddNewsItemVC: UIViewController, UITextViewDelegate, UIImagePickerControll
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    func addAlert(titleInput: String, messageInput: String) {
+        let alert = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
