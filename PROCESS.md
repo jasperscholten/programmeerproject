@@ -113,3 +113,63 @@ let newText = deleteBracket?.replacingOccurrences(of: "]", with: "")
 ## DAY 14 // 26-01
 
 - Gisteravond heb ik de app op m'n telefoon gezet om aan anderen te laten zien, maar toen ik een review wilde opslaan crashte de app. Ik kon nu dus alleen niet in de console zien wat er precies misging - iets om nog uit te zoeken...
+
+## DAY 15 // 30-01
+
+Volgens mij de oplossing voor het dubbel inloggen probleem gevonden! In eerste instantie leek de oplossing te zijn om de StateDidChangelistener en de accpeted check om te draaien. Dit hield in:
+
+```Swift
+FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
+    if user != nil {
+        self.ref.observe(.value, with: { snapshot in
+            for item in snapshot.children {
+                let userData = User(snapshot: item as! FIRDataSnapshot)
+                if userData.accepted == true {
+                    self.performSegue(withIdentifier: "loginUser", sender: nil)
+                    self.mail.text! = ""
+                    self.password.text! = ""
+                }
+            }
+        })
+    }
+}
+```
+Veranderde in:
+```Swift
+ref.observe(.value, with: { snapshot in
+    for item in snapshot.children {
+        let userData = User(snapshot: item as! FIRDataSnapshot)
+        if userData.accepted == true {
+            FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
+                if user != nil {
+                    self.performSegue(withIdentifier: "loginUser", sender: nil)
+                    self.mail.text! = ""
+                    self.password.text! = ""
+                }
+            }
+        }
+    }
+})
+```
+
+Ik kon alleen niet begrijpen waarom dit zou werken. Eerst dacht ik dat het halen van de data uit Firebase te lang duurde, waardoor de segue alvast werd uitgevoerd en dan voor een tweede keer als de juiste data was gevonden in Firebase. Dit kon ik echter niet geloven, omdat dit de logica zou tegenspreken. Opeens realiseerde ik mij echter waar het probleem waarschijnlijk zat: ik checkte niet of de **huidige gebruiker** al was geaccepteerd, maar deed dit simpelweg voor iedere gebruiker in de database. Hierdoor kon het voorkomen dat voor meerdere geaccepteerde gebruikers een segue werd uitgevoerd. De nieuwe code die nu wel lijkt te werk ziet er daarom als volgt uit: 
+
+```Swift
+FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
+    if user != nil {
+        self.ref.observe(.value, with: { snapshot in
+            for item in snapshot.children {
+                let userData = User(snapshot: item as! FIRDataSnapshot)
+                if userData.uid == user?.uid {
+                    if userData.accepted == true {
+                        self.performSegue(withIdentifier: "loginUser", sender: nil)
+                        self.mail.text! = ""
+                        self.password.text! = ""
+                    }
+                }
+            }
+        })
+    }
+}
+```
+Het zijn nu misschien ietwat veel for- en if-statements, maar deze oplossing lijkt in ieder geval te werken!
