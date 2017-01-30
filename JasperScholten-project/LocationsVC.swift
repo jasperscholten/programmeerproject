@@ -102,7 +102,6 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
                                                     
                                                     self.locationsFirebase["\(self.organisationName)\(locName!)"] = locName
                                                     self.locationsRef.child(self.organisationID).setValue(self.locationsFirebase)
-                                                    //self.locationsRef.child(self.organisationID).setValue(["\(self.organisationName)\(locName!)": locName])
                                                 }
         }
         

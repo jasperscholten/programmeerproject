@@ -306,7 +306,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUK-bi-Dbm">
                                         <rect key="frame" x="8" y="8" width="359" height="159"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Kies of maak een foto"/>
+                                        <state key="normal" title="Kies een foto"/>
                                         <connections>
                                             <action selector="pickImage:" destination="uGX-JQ-3YY" eventType="touchUpInside" id="FwJ-DW-VsY"/>
                                         </connections>
@@ -1459,6 +1459,9 @@
                                 <state key="normal" title="Verwijderen">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="deleteEmployee:" destination="Iwb-3x-CfM" eventType="touchUpInside" id="AFw-hV-GgV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

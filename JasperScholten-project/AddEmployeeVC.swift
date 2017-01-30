@@ -107,7 +107,65 @@ class AddEmployeeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         _ = navigationController?.popViewController(animated: true)
     }
     
-    // MARK: Keyboard actions [2, 3]
+    // http://stackoverflow.com/questions/38410593/how-to-verify-users-current-password-when-changing-password-on-firebase-3
+    @IBAction func deleteEmployee(_ sender: Any) {
+        askPassword()
+    }
+    
+    
+    func askPassword() {
+        let alert = UIAlertController(title: "",
+                                      message: "Voer je wachtwoord opnieuw in om deze gebruiker te kunnen verwijderen.",
+                                      preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.isSecureTextEntry = true
+            textField.placeholder = "Wachtwoord"
+        }
+        
+        let newQuestionAction = UIAlertAction(title: "OK",
+                                              style: .default) { action in
+                                                let passwordInput = alert.textFields?[0].text
+                                                self.checkPassword(currentPassword: passwordInput!)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Annuleren",
+                                         style: .default)
+        
+        alert.addAction(newQuestionAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    func checkPassword(currentPassword: String) {
+        
+        let adminUser = FIRAuth.auth()?.currentUser
+        let credential = FIREmailPasswordAuthProvider.credential(withEmail: (adminUser?.email)!, password: currentPassword)
+        
+        adminUser?.reauthenticate(with: credential, completion: { (error) in
+            if error != nil{
+                self.addAlert(titleInput: "Fout wachtwoord", messageInput: "Voer het correcte wachtwoord in om deze gebruiker te kunnen verwijderen.")
+            } else {
+                self.ref.child(self.user.uid).removeValue { (error, ref) in
+                    if error != nil {
+                        print("error \(error)")
+                    }
+                    _ = self.navigationController?.popViewController(animated: true)
+                }
+            }
+        })
+    }
+    
+    
+    
+    func addAlert(titleInput: String, messageInput: String) {
+        let alert = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - Keyboard actions [2, 3]
     
     func keyboardActions() {
         // Make sure all buttons and inputfields keep visible when the keyboard appears. [2]

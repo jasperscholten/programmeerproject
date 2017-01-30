@@ -13,12 +13,10 @@ struct Organisation {
     
     let organisationID: String
     let organisation: String
-    //let locations: [String]
     
     init(organisationID: String, organisation: String) {
         self.organisationID = organisationID
         self.organisation = organisation
-        //self.locations = locations
     }
     
     init(snapshot: FIRDataSnapshot) {
