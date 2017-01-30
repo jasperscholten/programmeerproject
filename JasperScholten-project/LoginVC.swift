@@ -28,10 +28,12 @@ class LoginVC: UIViewController {
                 self.ref.observe(.value, with: { snapshot in
                     for item in snapshot.children {
                         let userData = User(snapshot: item as! FIRDataSnapshot)
-                        if userData.accepted == true {
-                            self.performSegue(withIdentifier: "loginUser", sender: nil)
-                            self.mail.text! = ""
-                            self.password.text! = ""
+                        if userData.uid == user?.uid {
+                            if userData.accepted == true {
+                                self.performSegue(withIdentifier: "loginUser", sender: nil)
+                                self.mail.text! = ""
+                                self.password.text! = ""
+                            }
                         }
                     }
                 })
@@ -52,21 +54,18 @@ class LoginVC: UIViewController {
         ref.observe(.value, with: { snapshot in
             for item in snapshot.children {
                 let userData = User(snapshot: item as! FIRDataSnapshot)
+                
                 if userData.email == self.mail.text! {
                     if userData.accepted == true {
+                        
                         FIRAuth.auth()!.signIn(withEmail: self.mail.text!,
                                                password: self.password.text!) { (user, error) in
                                                 if error != nil {
-                                                    let alert = UIAlertController(title: "Foute invoer", message: "Het emailadres of wachtwoord dat je hebt ingevoerd is incorrect.", preferredStyle: UIAlertControllerStyle.alert)
-                                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                                                    self.present(alert, animated: true, completion: nil)
+                                                    self.alertSingleOption(titleInput: "Foute invoer", messageInput: "Het emailadres of wachtwoord dat je hebt ingevoerd is incorrect.")
                                                 }
                         }
                     } else {
-                        let alert = UIAlertController(title: "Geen toegang", message: "Het verzoek dat je hebt ingediend bij je werkgever, is nog niet geaccepteerd. Probeer het later nog een keer en/of neem contact op met je leidinggevende.", preferredStyle: UIAlertControllerStyle.alert)
-                        
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
+                        self.alertSingleOption(titleInput: "Geen toegang", messageInput: "Het verzoek dat je hebt ingediend bij je werkgever, is nog niet geaccepteerd. Probeer het later nog een keer en/of neem contact op met je leidinggevende.")
                     }
                 }
             }
