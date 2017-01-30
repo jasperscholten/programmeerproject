@@ -152,7 +152,7 @@ ref.observe(.value, with: { snapshot in
 })
 ```
 
-Ik kon alleen niet begrijpen waarom dit zou werken. Eerst dacht ik dat het halen van de data uit Firebase te lang duurde, waardoor de segue alvast werd uitgevoerd en dan voor een tweede keer als de juiste data was gevonden in Firebase. Dit kon ik echter niet geloven, omdat dit de logica zou tegenspreken. Opeens realiseerde ik mij echter waar het probleem waarschijnlijk zat: ik checkte niet of de **huidige gebruiker** al was geaccepteerd, maar deed dit simpelweg voor iedere gebruiker in de database. Hierdoor werd al bij de eerste geaccepteerde gebruiker een segue uitgevoerd. De nieuwe code die nu wel lijkt te werk ziet er daarom als volgt uit: 
+Ik kon alleen niet begrijpen waarom dit zou werken. Eerst dacht ik dat het halen van de data uit Firebase te lang duurde, waardoor de segue alvast werd uitgevoerd en dan voor een tweede keer als de juiste data was gevonden in Firebase. Dit kon ik echter niet geloven, omdat dit de logica zou tegenspreken. Opeens realiseerde ik mij echter waar het probleem waarschijnlijk zat: ik checkte niet of de **huidige gebruiker** al was geaccepteerd, maar deed dit simpelweg voor iedere gebruiker in de database. Hierdoor kon het voorkomen dat voor meerdere geaccepteerde gebruikers een segue werd uitgevoerd. De nieuwe code die nu wel lijkt te werk ziet er daarom als volgt uit: 
 
 ```Swift
 FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
