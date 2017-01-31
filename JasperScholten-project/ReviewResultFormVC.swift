@@ -27,8 +27,6 @@ class ReviewResultFormVC: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(reviewID)
-        
         FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
             if user != nil {
                 self.ref.observe(.value, with: { snapshot in

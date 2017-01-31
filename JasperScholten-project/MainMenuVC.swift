@@ -102,9 +102,7 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - Action
     
     @IBAction func signOut(_ sender: Any) {
-        print("LOGIN1 \(FIRAuth.auth()?.currentUser?.uid)")
         if (try? FIRAuth.auth()?.signOut()) != nil {
-            print("LOGIN2 \(FIRAuth.auth()?.currentUser?.uid)")
             self.dismiss(animated: true, completion: {})
         } else {
             

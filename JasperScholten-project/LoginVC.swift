@@ -32,16 +32,11 @@ class LoginVC: UIViewController {
                     let userData = User(snapshot: snapshot)
                     
                     if userData.accepted! {
-                        print("INGELOGD")
                         self.performSegue(withIdentifier: "loginUser", sender: nil)
                         self.emptyTextfield()
-                    } else {
-                        print("NIET GEACCEPTEERD")
                     }
                 }
             })
-        } else {
-            print("NIET INGELOGD")
         }
         
         keyboardActions()

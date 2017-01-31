@@ -29,14 +29,22 @@ class NewsItemAdminVC: UIViewController {
     // MARK: - UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.stopAnimating()
         
         if admin == false {
             self.navigationItem.rightBarButtonItem = nil
         }
         
-        activityIndicator.stopAnimating()
         setImage()
-
+        setTextcomponents()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        adjustTitleHeigthToFit()
+    }
+    
+    func setTextcomponents() {
         newsItemText.textAlignment = .justified
         newsItemTitle.text = newsItem.title
         newsItemText.text = "\(newsItem.date) - \(newsItem.text)"
@@ -61,8 +69,6 @@ class NewsItemAdminVC: UIViewController {
             guard let error = FIRStorageErrorCode(rawValue: errorCode) else {
                 return
             }
-            print("ERROR: \(error)")
-            print("ERRORCODE: \(errorCode)")
             newsItemImage.isHidden = true
             // newsItemImage.bounds.height = 0 o.i.d.
             self.activityIndicator.stopAnimating()
@@ -72,6 +78,17 @@ class NewsItemAdminVC: UIViewController {
         downloadTask?.observe(.success) { snapshot in
             self.activityIndicator.stopAnimating()
         }
+    }
+    
+    // http://stackoverflow.com/questions/29431968/how-to-adjust-the-height-of-a-textview-to-his-content-in-swift
+    func adjustTitleHeigthToFit() {
+        let contentSize = self.newsItemTitle.sizeThatFits(self.newsItemTitle.bounds.size)
+        var frame = self.newsItemTitle.frame
+        frame.size.height = contentSize.height
+        self.newsItemTitle.frame = frame
+        
+        let aspectRatioTextViewConstraint = NSLayoutConstraint(item: self.newsItemTitle, attribute: .height, relatedBy: .equal, toItem: self.newsItemTitle, attribute: .width, multiplier: newsItemTitle.bounds.height/newsItemTitle.bounds.width, constant: 1)
+        self.newsItemTitle.addConstraint(aspectRatioTextViewConstraint)
     }
     
     // MARK: - Actions
