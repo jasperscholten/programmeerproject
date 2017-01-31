@@ -175,3 +175,7 @@ FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
 Het zijn nu misschien ietwat veel for- en if-statements, maar deze oplossing lijkt in ieder geval te werken!
 
 **UPDATE:** Lijkt toch niet te werken...
+
+## DAY 16 // 31-01
+
+**INLOG UPDATE:** Met de hulp van Dax, lijk ik het nu toch werkend gekregen te hebben. Op zijn aanraden de addStateDidChangeListener de deur uitgedaan en in plaats daarvan FIRAuth.auth()?.currentUser?.uid gaan gebruiken om te bepalen of de gebruiker al ingelogd is (als er geen current uid is, dan is er ook geen gebruiker ingelogd). Het lijkt nu alsof er geen 'dubbele dingen' gebeuren, dus ik heb goede hoop dat dit de oplossing is!
