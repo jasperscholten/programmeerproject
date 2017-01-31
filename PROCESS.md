@@ -195,6 +195,7 @@ Het zijn nu misschien ietwat veel for- en if-statements, maar deze oplossing lij
 - [ ] State restoration
 - [ ] Gerelateerde data gebruiker verwijderen
 - [ ] Huidige gebruiker niet tonen in lijsten
+- [ ] Spinners toevoegen
 - [ ] Code netjes maken
 - [ ] Comments
 - [ ] Final Report schrijven
