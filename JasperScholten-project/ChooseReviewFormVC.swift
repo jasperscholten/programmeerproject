@@ -27,7 +27,6 @@ class ChooseReviewFormVC: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Retrieve data from Firebase.
         ref.observe(.value, with: { snapshot in
             
             var newForms: [Form] = []
@@ -43,12 +42,8 @@ class ChooseReviewFormVC: UIViewController, UITableViewDataSource, UITableViewDe
         })
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    // MARK: - Tableview
     
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return forms.count
     }

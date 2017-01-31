@@ -42,11 +42,6 @@ class NewsItemAdminVC: UIViewController {
         newsItemText.text = "\(newsItem.date) - \(newsItem.text)"
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     func setImage() {
         // https://firebase.google.com/docs/storage/ios/download-files
         let imageRef = storageRef.child(newsItem.itemID)

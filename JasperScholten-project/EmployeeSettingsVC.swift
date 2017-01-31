@@ -42,13 +42,9 @@ class EmployeeSettingsVC: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
+    // MARK: - Tableview
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return employees.count
     }

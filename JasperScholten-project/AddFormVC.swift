@@ -42,11 +42,6 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             self.newFormTableView.reloadData()
         })
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - TableView
     

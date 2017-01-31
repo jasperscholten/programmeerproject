@@ -56,11 +56,6 @@ class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
             self.reviewTableView.reloadData()
         })
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - Tableview
     

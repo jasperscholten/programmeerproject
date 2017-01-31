@@ -42,8 +42,6 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                         self.admin = true
                     } else {
                         self.menuItems = ["Beoordelingen", "Nieuws"]
-                        
-                        // Verwijderen wanneer er nuttige opties worden toegevoegd
                         self.navigationItem.rightBarButtonItem = nil
                     }
                     self.menuTableView.reloadData()
@@ -51,10 +49,6 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 }
             }
         })
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     // MARK: - TableView Population

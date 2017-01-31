@@ -37,11 +37,6 @@ class AddNewsItemVC: UIViewController, UITextViewDelegate, UIImagePickerControll
         addTitle.textColor = UIColor.lightGray
         addText.textColor = UIColor.lightGray
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // Make remarkBox placeholder
     // http://stackoverflow.com/questions/27652227/text-view-placeholder-swift

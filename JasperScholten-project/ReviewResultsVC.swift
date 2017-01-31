@@ -23,33 +23,25 @@ class ReviewResultsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
-            if user != nil {
-                self.ref.observe(.value, with: { snapshot in
-                    
-                    var newEmployees: [User] = []
-                    
-                    for item in snapshot.children {
-                        let userData = User(snapshot: item as! FIRDataSnapshot)
-                        if userData.accepted == true {
-                            if userData.organisationID == self.organisationID {
-                                newEmployees.append(userData)
-                            }
-                        }
+        self.ref.observe(.value, with: { snapshot in
+            
+            var newEmployees: [User] = []
+            
+            for item in snapshot.children {
+                let userData = User(snapshot: item as! FIRDataSnapshot)
+                if userData.accepted == true {
+                    if userData.organisationID == self.organisationID {
+                        newEmployees.append(userData)
                     }
-                    self.employees = newEmployees
-                    self.resultListTableView.reloadData()
-                })
+                }
             }
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+            self.employees = newEmployees
+            self.resultListTableView.reloadData()
+        })
     }
     
-
+    // MARK: - Tableview
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return employees.count
     }

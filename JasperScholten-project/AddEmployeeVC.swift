@@ -66,10 +66,6 @@ class AddEmployeeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             }
         })
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     // MARK: - Picker views
     
