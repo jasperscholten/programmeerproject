@@ -51,6 +51,10 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         })
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        resizeTable()
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: { _ in self.resizeTable() },

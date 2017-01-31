@@ -20,13 +20,18 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        resizeTable()
+        
+        // Add 64.0 to heightOfVisibleTableViewArea, because else it would initially misplace settingsTableView.
+        resizeTable(add: 64.0)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        resizeTable(add: 0.0)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: { _ in self.resizeTable() },
+        coordinator.animate(alongsideTransition: { _ in self.resizeTable(add: 0.0) },
                             completion: nil)
     }
     
@@ -60,9 +65,8 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     // http://stackoverflow.com/questions/34161016/how-to-make-uitableview-to-fill-all-my-view
-    func resizeTable() {
-        // Nog steeds niet helemaal perfecte hoogte
-        let heightOfVisibleTableViewArea = view.bounds.height - topLayoutGuide.length - bottomLayoutGuide.length - (navigationController?.navigationBar.frame.height)!
+    func resizeTable(add: CGFloat) {
+        let heightOfVisibleTableViewArea = view.bounds.height - topLayoutGuide.length - bottomLayoutGuide.length - add
         let numberOfRows = settingsTableView.numberOfRows(inSection: 0)
         
         settingsTableView.rowHeight = heightOfVisibleTableViewArea / CGFloat(numberOfRows)
