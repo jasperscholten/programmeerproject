@@ -186,18 +186,24 @@ Het zijn nu misschien ietwat veel for- en if-statements, maar deze oplossing lij
 
 **Dit is de TODO lijst die ik nu nog heb staan:**
 
-- [ ] Statische menu’s vastzetten in portrait
-- [x] Menu goede constraints geven: ook bij draaien scherm vullen
-- [x] Menu’s goede hoogte meegeven
-- [ ] Switch goed in cel plaatsen
-- [ ] Nieuwsfoto niet tonen wanneer niet bestaat
-- [ ] Nieuwsfoto niet in geheugen zetten
-- [ ] State restoration
-- [ ] Gerelateerde data gebruiker verwijderen
-- [ ] Huidige gebruiker niet tonen in lijsten
-- [ ] Spinners toevoegen
-- [ ] Code netjes maken
-- [ ] Comments
+**'Brede' klussen**
 - [ ] Final Report schrijven
 - [ ] PROCESS updaten —> Overal een oplossing voor gevonden?
 - [ ] README updaten
+- [ ] State restoration
+- [ ] Code netjes maken
+- [ ] Comments
+
+**Specifiek programmeren**
+- [ ] Huidige gebruiker niet tonen in lijsten
+- [ ] Nieuwsfoto niet tonen wanneer niet bestaat
+- [ ] Statische menu’s vastzetten in portrait --> Alleen nog AddEmployee
+- [ ] Spinners toevoegen
+- [ ] Switch goed in cel plaatsen
+- [ ] Constraints van addText in AddNewsItemVC gaat bij draaien nog fout.
+- [ ] Constraints van remarkBox in NewReviewVC gaat bij draaien nog fout.
+- [ ] Gerelateerde data gebruiker verwijderen
+- [ ] Nieuwsfoto niet in geheugen zetten
+- [x] Menu goede constraints geven: ook bij draaien scherm vullen
+- [x] Menu’s goede hoogte meegeven
+
