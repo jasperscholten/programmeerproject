@@ -183,3 +183,22 @@ Het zijn nu misschien ietwat veel for- en if-statements, maar deze oplossing lij
 - Keyboardfunctions in een extension gezet, waardoor een aantal viewcontrollers (loginVC, registerVC, registerEmployeeVC, addEmployeeVC) nu substantieel 'schoner' zijn geworden.
 - Menu's worden op iPhone 6 nu allemaal goed weergegeven. Enige probleem is nu dat er bij settingsVC een waarde gehardcode staat, omdat deze anders verschuift tussen viewDidLoad en viewDidAppear.
 - Eén van de menu's wil nog niet in portrait mode blijven staan.
+
+**Dit is de TODO lijst die ik nu nog heb staan:**
+
+- [ ] Statische menu’s vastzetten in portrait
+- [x] Menu goede constraints geven: ook bij draaien scherm vullen
+- [x] Menu’s goede hoogte meegeven
+- [ ] Switch goed in cel plaatsen
+- [ ] Nieuwsfoto niet tonen wanneer niet bestaat
+- [ ] Nieuwsfoto niet in geheugen zetten
+- [ ] State restoration
+- [ ] Gerelateerde data gebruiker verwijderen
+- [ ] Huidige gebruiker niet tonen in lijsten
+
+- [ ] Code netjes maken
+- [ ] Comments
+
+- [ ] Final Report schrijven
+- [ ] PROCESS updaten —> Overal een oplossing voor gevonden?
+- [ ] README updaten
