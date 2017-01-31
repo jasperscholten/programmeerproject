@@ -20,6 +20,7 @@ class AddNewsItemVC: UIViewController, UITextViewDelegate, UIImagePickerControll
     var imageReference = URL(fileURLWithPath: "")
     var organisation = String()
     var location = String()
+    var originChange = CGFloat()
     
     // MARK: - Outlets
     @IBOutlet weak var addImage: UIImageView!
@@ -36,6 +37,8 @@ class AddNewsItemVC: UIViewController, UITextViewDelegate, UIImagePickerControll
         
         addTitle.textColor = UIColor.lightGray
         addText.textColor = UIColor.lightGray
+        
+        keyboardActions()
     }
     
     // Make remarkBox placeholder
@@ -153,13 +156,31 @@ class AddNewsItemVC: UIViewController, UITextViewDelegate, UIImagePickerControll
         self.present(alert, animated: true, completion: nil)
     }
     
-    // MARK: - Keyboard actions [2, 3]
+    // MARK: Keyboard actions [2, 3]
     
     func keyboardActions() {
+        // Make sure all buttons and inputfields keep visible when the keyboard appears. [2]
+        NotificationCenter.default.addObserver(self, selector: #selector(AddNewsItemVC.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AddNewsItemVC.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         // Enable user to dismiss keyboard by tapping outside of it. [3]
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddEmployeeVC.dismissKeyboard))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddNewsItemVC.dismissKeyboard))
         view.addGestureRecognizer(tap)
+    }
+    
+    override func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if view.frame.origin.y == 0{
+                originChange = (keyboardSize.height)/1.5
+                self.view.frame.origin.y -= originChange
+            }
+        }
+    }
+    
+    override func keyboardWillHide(notification: NSNotification) {
+        if view.frame.origin.y != 0 {
+            self.view.frame.origin.y += originChange
+        }
     }
     
 }
