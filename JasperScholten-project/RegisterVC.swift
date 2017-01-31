@@ -11,13 +11,13 @@ import Firebase
 
 class RegisterVC: UIViewController {
     
-    // MARK: Constants and variables
+    // MARK: - Constants and variables
     let ref = FIRDatabase.database().reference(withPath: "Users")
     let organisationRef = FIRDatabase.database().reference(withPath: "Organisations")
     let locationsRef = FIRDatabase.database().reference(withPath: "Locations")
     var organisations = [String]()
     
-    // MARK: Outlets
+    // MARK: - Outlets
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var mail: UITextField!
     @IBOutlet weak var organisation: UITextField!
@@ -26,8 +26,7 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var passwordRepeat: UITextField!
     
-    // MARK: UIViewController Lifecycle
-
+    // MARK: - UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,13 +43,8 @@ class RegisterVC: UIViewController {
         })
 
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
     
-    // MARK: - Action
+    // MARK: - Actions
     
     @IBAction func registerUser(_ sender: Any) {
         if password.text! != passwordRepeat.text! {
@@ -101,7 +95,6 @@ class RegisterVC: UIViewController {
                 
                 self.locationsRef.child(orgID).setValue(["\(orgName)\(locName)": locName])
                 
-                // Automatically login after registering.
                 FIRAuth.auth()!.signIn(withEmail: self.mail.text!,
                                        password: self.password.text!)
                 self.dismiss(animated: true, completion: {})

@@ -18,32 +18,33 @@ class LoginVC: UIViewController {
     @IBOutlet weak var mail: UITextField!
     @IBOutlet weak var password: UITextField!
     
+    // MARK: - UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        keyboardActions()
-        
-        FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
-            if user != nil {
-                self.ref.observe(.value, with: { snapshot in
-                    for item in snapshot.children {
-                        let userData = User(snapshot: item as! FIRDataSnapshot)
-                        if userData.uid == user?.uid {
-                            if userData.accepted == true {
-                                self.performSegue(withIdentifier: "loginUser", sender: nil)
-                                self.mail.text! = ""
-                                self.password.text! = ""
-                            }
-                        }
+        // Met de hulp van Dax
+        if let uid = FIRAuth.auth()?.currentUser?.uid {
+            
+            ref.child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if snapshot.hasChildren() {
+                    
+                    let userData = User(snapshot: snapshot)
+                    
+                    if userData.accepted! {
+                        print("INGELOGD")
+                        self.performSegue(withIdentifier: "loginUser", sender: nil)
+                        self.emptyTextfield()
+                    } else {
+                        print("NIET GEACCEPTEERD")
                     }
-                })
-            }
+                }
+            })
+        } else {
+            print("NIET INGELOGD")
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        keyboardActions()
     }
     
     // MARK: - Actions
@@ -62,10 +63,15 @@ class LoginVC: UIViewController {
                                                password: self.password.text!) { (user, error) in
                                                 if error != nil {
                                                     self.alertSingleOption(titleInput: "Foute invoer", messageInput: "Het emailadres of wachtwoord dat je hebt ingevoerd is incorrect.")
+                                                    self.emptyTextfield()
+                                                } else {
+                                                    self.performSegue(withIdentifier: "loginUser", sender: nil)
+                                                    self.emptyTextfield()
                                                 }
                         }
                     } else {
                         self.alertSingleOption(titleInput: "Geen toegang", messageInput: "Het verzoek dat je hebt ingediend bij je werkgever, is nog niet geaccepteerd. Probeer het later nog een keer en/of neem contact op met je leidinggevende.")
+                        self.emptyTextfield()
                     }
                 }
             }
@@ -98,7 +104,12 @@ class LoginVC: UIViewController {
         
     }
     
-    // MARK: Keyboard actions [2, 3]
+    func emptyTextfield() {
+        self.mail.text! = ""
+        self.password.text! = ""
+    }
+    
+    // MARK: - Keyboard actions [2, 3]
     
     func keyboardActions() {
         // Make sure all buttons and inputfields keep visible when the keyboard appears. [2]
@@ -132,7 +143,7 @@ class LoginVC: UIViewController {
     
 }
 
-// MARK: References
+// MARK: - References
 
 /*
  2. http://stackoverflow.com/questions/26070242/move-view-with-keyboard-using-swift

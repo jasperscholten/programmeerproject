@@ -52,7 +52,6 @@ class RegisterEmployeeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         locationsRef.observe(.value, with: { snapshot in
             
             let snapshotValue = snapshot.value as! [String: [String: String]]
-
             var newLocations: [String: [String]] = [:]
             
             for (key, value) in snapshotValue {
@@ -64,14 +63,8 @@ class RegisterEmployeeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             }
             
             self.location = newLocations
-            print(self.location)
             self.locationPicker.reloadAllComponents()
         })
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Picker views

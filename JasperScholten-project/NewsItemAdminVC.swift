@@ -13,18 +13,20 @@ import FirebaseStorageUI
 
 class NewsItemAdminVC: UIViewController {
 
+    // MARK: - Constants and variables
+    var image = UIImage()
+    var admin = Bool()
+    let storageRef = FIRStorage.storage().reference(forURL: "gs://beoordeling-4d8e2.appspot.com")
+    let newsRef = FIRDatabase.database().reference(withPath: "News")
+    var newsItem = News(itemID: "", organisation: "", location: "", title: "Geen artikel", date: "", text: "Er is iets misgegaan met het laden van een nieuwsartikel")
+    
+    // MARK: - Outlets
     @IBOutlet weak var newsItemImage: UIImageView!
     @IBOutlet weak var newsItemTitle: UITextView!
     @IBOutlet weak var newsItemText: UITextView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var image = UIImage()
-    var admin = Bool()
-    
-    let storageRef = FIRStorage.storage().reference(forURL: "gs://beoordeling-4d8e2.appspot.com")
-    let newsRef = FIRDatabase.database().reference(withPath: "News")
-    var newsItem = News(itemID: "", organisation: "", location: "", title: "Geen artikel", date: "", text: "Er is iets misgegaan met het laden van een nieuwsartikel")
-    
+    // MARK: - UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,12 +50,28 @@ class NewsItemAdminVC: UIViewController {
     func setImage() {
         // https://firebase.google.com/docs/storage/ios/download-files
         let imageRef = storageRef.child(newsItem.itemID)
+        print("REF: \(imageRef)")
         let newsItemImage: UIImageView = self.newsItemImage
         let placeholderImage = UIImage(named: "placeholder.jpg")
         let downloadTask = newsItemImage.sd_setImage(with: imageRef, placeholderImage: placeholderImage)
         
         downloadTask?.observe(.resume) { snapshot in
             self.activityIndicator.startAnimating()
+        }
+        
+        downloadTask?.observe(.failure) { snapshot in
+            guard let errorCode = (snapshot.error as? NSError)?.code else {
+                return
+            }
+            guard let error = FIRStorageErrorCode(rawValue: errorCode) else {
+                return
+            }
+            print("ERROR: \(error)")
+            print("ERRORCODE: \(errorCode)")
+            newsItemImage.isHidden = true
+            // newsItemImage.bounds.height = 0 o.i.d.
+            self.activityIndicator.stopAnimating()
+            
         }
         
         downloadTask?.observe(.success) { snapshot in
