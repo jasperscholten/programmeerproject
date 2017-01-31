@@ -24,6 +24,12 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         resizeTable()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { _ in self.resizeTable() },
+                            completion: nil)
+    }
+    
     // MARK: - Tableview
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

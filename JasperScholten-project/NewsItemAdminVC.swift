@@ -69,7 +69,7 @@ class NewsItemAdminVC: UIViewController {
             guard let error = FIRStorageErrorCode(rawValue: errorCode) else {
                 return
             }
-            newsItemImage.isHidden = true
+            //newsItemImage.removeFromSuperview()
             self.activityIndicator.stopAnimating()
             
         }
