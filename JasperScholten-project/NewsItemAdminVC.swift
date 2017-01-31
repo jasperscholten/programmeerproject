@@ -70,7 +70,6 @@ class NewsItemAdminVC: UIViewController {
                 return
             }
             newsItemImage.isHidden = true
-            // newsItemImage.bounds.height = 0 o.i.d.
             self.activityIndicator.stopAnimating()
             
         }

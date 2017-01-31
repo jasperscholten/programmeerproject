@@ -41,6 +41,10 @@ class ReviewResultFormVC: UIViewController, UITableViewDataSource, UITableViewDe
                 })
             }
         }
+        
+        // https://www.raywenderlich.com/129059/self-sizing-table-view-cells
+        reviewFormTableView.rowHeight = UITableViewAutomaticDimension
+        reviewFormTableView.estimatedRowHeight = 140
     }
     
     // MARK: - Tableview

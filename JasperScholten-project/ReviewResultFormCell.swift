@@ -10,7 +10,7 @@ import UIKit
 
 class ReviewResultFormCell: UITableViewCell {
 
-    @IBOutlet weak var questionField: UITextView!
+    @IBOutlet weak var questionField: UILabel!
     @IBOutlet weak var answerSwitch: UISwitch!
     
     override func awakeFromNib() {

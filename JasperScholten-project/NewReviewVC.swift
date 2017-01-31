@@ -55,6 +55,10 @@ class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
             self.questions = newQuestions
             self.reviewTableView.reloadData()
         })
+        
+        // https://www.raywenderlich.com/129059/self-sizing-table-view-cells
+        reviewTableView.rowHeight = UITableViewAutomaticDimension
+        reviewTableView.estimatedRowHeight = 140
     }
     
     // MARK: - Tableview
