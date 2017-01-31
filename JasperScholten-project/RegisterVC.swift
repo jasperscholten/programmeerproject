@@ -133,26 +133,6 @@ class RegisterVC: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if view.frame.origin.y == 0{
-                self.view.frame.origin.y -= (keyboardSize.height)/3
-            }
-        }
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if view.frame.origin.y != 0 {
-                self.view.frame.origin.y += (keyboardSize.height)/3
-            }
-        }
-    }
-    
-    func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
 }
 
 // MARK: References

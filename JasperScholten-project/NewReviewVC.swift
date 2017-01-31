@@ -178,7 +178,7 @@ class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
     
     // Scroll to text view - http://stackoverflow.com/questions/25649926/trying-to-animate-a-constraint-in-swift
-    func keyboardWillShow(notification: NSNotification) {
+    override func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.bottomConstraint.constant == 0{
                 self.bottomConstraint.constant += keyboardSize.height
@@ -190,7 +190,7 @@ class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         }
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    override func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.bottomConstraint.constant == keyboardSize.height {
                 self.bottomConstraint.constant -= keyboardSize.height
@@ -199,10 +199,6 @@ class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
                 }
             }
         }
-    }
-    
-    func dismissKeyboard() {
-        view.endEditing(true)
     }
     
     // http://stackoverflow.com/questions/26244293/scrolltorowatindexpath-with-uitableview-does-not-work

@@ -153,4 +153,13 @@ class AddNewsItemVC: UIViewController, UITextViewDelegate, UIImagePickerControll
         self.present(alert, animated: true, completion: nil)
     }
     
+    // MARK: - Keyboard actions [2, 3]
+    
+    func keyboardActions() {
+        
+        // Enable user to dismiss keyboard by tapping outside of it. [3]
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddEmployeeVC.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
 }
