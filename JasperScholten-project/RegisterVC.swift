@@ -44,6 +44,18 @@ class RegisterVC: UIViewController {
 
     }
     
+    // MARK: - Set Portrait Mode
+    // http://stackoverflow.com/questions/25651969/setting-device-orientation-in-swift-ios
+    // http://stackoverflow.com/questions/38721302/shouldautorotate-function-in-xcode-8-beta-4
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    
     // MARK: - Actions
     
     @IBAction func registerUser(_ sender: Any) {
