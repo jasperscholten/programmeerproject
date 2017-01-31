@@ -21,6 +21,7 @@ class AddNewsItemVC: UIViewController, UITextViewDelegate, UIImagePickerControll
     var organisation = String()
     var location = String()
     var originChange = CGFloat()
+    var textInset = CGFloat()
     
     // MARK: - Outlets
     @IBOutlet weak var addImage: UIImageView!
@@ -168,11 +169,15 @@ class AddNewsItemVC: UIViewController, UITextViewDelegate, UIImagePickerControll
         view.addGestureRecognizer(tap)
     }
     
+    // http://stackoverflow.com/questions/36630652/swift-change-autolayout-constraints-when-keyboard-is-shown
     override func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if view.frame.origin.y == 0{
+            if view.frame.origin.y == 0 {
                 originChange = (keyboardSize.height)/1.5
+                textInset = keyboardSize.height - originChange
                 self.view.frame.origin.y -= originChange
+                self.addText.contentInset.bottom = textInset
+                self.addText.scrollIndicatorInsets.bottom = textInset
             }
         }
     }
@@ -180,6 +185,8 @@ class AddNewsItemVC: UIViewController, UITextViewDelegate, UIImagePickerControll
     override func keyboardWillHide(notification: NSNotification) {
         if view.frame.origin.y != 0 {
             self.view.frame.origin.y += originChange
+            self.addText.contentInset.bottom = 0.0
+            self.addText.scrollIndicatorInsets.bottom = 0.0
         }
     }
     
