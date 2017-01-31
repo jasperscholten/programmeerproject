@@ -173,3 +173,5 @@ FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
 }
 ```
 Het zijn nu misschien ietwat veel for- en if-statements, maar deze oplossing lijkt in ieder geval te werken!
+
+**UPDATE:** Lijkt toch niet te werken...
