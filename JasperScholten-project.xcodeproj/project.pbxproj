@@ -34,7 +34,6 @@
 		A45ADE541E30D86600005C6E /* FormsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45ADE531E30D86600005C6E /* FormsListVC.swift */; };
 		A45ADE561E30D8A800005C6E /* FormListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45ADE551E30D8A800005C6E /* FormListCell.swift */; };
 		A467BF591E28D5F600F4AF68 /* AddEmployeeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467BF581E28D5F600F4AF68 /* AddEmployeeVC.swift */; };
-		A467BF5F1E28F78B00F4AF68 /* PasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467BF5E1E28F78B00F4AF68 /* PasswordVC.swift */; };
 		A47053A91E30E15B0086E916 /* AddFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47053A81E30E15B0086E916 /* AddFormVC.swift */; };
 		A47053AB1E30E1770086E916 /* FormQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47053AA1E30E1770086E916 /* FormQuestionCell.swift */; };
 		A47053AD1E315F060086E916 /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47053AC1E315F060086E916 /* Questions.swift */; };
@@ -91,7 +90,6 @@
 		A45ADE531E30D86600005C6E /* FormsListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormsListVC.swift; sourceTree = "<group>"; };
 		A45ADE551E30D8A800005C6E /* FormListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormListCell.swift; sourceTree = "<group>"; };
 		A467BF581E28D5F600F4AF68 /* AddEmployeeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEmployeeVC.swift; sourceTree = "<group>"; };
-		A467BF5E1E28F78B00F4AF68 /* PasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordVC.swift; sourceTree = "<group>"; };
 		A47053A81E30E15B0086E916 /* AddFormVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFormVC.swift; sourceTree = "<group>"; };
 		A47053AA1E30E1770086E916 /* FormQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormQuestionCell.swift; sourceTree = "<group>"; };
 		A47053AC1E315F060086E916 /* Questions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
@@ -127,6 +125,122 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A419BD1E1E40B20D00F7F7CC /* Login- and Register Process */ = {
+			isa = PBXGroup;
+			children = (
+				A44A84D41E24D7B90059F971 /* LoginVC.swift */,
+				A4C2A91E1E281F3C002A6ACD /* RegisterVC.swift */,
+				A45ADE4D1E2F8E0C00005C6E /* RegisterEmployeeVC.swift */,
+				A45ADE4F1E2FA3AA00005C6E /* RequestsVC.swift */,
+				A467BF581E28D5F600F4AF68 /* AddEmployeeVC.swift */,
+			);
+			name = "Login- and Register Process";
+			sourceTree = "<group>";
+		};
+		A419BD1F1E40B29800F7F7CC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A416A1E51E36A71D00036002 /* SettingsVC.swift */,
+				A416A1DF1E36A26E00036002 /* LocationsVC.swift */,
+				A4A304F91E38DF4F000DDE89 /* EmployeeSettingsVC.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		A419BD211E40B2D600F7F7CC /* Review Process */ = {
+			isa = PBXGroup;
+			children = (
+				A48593D51E2669AB007B86AB /* ReviewEmployeeVC.swift */,
+				A47053AF1E320E6E0086E916 /* ChooseReviewFormVC.swift */,
+				A48593DA1E267328007B86AB /* NewReviewVC.swift */,
+			);
+			name = "Review Process";
+			sourceTree = "<group>";
+		};
+		A419BD221E40B30F00F7F7CC /* Show Results */ = {
+			isa = PBXGroup;
+			children = (
+				A48593DE1E277CA7007B86AB /* ReviewResultsVC.swift */,
+				A48593E21E2787D9007B86AB /* ReviewResultsEmployeeVC.swift */,
+				A40C6C461E2796B800CCDA3F /* ReviewResultFormVC.swift */,
+			);
+			name = "Show Results";
+			sourceTree = "<group>";
+		};
+		A419BD241E40B33B00F7F7CC /* Add and Change Forms */ = {
+			isa = PBXGroup;
+			children = (
+				A45ADE531E30D86600005C6E /* FormsListVC.swift */,
+				A47053A81E30E15B0086E916 /* AddFormVC.swift */,
+			);
+			name = "Add and Change Forms";
+			sourceTree = "<group>";
+		};
+		A419BD251E40B38A00F7F7CC /* News */ = {
+			isa = PBXGroup;
+			children = (
+				A40C6C4C1E27B15E00CCDA3F /* NewsAdminVC.swift */,
+				A40C6C4E1E27BB5500CCDA3F /* NewsItemAdminVC.swift */,
+				A4C2A91C1E281577002A6ACD /* AddNewsItemVC.swift */,
+			);
+			name = News;
+			sourceTree = "<group>";
+		};
+		A419BD261E40B4F300F7F7CC /* Login- and Register Process */ = {
+			isa = PBXGroup;
+			children = (
+				A45ADE511E2FA4C700005C6E /* RequestCell.swift */,
+			);
+			name = "Login- and Register Process";
+			sourceTree = "<group>";
+		};
+		A419BD271E40B4FF00F7F7CC /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				A4A304FD1E38EEA1000DDE89 /* SettingsCell.swift */,
+				A416A1E11E36A28300036002 /* LocationsCell.swift */,
+				A4A304FB1E38DFE7000DDE89 /* EmployeeSettingsCell.swift */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		A419BD281E40B50A00F7F7CC /* News */ = {
+			isa = PBXGroup;
+			children = (
+				A40C6C4A1E27B12C00CCDA3F /* NewsItemAdminCell.swift */,
+			);
+			name = News;
+			sourceTree = "<group>";
+		};
+		A419BD291E40B50F00F7F7CC /* Add and Change Forms */ = {
+			isa = PBXGroup;
+			children = (
+				A45ADE551E30D8A800005C6E /* FormListCell.swift */,
+				A47053AA1E30E1770086E916 /* FormQuestionCell.swift */,
+			);
+			name = "Add and Change Forms";
+			sourceTree = "<group>";
+		};
+		A419BD2A1E40B51D00F7F7CC /* Show Results */ = {
+			isa = PBXGroup;
+			children = (
+				A48593E01E277E53007B86AB /* ReviewResultsCell.swift */,
+				A48593E81E278AE1007B86AB /* ReviewResultsEmployeeCell.swift */,
+				A40C6C441E2795EE00CCDA3F /* ReviewResultFormCell.swift */,
+			);
+			name = "Show Results";
+			sourceTree = "<group>";
+		};
+		A419BD2B1E40B52700F7F7CC /* Review Process */ = {
+			isa = PBXGroup;
+			children = (
+				A48593D71E266C20007B86AB /* EmployeeCell.swift */,
+				A47053B11E320E830086E916 /* ReviewFormsCell.swift */,
+				A48593DC1E26771B007B86AB /* NewReviewCell.swift */,
+			);
+			name = "Review Process";
+			sourceTree = "<group>";
+		};
 		A44A84C61E24D7B80059F971 = {
 			isa = PBXGroup;
 			children = (
@@ -196,27 +310,13 @@
 		A48593D11E26596A007B86AB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A44A84D41E24D7B90059F971 /* LoginVC.swift */,
-				A4C2A91E1E281F3C002A6ACD /* RegisterVC.swift */,
-				A45ADE4D1E2F8E0C00005C6E /* RegisterEmployeeVC.swift */,
 				A48593D31E265A86007B86AB /* MainMenuVC.swift */,
-				A45ADE4F1E2FA3AA00005C6E /* RequestsVC.swift */,
-				A467BF581E28D5F600F4AF68 /* AddEmployeeVC.swift */,
-				A48593D51E2669AB007B86AB /* ReviewEmployeeVC.swift */,
-				A47053AF1E320E6E0086E916 /* ChooseReviewFormVC.swift */,
-				A48593DA1E267328007B86AB /* NewReviewVC.swift */,
-				A48593DE1E277CA7007B86AB /* ReviewResultsVC.swift */,
-				A48593E21E2787D9007B86AB /* ReviewResultsEmployeeVC.swift */,
-				A40C6C461E2796B800CCDA3F /* ReviewResultFormVC.swift */,
-				A45ADE531E30D86600005C6E /* FormsListVC.swift */,
-				A47053A81E30E15B0086E916 /* AddFormVC.swift */,
-				A40C6C4C1E27B15E00CCDA3F /* NewsAdminVC.swift */,
-				A40C6C4E1E27BB5500CCDA3F /* NewsItemAdminVC.swift */,
-				A4C2A91C1E281577002A6ACD /* AddNewsItemVC.swift */,
-				A416A1E51E36A71D00036002 /* SettingsVC.swift */,
-				A416A1DF1E36A26E00036002 /* LocationsVC.swift */,
-				A4A304F91E38DF4F000DDE89 /* EmployeeSettingsVC.swift */,
-				A467BF5E1E28F78B00F4AF68 /* PasswordVC.swift */,
+				A419BD1E1E40B20D00F7F7CC /* Login- and Register Process */,
+				A419BD1F1E40B29800F7F7CC /* Settings */,
+				A419BD211E40B2D600F7F7CC /* Review Process */,
+				A419BD221E40B30F00F7F7CC /* Show Results */,
+				A419BD241E40B33B00F7F7CC /* Add and Change Forms */,
+				A419BD251E40B38A00F7F7CC /* News */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -225,19 +325,12 @@
 			isa = PBXGroup;
 			children = (
 				A48593CF1E265939007B86AB /* MainMenuCell.swift */,
-				A48593D71E266C20007B86AB /* EmployeeCell.swift */,
-				A48593DC1E26771B007B86AB /* NewReviewCell.swift */,
-				A48593E01E277E53007B86AB /* ReviewResultsCell.swift */,
-				A48593E81E278AE1007B86AB /* ReviewResultsEmployeeCell.swift */,
-				A40C6C441E2795EE00CCDA3F /* ReviewResultFormCell.swift */,
-				A40C6C4A1E27B12C00CCDA3F /* NewsItemAdminCell.swift */,
-				A45ADE511E2FA4C700005C6E /* RequestCell.swift */,
-				A45ADE551E30D8A800005C6E /* FormListCell.swift */,
-				A47053AA1E30E1770086E916 /* FormQuestionCell.swift */,
-				A47053B11E320E830086E916 /* ReviewFormsCell.swift */,
-				A416A1E11E36A28300036002 /* LocationsCell.swift */,
-				A4A304FB1E38DFE7000DDE89 /* EmployeeSettingsCell.swift */,
-				A4A304FD1E38EEA1000DDE89 /* SettingsCell.swift */,
+				A419BD261E40B4F300F7F7CC /* Login- and Register Process */,
+				A419BD271E40B4FF00F7F7CC /* Setting */,
+				A419BD2B1E40B52700F7F7CC /* Review Process */,
+				A419BD2A1E40B51D00F7F7CC /* Show Results */,
+				A419BD291E40B50F00F7F7CC /* Add and Change Forms */,
+				A419BD281E40B50A00F7F7CC /* News */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -399,7 +492,6 @@
 				A44A84D51E24D7B90059F971 /* LoginVC.swift in Sources */,
 				A4060A301E40A2D4001648B2 /* KeyboardExtension.swift in Sources */,
 				A47053AD1E315F060086E916 /* Questions.swift in Sources */,
-				A467BF5F1E28F78B00F4AF68 /* PasswordVC.swift in Sources */,
 				A48593D01E265939007B86AB /* MainMenuCell.swift in Sources */,
 				A48593DD1E26771B007B86AB /* NewReviewCell.swift in Sources */,
 				A40C6C4B1E27B12C00CCDA3F /* NewsItemAdminCell.swift in Sources */,
