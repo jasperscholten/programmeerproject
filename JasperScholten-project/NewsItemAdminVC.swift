@@ -22,6 +22,7 @@ class NewsItemAdminVC: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var newsItemImage: UIImageView!
+    @IBOutlet weak var newsItemImageHeight: NSLayoutConstraint!
     @IBOutlet weak var newsItemTitle: UITextView!
     @IBOutlet weak var newsItemText: UITextView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -69,7 +70,7 @@ class NewsItemAdminVC: UIViewController {
             guard let error = FIRStorageErrorCode(rawValue: errorCode) else {
                 return
             }
-            //newsItemImage.removeFromSuperview()
+            self.newsItemImageHeight.constant = 0.0
             self.activityIndicator.stopAnimating()
             
         }
