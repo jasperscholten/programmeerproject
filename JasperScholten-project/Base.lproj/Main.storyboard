@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -684,7 +685,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcC-pg-Tu1">
-                                            <rect key="frame" x="8" y="8" width="584" height="28"/>
+                                            <rect key="frame" x="8" y="8" width="359" height="28"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -778,7 +779,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Opmerkingen" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJc-pn-UTo">
-                                            <rect key="frame" x="20" y="20" width="560" height="100"/>
+                                            <rect key="frame" x="20" y="20" width="335" height="100"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="kek-FQ-BZ4"/>
@@ -787,7 +788,7 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0m-UN-8Xt">
-                                            <rect key="frame" x="457" y="128" width="123" height="34"/>
+                                            <rect key="frame" x="232" y="128" width="123" height="34"/>
                                             <state key="normal" title="Exporteer als PDF"/>
                                         </button>
                                     </subviews>
@@ -1011,7 +1012,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QQ-9N-ZGa">
-                                            <rect key="frame" x="8" y="8" width="584" height="28"/>
+                                            <rect key="frame" x="8" y="8" width="359" height="28"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -1030,7 +1031,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" text="Overige opmerkingen" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fyc-uc-nEy">
-                                            <rect key="frame" x="20" y="20" width="560" height="100"/>
+                                            <rect key="frame" x="20" y="20" width="335" height="100"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="HZO-Gm-5gW"/>
@@ -1042,7 +1043,7 @@
                                             </connections>
                                         </textView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Je hebt het einde van de beoordeling bereikt." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9H0-zv-212">
-                                            <rect key="frame" x="20" y="135" width="560" height="20"/>
+                                            <rect key="frame" x="20" y="135" width="335" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="sSx-vg-DuW"/>
                                             </constraints>
@@ -1076,7 +1077,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dfA-cH-I1d">
-                                                    <rect key="frame" x="318" y="20" width="51" height="31"/>
+                                                    <rect key="frame" x="318" y="29" width="51" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="49" id="Jfv-q2-MM6"/>
                                                     </constraints>
@@ -1087,7 +1088,7 @@
                                                 <constraint firstItem="dfA-cH-I1d" firstAttribute="trailing" secondItem="jPO-Jm-7MK" secondAttribute="trailingMargin" id="LHK-O2-LBQ"/>
                                                 <constraint firstItem="dfA-cH-I1d" firstAttribute="leading" secondItem="WXG-JJ-lEz" secondAttribute="trailing" constant="8" id="VbP-Jp-OAa"/>
                                                 <constraint firstItem="WXG-JJ-lEz" firstAttribute="leading" secondItem="jPO-Jm-7MK" secondAttribute="leadingMargin" constant="8" id="Xla-Xu-div"/>
-                                                <constraint firstItem="dfA-cH-I1d" firstAttribute="top" secondItem="jPO-Jm-7MK" secondAttribute="topMargin" constant="12" id="aKC-NB-QHF"/>
+                                                <constraint firstItem="dfA-cH-I1d" firstAttribute="top" secondItem="jPO-Jm-7MK" secondAttribute="centerYWithinMargins" constant="-15" id="aKC-NB-QHF"/>
                                                 <constraint firstItem="WXG-JJ-lEz" firstAttribute="top" secondItem="jPO-Jm-7MK" secondAttribute="topMargin" constant="8" id="kPn-Ec-afN"/>
                                                 <constraint firstItem="dfA-cH-I1d" firstAttribute="leading" secondItem="WXG-JJ-lEz" secondAttribute="trailing" constant="8" id="uoI-wS-KXG"/>
                                             </constraints>
