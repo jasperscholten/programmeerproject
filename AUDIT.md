@@ -1,5 +1,6 @@
+# Huidige Score: [![BCH compliance](https://bettercodehub.com/edge/badge/jasperscholten/programmeerproject)](https://bettercodehub.com)
+
 ## Better Code Hub // 27-01
-[![BCH compliance](https://bettercodehub.com/edge/badge/jasperscholten/programmeerproject)](https://bettercodehub.com)
 
 <img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/BetterCodeHub2701.png" width="500"></br>
 
