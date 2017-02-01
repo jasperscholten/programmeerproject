@@ -222,9 +222,13 @@ Het zijn nu misschien ietwat veel for- en if-statements, maar deze oplossing lij
 **Specifiek programmeren**
 - [ ] Huidige gebruiker niet tonen in lijsten
 - [x] Nieuwsfoto niet tonen wanneer niet bestaat
+
+  - Hoogte van nieuwsfoto wordt nu op 0 gezet, als deze niet aanwezig is. Hierdoor hebben artikelen zonder foto geen grote witruimte meer boven in het artikel.
 - [ ] Statische menu’s vastzetten in portrait --> Alleen nog AddEmployee
 - [ ] Spinners toevoegen
-- [ ] Switch goed in cel plaatsen
+- [x] Switch goed in cel plaatsen
+
+  - Oplossing gevonden waardoor switches in het midden van de cel geplaatst worden! In storyboard een constraint niet ten opzicht van de top gezet, maar de y in het midden van de cel laten plaatsen. Wanneer hierbij de top van de switch -15 (de helft van de hoogte van de switch) ten opzichte van het midden wordt geplaatst, staat deze netjes verticaal gecentreerd.
 - [ ] Gerelateerde data gebruiker verwijderen
 - [ ] Constraints van addText in AddNewsItemVC gaat bij draaien nog fout.
 - [ ] Constraints van remarkBox in NewReviewVC gaat bij draaien nog fout.
