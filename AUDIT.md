@@ -19,3 +19,9 @@ Keep Unit Interfaces Small
 - FormsListVC.tableView(UITableView,UITableViewCellEditingStyle,IndexPath)
 - AddFormVC.tableView(UITableView,UITableViewCellEditingStyle,IndexPath)
 - LocationsVC.tableView(UITableView,UITableViewCellEditingStyle,IndexPath)
+
+## Better Code Hub 31-01
+
+<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/BetterCodeHub3101.png" width="500"></br>
+
+Write code once verbeterd, voornamelijk door een deel van de keyboardfuncties in een extension te plaatsen. Daarnaast heeft het ook geholpen om overbodige code (bv. didReceiveMemoryWarning) te verwijderen, omdat dit ook werd aangemerkt als veel herhalende code.
