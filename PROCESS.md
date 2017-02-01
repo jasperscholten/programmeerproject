@@ -216,8 +216,9 @@ Het zijn nu misschien ietwat veel for- en if-statements, maar deze oplossing lij
 - [ ] PROCESS updaten —> Overal een oplossing voor gevonden?
 - [ ] README updaten
 - [ ] State restoration
-- [ ] Code netjes maken
-- [ ] Comments
+- [x] Code netjes maken
+- [x] Comments
+- [ ] Comments in models
 
 **Specifiek programmeren**
 - [x] Huidige gebruiker niet tonen in lijsten
