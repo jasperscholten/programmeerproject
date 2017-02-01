@@ -5,6 +5,7 @@
 //  Created by Jasper Scholten on 20-01-17.
 //  Copyright © 2017 Jasper Scholten. All rights reserved.
 //
+//  In this view, the user can select a form from a tableView, that he wants to use to review the previously selected employee.
 
 import UIKit
 import Firebase
@@ -12,7 +13,7 @@ import Firebase
 class ChooseReviewFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Constants and variables
-    let ref = FIRDatabase.database().reference(withPath: "Forms")
+    let formsRef = FIRDatabase.database().reference(withPath: "Forms")
     var forms = [Form]()
     var employee = String()
     var employeeID = String()
@@ -24,11 +25,12 @@ class ChooseReviewFormVC: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: - Outlets
     @IBOutlet weak var formListTableView: UITableView!
     
+    // MARK: - UIViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        ref.observe(.value, with: { snapshot in
-            
+        
+        // Retrieve available forms from Firebase.
+        formsRef.observe(.value, with: { snapshot in
             var newForms: [Form] = []
             
             for item in snapshot.children {
@@ -42,7 +44,7 @@ class ChooseReviewFormVC: UIViewController, UITableViewDataSource, UITableViewDe
         })
     }
 
-    // MARK: - Tableview
+    // MARK: - Tableview Population
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return forms.count
@@ -50,9 +52,7 @@ class ChooseReviewFormVC: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = formListTableView.dequeueReusableCell(withIdentifier: "reviewForms", for: indexPath) as! ReviewFormsCell
-        
         cell.form.text = forms[indexPath.row].formName
-        
         return cell
     }
     
@@ -61,6 +61,7 @@ class ChooseReviewFormVC: UIViewController, UITableViewDataSource, UITableViewDe
         formListTableView.deselectRow(at: indexPath, animated: true)
     }
     
+    // Segue data necessary to fill in a new review.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let newReview = segue.destination as? NewReviewVC {
             let indexPath = self.formListTableView.indexPathForSelectedRow
@@ -74,5 +75,4 @@ class ChooseReviewFormVC: UIViewController, UITableViewDataSource, UITableViewDe
             newReview.location = location
         }
     }
-
 }

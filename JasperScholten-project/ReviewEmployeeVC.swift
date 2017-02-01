@@ -5,6 +5,7 @@
 //  Created by Jasper Scholten on 11-01-17.
 //  Copyright © 2017 Jasper Scholten. All rights reserved.
 //
+//  In this View, the user can select an employee from a tableView, in order to review that person.
 
 import UIKit
 import Firebase
@@ -12,30 +13,30 @@ import Firebase
 class ReviewEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Constants and variables
-    let ref = FIRDatabase.database().reference(withPath: "Users")
+    let userRef = FIRDatabase.database().reference(withPath: "Users")
     var employees = [User]()
     var organisation = String()
     var organisationID = String()
     var observatorName = String()
     
+    // MARK: - Outlets
     @IBOutlet weak var employeesTableView: UITableView!
     
+    // MARK: - UIViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.ref.observe(.value, with: { snapshot in
-            
+        
+        // Retrieve all of the current organisation's employees from Firebase, except for the current user.
+        self.userRef.observe(.value, with: { snapshot in
             var newEmployees: [User] = []
             
             for item in snapshot.children {
                 let userData = User(snapshot: item as! FIRDataSnapshot)
-                if userData.accepted == true {
-                    if userData.organisationID == self.organisationID {
-                        if userData.uid == FIRAuth.auth()?.currentUser?.uid {
-                            self.observatorName = userData.name!
-                        } else {
-                            newEmployees.append(userData)
-                        }
+                if userData.accepted! && userData.organisationID == self.organisationID {
+                    if userData.uid == FIRAuth.auth()?.currentUser?.uid {
+                        self.observatorName = userData.name!
+                    } else {
+                        newEmployees.append(userData)
                     }
                 }
             }
@@ -44,7 +45,7 @@ class ReviewEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDele
         })
     }
 
-    // MARK: - Tableview
+    // MARK: - Tableview Population
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return employees.count
@@ -52,9 +53,7 @@ class ReviewEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDele
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = employeesTableView.dequeueReusableCell(withIdentifier: "employeeCell", for: indexPath) as! EmployeeCell
-        
         cell.employeeName.text = employees[indexPath.row].name
-        
         return cell
     }
     
@@ -63,6 +62,7 @@ class ReviewEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDele
         employeesTableView.deselectRow(at: indexPath, animated: true)
     }
     
+    // Segue data necessary to fill in a new review.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let newReview = segue.destination as? ChooseReviewFormVC {
             let indexPath = self.employeesTableView.indexPathForSelectedRow
@@ -74,5 +74,4 @@ class ReviewEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDele
             newReview.location = employees[indexPath!.row].locationID!
         }
     }
-
 }

@@ -10,8 +10,8 @@ import UIKit
 
 class ReviewResultsCell: UITableViewCell {
 
-    @IBOutlet weak var employeeResult: UILabel!
     @IBOutlet weak var employeeName: UILabel!
+    @IBOutlet weak var employeeNr: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

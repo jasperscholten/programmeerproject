@@ -5,6 +5,7 @@
 //  Created by Jasper Scholten on 19-01-17.
 //  Copyright © 2017 Jasper Scholten. All rights reserved.
 //
+//  This ViewController deals with management of an organisation's reviewforms. New forms can be created, but existing forms can also be deleted.
 
 import UIKit
 import Firebase
@@ -12,7 +13,7 @@ import Firebase
 class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Constants and variables
-    let ref = FIRDatabase.database().reference(withPath: "Forms")
+    let formsRef = FIRDatabase.database().reference(withPath: "Forms")
     let questionsRef = FIRDatabase.database().reference(withPath: "Questions")
     var nameInput = String()
     var organisation = String()
@@ -23,12 +24,12 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     // MARK: - Outlets
     @IBOutlet weak var formsListTableView: UITableView!
     
+    // MARK: - UIViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Retrieve data from Firebase.
-        ref.observe(.value, with: { snapshot in
-            
+        // Retrieve available reviewforms from Firebase.
+        formsRef.observe(.value, with: { snapshot in
             var newForms: [Form] = []
             
             for item in snapshot.children {
@@ -42,7 +43,7 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         })
     }
     
-    // MARK: - Tableview
+    // MARK: - Tableview Population
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return forms.count
@@ -50,9 +51,7 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = formsListTableView.dequeueReusableCell(withIdentifier: "formListCell", for: indexPath) as! FormListCell
-        
         cell.formName.text = forms[indexPath.row].formName
-        
         return cell
     }
     
@@ -66,25 +65,24 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let form = forms[indexPath.row].formID
-            
-            //http://stackoverflow.com/questions/39631998/how-to-delete-from-firebase-database
-            ref.child(form).removeValue { (error, ref) in
+            formsRef.child(form).removeValue { (error, ref) in
                 if error != nil {
-                    print("error \(error)")
+                    self.alertSingleOption(titleInput: "Er is iets misgegaan met verwijderen van het formulier",
+                                      messageInput: error as! String)
+                    self.deleteFormQuestions(formID: form)
                 }
             }
-            
-            deleteFormQuestions(formID: form)
-            
         }
     }
     
     // MARK: - Actions
     @IBAction func addNewForm(_ sender: Any) {
-        addNewList()
+        addNewForm()
     }
     
-    func addNewList() {
+    // MARK: - Functions
+    
+    func addNewForm() {
         let alert = UIAlertController(title: "Nieuwe vragenlijst",
                                       message: "Wil je een nieuwe vragenlijst gaan opstellen?",
                                       preferredStyle: .alert)
@@ -97,19 +95,7 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
                                           style: .default) { action in
                                             let text = alert.textFields?[0].text
                                             if text != nil && text!.characters.count>0 {
-                                                self.nameInput = text!
-                                                
-                                                // http://stackoverflow.com/questions/39691818/firebase-swift-how-to-create-a-child-and-add-its-id-to-another-ref-property
-                                                let newRef = self.ref.childByAutoId()
-                                                let newFormID = newRef.key
-                                                
-                                                let form = Form(formName: text!, formID: newFormID, organisationID: self.organisationID)
-                                                newRef.setValue(form.toAnyObject())
-                                                
-                                                self.nameInput = text!
-                                                self.formID = newFormID
-                                                
-                                                self.performSegue(withIdentifier: "newForm", sender: nil)
+                                                self.addFormToFirebase(text: text!)
                                             } else {
                                                 self.formNameError()
                                             }
@@ -123,18 +109,47 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         self.present(alert, animated: true, completion: nil)
     }
     
+    func addFormToFirebase(text: String) {
+        let newRef = self.formsRef.childByAutoId()
+        let newFormID = newRef.key
+        self.nameInput = text
+        self.formID = newFormID
+        let form = Form(formName: text, formID: newFormID, organisationID: self.organisationID)
+        
+        newRef.setValue(form.toAnyObject())
+        self.performSegue(withIdentifier: "newForm", sender: nil)
+    }
+    
     func formNameError() {
         let alert = UIAlertController(title: "Lege naam",
                                       message: "Geef de nieuwe lijst een naam om 'm te kunnen aanmaken.",
                                       preferredStyle: .alert)
         let acceptAction = UIAlertAction(title: "OK",
                                          style: .default) { action in
-                                            self.addNewList()
+                                            self.addNewForm()
         }
         alert.addAction(acceptAction)
         self.present(alert, animated: true, completion: nil)
     }
-
+    
+    func deleteFormQuestions(formID: String) {
+        // Find questions of deleted form, then delete these as well.
+        questionsRef.observe(.value, with: { snapshot in
+            for item in snapshot.children {
+                let question = Questions(snapshot: item as! FIRDataSnapshot)
+                if question.formID == formID {
+                    self.questionsRef.child(question.questionID).removeValue { (error, ref) in
+                        if error != nil {
+                            self.alertSingleOption(titleInput: "Er is iets misgegaan met verwijderen van het formulier",
+                                                   messageInput: error as! String)
+                        }
+                    }
+                }
+            }
+        })
+    }
+    
+    // Segue details of newly created form.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let choice = segue.destination as? AddFormVC {
             choice.form = nameInput
@@ -143,20 +158,4 @@ class FormsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
             choice.formID = formID
         }
     }
-    
-    func deleteFormQuestions(formID: String) {
-        questionsRef.observe(.value, with: { snapshot in
-            for item in snapshot.children {
-                let question = Questions(snapshot: item as! FIRDataSnapshot)
-                if question.formID == formID {
-                    self.questionsRef.child(question.questionID).removeValue { (error, ref) in
-                        if error != nil {
-                            print("error \(error)")
-                        }
-                    }
-                }
-            }
-        })
-    }
-
 }

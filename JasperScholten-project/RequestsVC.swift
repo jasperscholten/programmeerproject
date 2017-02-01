@@ -5,6 +5,7 @@
 //  Created by Jasper Scholten on 18-01-17.
 //  Copyright © 2017 Jasper Scholten. All rights reserved.
 //
+//  After a user signs up to an organisation, they don't immediately get access to the app; the first need to get accepted. This viewController shows all employees of the current user's organisation, who are not yet accepted. Selecting one of them segues to a view where the employee can be accepted.
 
 import UIKit
 import Firebase
@@ -12,34 +13,32 @@ import Firebase
 class RequestsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - Constants and variables
-    let ref = FIRDatabase.database().reference(withPath: "Users")
+    let userRef = FIRDatabase.database().reference(withPath: "Users")
+    let user = FIRAuth.auth()?.currentUser
     var employees = [User]()
-    var organisation = String()
+    var organisationID = String()
     
     // MARK: - Outlets
     @IBOutlet weak var requestsTableView: UITableView!
 
+    // MARK: - UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
-            if user != nil {
-                self.ref.observe(.value, with: { snapshot in
-                    
-                    var newEmployees: [User] = []
-                    
-                    for item in snapshot.children {
-                        let userData = User(snapshot: item as! FIRDataSnapshot)
-                        if userData.accepted == false {
-                            if userData.organisationID == self.organisation {
-                                newEmployees.append(userData)
-                            }
-                        }
+        // Retrieve users from Firebase, who registered to organisation of current admin user, but are not yet accepted
+        if user != nil {
+            self.userRef.observe(.value, with: { snapshot in
+                var newEmployees: [User] = []
+                
+                for item in snapshot.children {
+                    let userData = User(snapshot: item as! FIRDataSnapshot)
+                    if !(userData.accepted!) && userData.organisationID == self.organisationID {
+                        newEmployees.append(userData)
                     }
-                    self.employees = newEmployees
-                    self.requestsTableView.reloadData()
-                })
-            }
+                }
+                self.employees = newEmployees
+                self.requestsTableView.reloadData()
+            })
         }
     }
     
@@ -51,9 +50,7 @@ class RequestsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = requestsTableView.dequeueReusableCell(withIdentifier: "requestCell", for: indexPath) as! RequestCell
-        
         cell.employee.text = employees[indexPath.row].name
-        
         return cell
     }
     
@@ -61,7 +58,7 @@ class RequestsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         performSegue(withIdentifier: "acceptRequest", sender: nil)
         requestsTableView.deselectRow(at: indexPath, animated: true)
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "acceptRequest" {
             let nextVC = segue.destination as! AddEmployeeVC

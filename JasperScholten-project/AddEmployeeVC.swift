@@ -5,6 +5,7 @@
 //  Created by Jasper Scholten on 13-01-17.
 //  Copyright © 2017 Jasper Scholten. All rights reserved.
 //
+//  In this ViewController, users can be accepted if they are not accepted yet. The view can also be entered via the settings menu, where it functions as a place where one can change data of user's.
 
 import UIKit
 import Firebase
@@ -12,9 +13,10 @@ import Firebase
 class AddEmployeeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     // MARK: Constants and variables
-    let ref = FIRDatabase.database().reference(withPath: "Users")
+    let userRef = FIRDatabase.database().reference(withPath: "Users")
     let locationsRef = FIRDatabase.database().reference(withPath: "Locations")
     var user = User(uid: "", email: "", name: "", admin: false, employeeNr: "", organisationName: "", organisationID: "", locationID: "", accepted: false, key: "")
+    let currentUser = FIRAuth.auth()?.currentUser
     var organisationID = String()
     var selectedLocation = String()
     var locations = [String]()
@@ -26,27 +28,27 @@ class AddEmployeeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     @IBOutlet weak var role: UISegmentedControl!
     @IBOutlet weak var location: UIPickerView!
     
+    // MARK: - UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         keyboardActions()
         
         name.text = user.name!
         mail.text = user.email
         employee.text = user.employeeNr!
         
-        // Retrieve data from Firebase.
-        ref.observe(.value, with: { snapshot in
+        // Retrieve selected employee's organisation from Firebase.
+        userRef.observe(.value, with: { snapshot in
             for item in snapshot.children {
                 let userData = User(snapshot: item as! FIRDataSnapshot)
-                if userData.uid == (FIRAuth.auth()?.currentUser?.uid)! {
+                if userData.uid == self.currentUser?.uid {
                     self.organisationID = userData.organisationID!
                 }
             }
         })
         
+        // Retrieve selected employee's locations from Firebase.
         locationsRef.observe(.value, with: { snapshot in
-            
             let locationSnapshot = snapshot.childSnapshot(forPath: self.organisationID)
             let locationData = locationSnapshot.value as! [String: String]
             
@@ -84,33 +86,32 @@ class AddEmployeeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     // MARK: - Actions
     
     @IBAction func registerEmployee(_ sender: Any) {
-        
         var admin = false
-        
         if role.selectedSegmentIndex == 1 {
             admin = true
         }
         
-        ref.child(user.uid).updateChildValues(["uid":user.uid,
-                                               "email":user.email,
-                                               "name":user.name!,
-                                               "admin":admin,
-                                               "employeeNr":employee.text!,
-                                               "organisationID":user.organisationID!,
-                                               "locationID":locations[self.location.selectedRow(inComponent: 0)],
-                                               "accepted":true])
+        userRef.child(user.uid).updateChildValues(["uid":user.uid,
+                                                   "email":user.email,
+                                                   "name":user.name!,
+                                                   "admin":admin,
+                                                   "employeeNr":employee.text!,
+                                                   "organisationID":user.organisationID!,
+                                                   "locationID":locations[self.location.selectedRow(inComponent: 0)],
+                                                   "accepted":true])
         
         _ = navigationController?.popViewController(animated: true)
     }
     
-    // http://stackoverflow.com/questions/38410593/how-to-verify-users-current-password-when-changing-password-on-firebase-3
     @IBAction func deleteEmployee(_ sender: Any) {
         askPassword()
     }
     
+    // MARK: - Functions
     
+    // Ask current user for password to authenticate deletion of employee.
     func askPassword() {
-        let alert = UIAlertController(title: "",
+        let alert = UIAlertController(title: "Wil je deze gebruiker zeker verwijderen?",
                                       message: "Voer je wachtwoord opnieuw in om deze gebruiker te kunnen verwijderen.",
                                       preferredStyle: .alert)
         
@@ -133,36 +134,31 @@ class AddEmployeeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         self.present(alert, animated: true, completion: nil)
     }
     
-    
+    // Reauthenticate current user and on success, delete employee. [1]
     func checkPassword(currentPassword: String) {
+        let credential = FIREmailPasswordAuthProvider.credential(withEmail: (currentUser?.email)!,
+                                                                 password: currentPassword)
         
-        let adminUser = FIRAuth.auth()?.currentUser
-        let credential = FIREmailPasswordAuthProvider.credential(withEmail: (adminUser?.email)!, password: currentPassword)
-        
-        adminUser?.reauthenticate(with: credential, completion: { (error) in
+        currentUser?.reauthenticate(with: credential, completion: { (error) in
             if error != nil{
-                self.addAlert(titleInput: "Fout wachtwoord", messageInput: "Voer het correcte wachtwoord in om deze gebruiker te kunnen verwijderen.")
+                self.alertSingleOption(titleInput: "Fout wachtwoord",
+                                       messageInput: "Voer het correcte wachtwoord in om deze gebruiker te kunnen verwijderen.")
             } else {
-                self.ref.child(self.user.uid).removeValue { (error, ref) in
-                    if error != nil {
-                        print("error \(error)")
-                    }
-                    _ = self.navigationController?.popViewController(animated: true)
-                }
+                self.deleteFromFirebase()
             }
         })
     }
     
-    
-    
-    func addAlert(titleInput: String, messageInput: String) {
-        let alert = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+    func deleteFromFirebase() {
+        userRef.child(self.user.uid).removeValue { (error, ref) in
+            if error != nil {
+                print("error \(error)")
+            }
+            _ = self.navigationController?.popViewController(animated: true)
+        }
     }
     
-    // MARK: - Keyboard actions [2, 3]
-    
+    // Handle keyboard behaviour.
     func keyboardActions() {
         // Make sure all buttons and inputfields keep visible when the keyboard appears. [2]
         NotificationCenter.default.addObserver(self, selector: #selector(AddEmployeeVC.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -177,7 +173,6 @@ class AddEmployeeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
 
 // MARK: References
 
-/*
- 2. http://stackoverflow.com/questions/26070242/move-view-with-keyboard-using-swift
- 3. http://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
- */
+// 1. http://stackoverflow.com/questions/38410593/how-to-verify-users-current-password-when-changing-password-on-firebase-3
+// 2. http://stackoverflow.com/questions/26070242/move-view-with-keyboard-using-swift
+// 3. http://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift

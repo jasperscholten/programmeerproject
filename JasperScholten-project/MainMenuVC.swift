@@ -5,6 +5,7 @@
 //  Created by Jasper Scholten on 11-01-17.
 //  Copyright © 2017 Jasper Scholten. All rights reserved.
 //
+//  This ViewController handles the presentation of a main menu, which content depends on the type of user that has logged in; an admin will have more options. The main menu also serves as a hub, that sends specific data to other ViewControllers (mainly currentOrganisationID and currenOrganisation name).
 
 import UIKit
 import Firebase
@@ -12,7 +13,8 @@ import Firebase
 class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Constants and variables
-    let ref = FIRDatabase.database().reference(withPath: "Users")
+    let userRef = FIRDatabase.database().reference(withPath: "Users")
+    let uid = FIRAuth.auth()?.currentUser?.uid
     var admin = Bool()
     var currentOrganisation = String()
     var currentOrganisationID = String()
@@ -23,15 +25,16 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - Outlets
     @IBOutlet weak var menuTableView: UITableView!
     
+    // MARK: - UIViewController Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Retrieve data from Firebase.
-        ref.observe(.value, with: { snapshot in
-            for item in snapshot.children {
-                let userData = User(snapshot: item as! FIRDataSnapshot)
+        userRef.child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.hasChildren() {
+                let userData = User(snapshot: snapshot)
                 
-                if userData.uid == (FIRAuth.auth()?.currentUser?.uid)! {
+                if userData.uid == self.uid! {
                     self.currentOrganisation = userData.organisationName!
                     self.currentOrganisationID = userData.organisationID!
                     self.currentLocation = userData.locationID!
@@ -42,6 +45,7 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                         self.admin = true
                     } else {
                         self.menuItems = ["Beoordelingen", "Nieuws"]
+                        // Only allow admins to access settings menu. [1]
                         self.navigationItem.rightBarButtonItem = nil
                     }
                     self.menuTableView.reloadData()
@@ -55,6 +59,7 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         resizeTable()
     }
     
+    // Resize table on device rotation.
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: { _ in self.resizeTable() },
@@ -69,9 +74,7 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = menuTableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as! MainMenuCell
-        
         cell.menuItem.text = menuItems[indexPath.row]
-        
         return cell
     }
     
@@ -80,19 +83,19 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         menuTableView.deselectRow(at: indexPath, animated: true)
     }
     
-    // MARK: - Segue user details
+    // MARK: - Segue data specific to current user to chosen menu option.
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if let employeeResults = segue.destination as? ReviewResultsEmployeeVC {
-            // Segue details of current user
             employeeResults.employee = currentName
-            employeeResults.employeeID = (FIRAuth.auth()?.currentUser?.uid)!
+            employeeResults.employeeID = uid!
         } else if let news = segue.destination as? NewsAdminVC {
             news.admin = admin
-            news.organisation = currentOrganisationID
             news.location = currentLocation
+            news.organisationID = currentOrganisationID
         } else if let requests = segue.destination as? RequestsVC {
-            requests.organisation = currentOrganisationID
+            requests.organisationID = currentOrganisationID
         } else if let forms = segue.destination as? FormsListVC {
             forms.organisation = currentOrganisation
             forms.organisationID = currentOrganisationID
@@ -106,23 +109,16 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             settings.organisationName = currentOrganisation
             settings.organisationID = currentOrganisationID
         }
-    
     }
     
-    // MARK: - Action
+    // MARK: - Actions
     
     @IBAction func signOut(_ sender: Any) {
         if (try? FIRAuth.auth()?.signOut()) != nil {
             self.dismiss(animated: true, completion: {})
         } else {
-            
-            let alert = UIAlertController(title: "Fout bij uitloggen",
-                                          message: "Het is niet gelukt om je correct uit te loggen. Probeer het nog een keer.",
-                                          preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-
-            self.present(alert, animated: true, completion: nil)
-            
+            alertSingleOption(titleInput: "Fout bij uitloggen",
+                              messageInput: "Het is niet gelukt om je correct uit te loggen. Probeer het nog een keer.")
         }
     }
 
@@ -130,7 +126,9 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         performSegue(withIdentifier: "showSettings", sender: self)
     }
     
-    // http://stackoverflow.com/questions/34161016/how-to-make-uitableview-to-fill-all-my-view
+    // MARK: - Functions
+    
+    // Resize the rowheight of menu cells, such that they fill the screen and are of equal height. [2]
     func resizeTable() {
         let heightOfVisibleTableViewArea = view.bounds.height - topLayoutGuide.length - bottomLayoutGuide.length
         let numberOfRows = menuTableView.numberOfRows(inSection: 0)
@@ -138,5 +136,10 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         menuTableView.rowHeight = heightOfVisibleTableViewArea / CGFloat(numberOfRows)
         menuTableView.reloadData()
     }
-
+    
 }
+
+// MARK: - References
+
+// 1. http://stackoverflow.com/questions/27887218/how-to-hide-a-bar-button-item-for-certain-users
+// 2. http://stackoverflow.com/questions/34161016/how-to-make-uitableview-to-fill-all-my-view

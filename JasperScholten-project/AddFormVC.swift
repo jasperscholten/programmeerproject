@@ -5,6 +5,7 @@
 //  Created by Jasper Scholten on 19-01-17.
 //  Copyright © 2017 Jasper Scholten. All rights reserved.
 //
+//  This ViewController shows all questions of the selected reviewform. It is also possible to add new questions, as well as delete existing ones.
 
 import UIKit
 import Firebase
@@ -12,7 +13,7 @@ import Firebase
 class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Constants and variables
-    let ref = FIRDatabase.database().reference(withPath: "Questions")
+    let questionsRef = FIRDatabase.database().reference(withPath: "Questions")
     var form = String()
     var formID = String()
     var organisation = String()
@@ -22,20 +23,18 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - Outlets
     @IBOutlet weak var newFormTableView: UITableView!
     
+    // MARK: - UIViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        // Retrieve data from Firebase.
-        ref.observe(.value, with: { snapshot in
-            
+        // Retrieve questions already in the selected form.
+        questionsRef.observe(.value, with: { snapshot in
             var newQuestions: [Questions] = []
             
             for item in snapshot.children {
                 let questionData = Questions(snapshot: item as! FIRDataSnapshot)
-                if questionData.organisationID == self.organisationID {
-                    if questionData.formID == self.formID {
-                        newQuestions.append(questionData)
-                    }
+                if questionData.organisationID == self.organisationID && questionData.formID == self.formID {
+                    newQuestions.append(questionData)
                 }
             }
             self.questions = newQuestions
@@ -43,7 +42,7 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         })
     }
     
-    // MARK: - TableView
+    // MARK: - TableView Population
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return questions.count
@@ -51,9 +50,7 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = newFormTableView.dequeueReusableCell(withIdentifier: "newFormQuestion", for: indexPath) as! FormQuestionCell
-        
         cell.newQuestion.text = questions[indexPath.row].question
-        
         return cell
     }
 
@@ -64,14 +61,12 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let question = questions[indexPath.row].questionID
-            
-            //http://stackoverflow.com/questions/39631998/how-to-delete-from-firebase-database
-            ref.child(question).removeValue { (error, ref) in
+            questionsRef.child(question).removeValue { (error, ref) in
                 if error != nil {
-                    print("error \(error)")
+                    self.alertSingleOption(titleInput: "Fout bij verwijderen",
+                                           messageInput: error as! String)
                 }
             }
-            
         }
     }
     
@@ -94,13 +89,7 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                                           style: .default) { action in
                                             let text = alert.textFields?[0].text
                                             if text != nil && text!.characters.count>0 {
-                                                
-                                                let newRef = self.ref.childByAutoId()
-                                                let newID = newRef.key
-                                                let newText = self.filterCharacters(text: text!)
-                                                
-                                                let question = Questions(questionID: newID, formID: self.formID, organisationID: self.organisationID, question: newText, state: false)
-                                                newRef.setValue(question.toAnyObject())
+                                                self.addQuestionToFirebase(text: text!)
                                             } else {
                                                 self.formNameError()
                                             }
@@ -112,6 +101,14 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         alert.addAction(newQuestionAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func addQuestionToFirebase(text: String) {
+        let newQuestionsRef = self.questionsRef.childByAutoId()
+        let newID = newQuestionsRef.key
+        let newText = self.filterCharacters(text: text)
+        let question = Questions(questionID: newID, formID: self.formID, organisationID: self.organisationID, question: newText, state: false)
+        newQuestionsRef.setValue(question.toAnyObject())
     }
     
     func formNameError() {
@@ -126,6 +123,7 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
+    // Filter characters from input (question) from user, in order to prevent errors with Firebase.
     func filterCharacters(text: String) -> String {
         let deleteDot = text.replacingOccurrences(of: ".", with: "")
         let deleteHash = deleteDot.replacingOccurrences(of: "#", with: "")

@@ -5,6 +5,7 @@
 //  Created by Jasper Scholten on 30-01-17.
 //  Copyright © 2017 Jasper Scholten. All rights reserved.
 //
+//  This extension adds a function to UIViewController, which creates a simple alert with only an "OK" button.
 
 import Foundation
 import UIKit
