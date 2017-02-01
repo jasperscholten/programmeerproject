@@ -207,3 +207,28 @@ Het zijn nu misschien ietwat veel for- en if-statements, maar deze oplossing lij
 - [x] Menu goede constraints geven: ook bij draaien scherm vullen
 - [x] Menu’s goede hoogte meegeven
 
+## DAY 17 // 01-02
+
+**Dit is de TODO lijst die ik nu nog heb staan:**
+
+**'Brede' klussen**
+- [ ] Final Report schrijven
+- [ ] PROCESS updaten —> Overal een oplossing voor gevonden?
+- [ ] README updaten
+- [ ] State restoration
+- [ ] Code netjes maken
+- [ ] Comments
+
+**Specifiek programmeren**
+- [ ] Huidige gebruiker niet tonen in lijsten
+- [x] Nieuwsfoto niet tonen wanneer niet bestaat
+- [ ] Statische menu’s vastzetten in portrait --> Alleen nog AddEmployee
+- [ ] Spinners toevoegen
+- [ ] Switch goed in cel plaatsen
+- [ ] Gerelateerde data gebruiker verwijderen
+- [ ] Constraints van addText in AddNewsItemVC gaat bij draaien nog fout.
+- [ ] Constraints van remarkBox in NewReviewVC gaat bij draaien nog fout.
+- [ ] Nieuwsfoto niet in geheugen zetten
+- [x] Menu goede constraints geven: ook bij draaien scherm vullen
+- [x] Menu’s goede hoogte meegeven
+
