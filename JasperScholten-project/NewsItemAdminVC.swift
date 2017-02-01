@@ -70,6 +70,7 @@ class NewsItemAdminVC: UIViewController {
             guard let error = FIRStorageErrorCode(rawValue: errorCode) else {
                 return
             }
+            // https://www.sitepoint.com/self-sizing-cells-uitableview-auto-layout/
             self.newsItemImageHeight.constant = 0.0
             self.activityIndicator.stopAnimating()
             

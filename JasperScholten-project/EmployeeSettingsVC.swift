@@ -31,7 +31,7 @@ class EmployeeSettingsVC: UIViewController, UITableViewDelegate, UITableViewData
                     for item in snapshot.children {
                         let userData = User(snapshot: item as! FIRDataSnapshot)
                         if userData.accepted == true {
-                            if userData.organisationID == self.organisationID {
+                            if userData.organisationID == self.organisationID && userData.uid != FIRAuth.auth()?.currentUser?.uid {
                                 newEmployees.append(userData)
                             }
                         }

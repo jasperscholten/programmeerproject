@@ -31,11 +31,12 @@ class ReviewEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDele
                 let userData = User(snapshot: item as! FIRDataSnapshot)
                 if userData.accepted == true {
                     if userData.organisationID == self.organisationID {
-                        newEmployees.append(userData)
+                        if userData.uid == FIRAuth.auth()?.currentUser?.uid {
+                            self.observatorName = userData.name!
+                        } else {
+                            newEmployees.append(userData)
+                        }
                     }
-                }
-                if userData.uid == FIRAuth.auth()?.currentUser?.uid {
-                    self.observatorName = userData.name!
                 }
             }
             self.employees = newEmployees
