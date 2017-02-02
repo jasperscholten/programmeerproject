@@ -107,7 +107,7 @@ class AddFormVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let newQuestionsRef = self.questionsRef.childByAutoId()
         let newID = newQuestionsRef.key
         let newText = self.filterCharacters(text: text)
-        let question = Questions(questionID: newID, formID: self.formID, organisationID: self.organisationID, question: newText, state: false)
+        let question = Questions(questionID: newID, formID: self.formID, organisationID: self.organisationID, question: newText)
         newQuestionsRef.setValue(question.toAnyObject())
     }
     

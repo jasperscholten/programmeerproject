@@ -5,6 +5,7 @@
 //  Created by Jasper Scholten on 16-01-17.
 //  Copyright © 2017 Jasper Scholten. All rights reserved.
 //
+//  The struct presented here contains all characteristics of the 'Forms' saved in Firebase. This entry in Firebase contains all forms, related to the organisation that created the form.
 
 import Foundation
 import Firebase

@@ -5,6 +5,7 @@
 //  Created by Jasper Scholten on 16-01-17.
 //  Copyright © 2017 Jasper Scholten. All rights reserved.
 //
+//  The struct presented here contains all characteristics of the 'Reviews' saved in Firebase. Reviews are linked to a specific employee and location. The result is saved in a dictionary, that uses the question as a key, and the state of the swith (Boolean value) as a value.
 
 import Foundation
 import Firebase

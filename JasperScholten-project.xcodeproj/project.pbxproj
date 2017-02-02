@@ -298,11 +298,11 @@
 			isa = PBXGroup;
 			children = (
 				A45ADE441E2CD79900005C6E /* User.swift */,
+				A416A1DD1E364A0600036002 /* Organisation.swift */,
 				A45ADE471E2CDE0500005C6E /* Form.swift */,
+				A47053AC1E315F060086E916 /* Questions.swift */,
 				A45ADE491E2CE46000005C6E /* Review.swift */,
 				A45ADE4B1E2CE9BD00005C6E /* News.swift */,
-				A47053AC1E315F060086E916 /* Questions.swift */,
-				A416A1DD1E364A0600036002 /* Organisation.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";

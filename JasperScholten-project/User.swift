@@ -5,11 +5,11 @@
 //  Created by Jasper Scholten on 16-01-17.
 //  Copyright © 2017 Jasper Scholten. All rights reserved.
 //
+//  The struct presented here contains all characteristics of the 'Users' saved in Firebase. Some characteristcs define the role of the user (admin, accepted), others describe the user (e.g. name) and its 'position' (organisationID, locationID). The login feature of the app also makes use of properties described here, in order to authenticate users.
 
 import Foundation
 import Firebase
 
-// Moet er een aparte tabel worden gemaakt met de userInfo? Hoe werken met authenticatie?
 struct User {
     
     let uid: String
@@ -21,15 +21,12 @@ struct User {
     var organisationID: String?
     var locationID: String?
     var accepted: Bool?
-    
     let key: String
     let ref: FIRDatabaseReference?
     
     init(authData: FIRUser) {
         uid = authData.uid
         email = authData.email!
-        
-        // Hoe dit te initialiseren
         key = ""
         ref = nil
     }

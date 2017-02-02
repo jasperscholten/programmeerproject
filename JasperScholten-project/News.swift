@@ -5,6 +5,7 @@
 //  Created by Jasper Scholten on 16-01-17.
 //  Copyright © 2017 Jasper Scholten. All rights reserved.
 //
+//  The struct presented here contains all characteristics of the 'News' saved in Firebase. It only deals with the text components of a newsItem; images are separately saved through Firebase Storage. The itemID is used to link these two with eachother.
 
 import Foundation
 import Firebase
@@ -36,7 +37,6 @@ struct News {
         self.title = snapshotValue["title"] as! String
         self.text = snapshotValue["text"] as! String
         self.date = snapshotValue["date"] as! String
-        
     }
     
     func toAnyObject() -> Any {
