@@ -26,10 +26,8 @@ class MainMenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var menuTableView: UITableView!
     
     // MARK: - UIViewController Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         userRef.child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.hasChildren() {
                 let userData = User(snapshot: snapshot)

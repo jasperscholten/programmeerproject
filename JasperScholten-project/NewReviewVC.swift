@@ -121,13 +121,14 @@ class NewReviewVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
     func saveReview() {
         getAnswers()
-        
-        let date = getCurrentDate()
-        let newRef = self.reviewRef.childByAutoId()
-        let newID = newRef.key
-        let review = Review(reviewID: newID, formName: form, employeeID: employeeID, employeeName: employee, observatorName: observatorName, locationID: location, date: date, remark: remarkBox.text, result: result)
-        
-        newRef.setValue(review.toAnyObject())
+        if result != [:] {
+            let date = getCurrentDate()
+            let newRef = self.reviewRef.childByAutoId()
+            let newID = newRef.key
+            let review = Review(reviewID: newID, formName: form, employeeID: employeeID, employeeName: employee, observatorName: observatorName, locationID: location, date: date, remark: remarkBox.text, result: result)
+            
+            newRef.setValue(review.toAnyObject())
+        }
     }
     
     // Retrieve the results for each question on the form.
