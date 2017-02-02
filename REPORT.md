@@ -144,6 +144,8 @@ Onder het kopje models is al een korte toelichting gegeven op de inhoud van Fire
 
 ## Sketches of your UI
 
+<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/UISketch.png">
+
 # Proces
 
 Het programmeerproject is voor mij een leuke en leerzame periode geweest, omdat ik hierin in feite (een beetje) op eigen benen heb leren staan. Ik heb met **COM**COM een app gemaakt, waarvan ik begin september misschien niet had durven dromen dat ik daar aan het einde van de minor toe in staat zou zijn. Aan het begin van dit project had ik echter wel al meer kennis van mijn eigen programmeerkunde gekregen, want ik heb in het initiële app-ontwerp een aardig beeld kunnen schetsen van hoe de app er uiteindelijk uit zou komen te zien. Toch hebben er gedurende het proces zeker veranderingen plaatsgevonden, die voor een groot deel in PROCESS.md beschreven zijn. De meest belangrijke uitdagingen, die de kern van **COM**COM soms hebben veranderd, worden hieronder toegelicht.
