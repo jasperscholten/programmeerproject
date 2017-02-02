@@ -54,6 +54,7 @@ class ReviewEmployeeVC: UIViewController, UITableViewDataSource, UITableViewDele
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = employeesTableView.dequeueReusableCell(withIdentifier: "employeeCell", for: indexPath) as! EmployeeCell
         cell.employeeName.text = employees[indexPath.row].name
+        cell.employeeNR.text = employees[indexPath.row].employeeNr
         return cell
     }
     

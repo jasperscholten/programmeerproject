@@ -897,21 +897,31 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hH1-gZ-duB">
-                                                    <rect key="frame" x="16" y="11" width="343" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hH1-gZ-duB">
+                                                    <rect key="frame" x="16" y="11" width="301" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PlL-tV-3UZ">
+                                                    <rect key="frame" x="325" y="11" width="42" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="hH1-gZ-duB" firstAttribute="leading" secondItem="esH-hf-t2t" secondAttribute="leadingMargin" constant="8" id="3MS-5B-zcI"/>
-                                                <constraint firstItem="hH1-gZ-duB" firstAttribute="top" secondItem="esH-hf-t2t" secondAttribute="topMargin" constant="3" id="4g0-4u-a3C"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="hH1-gZ-duB" secondAttribute="trailing" constant="8" id="nQ7-iq-zff"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="hH1-gZ-duB" secondAttribute="bottom" constant="3" id="uL2-mp-GzL"/>
+                                                <constraint firstItem="PlL-tV-3UZ" firstAttribute="top" secondItem="esH-hf-t2t" secondAttribute="topMargin" constant="3" id="FHo-al-CQi"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="PlL-tV-3UZ" secondAttribute="bottom" constant="3" id="Fex-ik-xpt"/>
+                                                <constraint firstItem="hH1-gZ-duB" firstAttribute="top" secondItem="esH-hf-t2t" secondAttribute="topMargin" constant="3" id="KiA-dd-BYC"/>
+                                                <constraint firstItem="hH1-gZ-duB" firstAttribute="leading" secondItem="esH-hf-t2t" secondAttribute="leadingMargin" constant="8" id="T1A-sp-PIn"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="hH1-gZ-duB" secondAttribute="bottom" constant="3" id="c10-UR-Nxb"/>
+                                                <constraint firstItem="PlL-tV-3UZ" firstAttribute="leading" secondItem="hH1-gZ-duB" secondAttribute="trailing" constant="8" id="cXM-Do-9iC"/>
+                                                <constraint firstItem="PlL-tV-3UZ" firstAttribute="trailing" secondItem="esH-hf-t2t" secondAttribute="trailingMargin" id="eme-c0-p7w"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="employeeNR" destination="PlL-tV-3UZ" id="zJ1-DO-6au"/>
                                             <outlet property="employeeName" destination="hH1-gZ-duB" id="Ys8-x5-rpC"/>
                                         </connections>
                                     </tableViewCell>
@@ -937,7 +947,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EcF-jk-dkL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2590" y="-2136"/>
+            <point key="canvasLocation" x="2589.5999999999999" y="-2136.88155922039"/>
         </scene>
         <!--Choose Review FormVC-->
         <scene sceneID="7wZ-z0-5cQ">
