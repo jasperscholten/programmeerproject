@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,7 +21,35 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZn-pP-7NH">
+                                <rect key="frame" x="146" y="565" width="202" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="Rsk-bO-VqM"/>
+                                    <constraint firstAttribute="width" constant="202" id="eq3-Hx-Db2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="72"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dbs-cf-FOL">
+                                <rect key="frame" x="146" y="501" width="202" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="BdA-fw-u2j"/>
+                                    <constraint firstAttribute="width" constant="202" id="cte-3Z-kOH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="72"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.35686274509999999" green="0.81176470590000005" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Dbs-cf-FOL" secondAttribute="trailing" constant="11" id="G42-x4-dtQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RZn-pP-7NH" secondAttribute="trailing" constant="11" id="f8U-lP-HmT"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Dbs-cf-FOL" secondAttribute="bottom" constant="100" id="rin-kw-AuC"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="RZn-pP-7NH" secondAttribute="bottom" constant="36" id="sOk-Fd-gDb"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
