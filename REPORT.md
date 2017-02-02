@@ -84,9 +84,63 @@ KeyboardExtension is een iets uitgebreidere extension, met functies die gebruikt
 
 ## Database tables and Fields
 
-Onder het kopje models is al een korte toelichting gegeven op de inhoud van Firebase. De structuur van de gehele database is daarnaast hieronder ook nog eens weergegeven.
+Onder het kopje models is al een korte toelichting gegeven op de inhoud van Firebase. De verschillende tabellen en hun velden zijn daarnaast hieronder ook nog eens weergegeven.
 
-Database structuur
+**Forms**
+* formID
+  * formID
+  * formName
+  * organisationID
+
+**Locations**
+* organisationID
+  * locationName
+  
+**News**
+* itemID
+  * date
+  * itemID
+  * locationName
+  * organisationID
+  * newsItemText
+  * newsItemTitle
+  
+**Organisations**
+* organisationID
+  * organisationName
+  * organisationID
+
+**Questions**
+* questionID
+  * formID
+  * organisationID
+  * question
+  * questionID
+  
+**Reviews**
+* reviewID
+  * date
+  * employeeID
+  * employeeName
+  * formName
+  * locationID
+  * observatorName
+  * remark
+  * reviewID
+  * result
+    * [question: answer]
+    
+**Users**
+  * uid
+    * accepted
+    * admin
+    * email
+    * employeeNr
+    * locationID
+    * name
+    * organisationID
+    * organisationName
+    * uid
 
 ## Sketches of your UI
 
