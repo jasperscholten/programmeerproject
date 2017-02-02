@@ -26,13 +26,40 @@ De app heeft globaal gezien 6 functionaliteitsgroepen:
 
 Het Login- and Registerproces is het eerste dat de gebruiker te zien krijgt. Dit bestaat uit drie ViewControllers, die allen bestaan uit een x-aantal tekstvelden en knoppen. Hiermee kan een bestaande gebruiker zich aanmelden, een nieuwe gebruiker een account aanmaken en gelijk de organisatie registreren, oefen nieuwe gebruiker zich aanmelden bij een bestaande organisatie. Daarnaast houden RequestsVC en AddEmployeeVC zich bezig met het accepteren van inschrijfverzoeken.
 
-Na aanmelden en inloggen, komt de gebruiker bij de MainMenuVC terecht: dit is het centrale punt in d structuur van de overige functionaliteitsgroepen. Het main menu bestaat uit een tabel met menu-opties, die de gebruiker de mogelijkheid geeft door de app te navigeren. Iedere optie leidt naar een ‘tak’ van ViewControllers die een bepaalde functionaliteit mogelijk maken (bv. beoordelen, nieuws tonen, etc.). In het projectbestand in Xcode zijn de ViewControllers van iedere specifieke tak gegroepeerd in een map met de naam van die functionaliteit. Onderin deze paragraaf staat deze structuur volledig weergegeven.
+Na aanmelden en inloggen, komt de gebruiker bij de MainMenuVC terecht: dit is het centrale punt in d structuur van de overige functionaliteitsgroepen. Het main menu bestaat uit een tabel met menu-opties, die de gebruiker de mogelijkheid geeft door de app te navigeren. Iedere optie leidt naar een ‘tak’ van ViewControllers die een bepaalde functionaliteit mogelijk maken (bv. beoordelen, nieuws tonen, etc.). In het projectbestand in Xcode zijn de ViewControllers van iedere specifieke tak gegroepeerd in een map met de naam van die functionaliteit; deze structuur is hieronder volledig weergegeven.
+
+* ViewControllers
+  * MainMenu VC
+  * Login- and Register Process
+    * LoginVC.swift
+    * RegisterVC.swift
+    * RegisterEmployeeVC.swift
+    * RequestsVC.swift
+    * AddEmployeeVC.swift
+  * Settings
+    * SettingsVC.swift
+    * LocationsVC.swift
+    * EmployeeSettingsVC.swift
+  * Review Process
+    * ReviewEmployeeVC.swift
+    * ChooseReviewFormVC.swift
+    * NewReviewVC.swift
+  * Show Results
+    * ReviewResultsVC.swift
+    * ReviewResultsEmployeeVC.swift
+    * ReviewResultFormVC.swift
+  * Add and Change Forms
+    * FormsListVC.swift
+    * AddFormVC.swift
+  * News
+    * NewsAdminVC.swift
+    * NewsItemAdminVC.swift
+    * AddNewsItemVC.swift
+
 
 De map ‘Cells’ is op dezelfde manier gegroepeerd als die voor de ViewControllers, met mappen die dezelfde namen dragen als de functionaliteitsgroepen. Hierbij bevat iedere map de cellen, die worden gebruikt in de tableViews van de ViewControllers in die groep. Zo zal bijvoorbeeld de cel die wordt gebruikt om een nieuwsitem weer te geven in het nieuwsoverzicht, te vinden zijn in de map Cells > News.
 
 Alle bestanden die in de Cells structuur te vinden zijn hebben dezelfde functionaliteit en vorm. Ze hebben weinig inhoud, maar worden alleen gebruikt om outlets van de elementen in de cel in te plaatsen, zodat deze eenvoudig aangeroepen kunnen worden in de ViewControllers. Er is geen logica in deze bestanden verwerkt.
-
-Project structuur
 
 ## Models
 
@@ -60,6 +87,8 @@ KeyboardExtension is een iets uitgebreidere extension, met functies die gebruikt
 Onder het kopje models is al een korte toelichting gegeven op de inhoud van Firebase. De structuur van de gehele database is daarnaast hieronder ook nog eens weergegeven.
 
 Database structuur
+
+## Sketches of your UI
 
 # Proces
 
