@@ -15,8 +15,36 @@ De tweede functionaliteit die **COM**COM biedt, draait om het delen van nieuwsit
 > Curious of the app? You can start by taking a look at the screenshots below, but you could also download the complete project. Any questions? Send me an e-mail at j.o.scholten@student.vu.nl
 
 # Screenshots
-# Acknowledgements
+
 # Referenties
+
+Hieronder is een overzicht gegeven van de bronnen die zijn geraadpleegd, om bepaalde problemen in de ontwikkeling van **COM**COM op te lossen. Veel van de bronnen zijn op meerdere plaatsen, in verschillende ViewControllers gebruikt; onder aan iedere ViewController staat welke bronnen specifiek daar zijn gebruikt. Ik zou graag nog speciaal willen verwijzen naar bron 25, de Ray Wenderlich Firebase tutorial, omdat deze aan de basis stond van vrijwel alle Firebase functionaliteit in de app.
+
+1. http://stackoverflow.com/questions/27887218/how-to-hide-a-bar-button-item-for-certain-users
+2. http://stackoverflow.com/questions/34161016/how-to-make-uitableview-to-fill-all-my-view
+3. http://stackoverflow.com/questions/25651969/setting-device-orientation-in-swift-ios
+4. http://stackoverflow.com/questions/38721302/shouldautorotate-function-in-xcode-8-beta-4
+5. http://stackoverflow.com/questions/26070242/move-view-with-keyboard-using-swift
+6. http://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
+7. http://stackoverflow.com/questions/30238224/multiple-uipickerview-in-the-same-uiview
+8. http://stackoverflow.com/questions/38410593/how-to-verify-users-current-password-when-changing-password-on-firebase-3
+9. https://www.raywenderlich.com/129059/self-sizing-table-view-cells
+10. http://stackoverflow.com/questions/39513258/get-current-date-in-swift-3
+11. http://stackoverflow.com/questions/27652227/text-view-placeholder-swift
+12. http://stackoverflow.com/questions/32087809/how-to-change-bottom-layout-constraint-in-ios-swift
+13. http://stackoverflow.com/questions/25649926/trying-to-animate-a-constraint-in-swift
+14. http://stackoverflow.com/questions/26244293/scrolltorowatindexpath-with-uitableview-does-not-work
+15. http://stackoverflow.com/questions/25741114/how-can-i-get-keys-value-from-dictionary-in-swift
+16. https://firebase.google.com/docs/storage/ios/download-files
+17. https://www.sitepoint.com/self-sizing-cells-uitableview-auto-layout/
+18. http://stackoverflow.com/questions/29431968/how-to-adjust-the-height-of-a-textview-to-his-content-in-swift
+19. http://www.codingexplorer.com/choosing-images-with-uiimagepickercontroller-in-swift/
+20. https://firebase.google.com/docs/storage/ios/upload-files
+21. https://github.com/firebase/quickstart-ios/blob/master/storage/StorageExampleSwift/ViewController.swift
+22. http://stackoverflow.com/questions/37603312/firebase-storage-upload-works-in-simulator-but-not-on-iphone
+23. http://stackoverflow.com/questions/39513258/get-current-date-in-swift-3
+24. http://stackoverflow.com/questions/36630652/swift-change-autolayout-constraints-when-keyboard-is-shown
+25. https://www.raywenderlich.com/139322/firebase-tutorial-getting-started-2
 
 <p align="center"><i>
 This project is licensed under the terms of the Apache license.</br>
