@@ -28,7 +28,7 @@ Keep Unit Interfaces Small
 
 Write code once verbeterd, voornamelijk door een deel van de keyboardfuncties in een extension te plaatsen. Daarnaast heeft het ook geholpen om overbodige code (bv. didReceiveMemoryWarning) te verwijderen, omdat dit ook werd aangemerkt als veel herhalende code.
 
-## Better Code Hub
+## Better Code Hub // 02-02
 
 <img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/BetterCodeHub0202.png" width="500"></br>
 
