@@ -18,11 +18,13 @@ class LoginVC: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var mail: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         keyboardActions()
+        activityIndicator.startAnimating()
         
         // Check if a user has already logged in
         if let uid = FIRAuth.auth()?.currentUser?.uid {
@@ -33,8 +35,11 @@ class LoginVC: UIViewController {
                         self.performSegue(withIdentifier: "loginUser", sender: nil)
                         self.emptyTextfield()
                     }
+                    self.activityIndicator.stopAnimating()
                 }
             })
+        } else {
+            activityIndicator.stopAnimating()
         }
     }
     
@@ -93,8 +98,10 @@ class LoginVC: UIViewController {
     // MARK: - Functions
     
     func signIn() {
+        activityIndicator.startAnimating()
         FIRAuth.auth()!.signIn(withEmail: self.mail.text!,
                                password: self.password.text!) { (user, error) in
+                                self.activityIndicator.stopAnimating()
                                 if error != nil {
                                     self.alertSingleOption(titleInput: "Foute invoer", messageInput: "Het emailadres of wachtwoord dat je hebt ingevoerd is incorrect.")
                                     self.emptyTextfield()
