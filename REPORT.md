@@ -144,7 +144,7 @@ Onder het kopje models is al een korte toelichting gegeven op de inhoud van Fire
 
 ## Sketches of your UI
 
-<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/UISketch.png">
+<p align="center"><img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/UISketch.png"></p>
 
 # Proces
 
