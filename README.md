@@ -16,6 +16,33 @@ De tweede functionaliteit die **COM**COM biedt, draait om het delen van nieuwsit
 
 # Screenshots
 
+<p align="center">
+<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/LoginVCScreenshot.PNG" width="250">
+<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/RegisterOrganisationScreenshot.PNG" width="250">
+<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/RegisterEmployeeScreenshot.PNG" width="250"></br>
+Van links naar rechts: login scherm; organisatie registreren; medewerker registreren.</br></br>
+
+<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/AdminMenuScreenshot.PNG" width="250">
+<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/MenuScreenshot.PNG" width="250"></br>
+Links: hoofdmenu voor admin gebruikers. Rechts: hoofdmenu voor gewone gebruikers.</br></br>
+
+<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/AddEmployeeScreenshot.PNG" width="250"></br>
+Inschrijvingsverzoek van een medewerker kan hier geaccepteerd worden.</br></br>
+
+<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/NewReviewScreenshot.PNG" width="250"></br>
+Beantwoord vragen van een beoordeling door switches om te zetten en voer eventueel onderin opmerkingen toe.</br></br>
+
+<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/ReviewResultsScreenshot.PNG" width="250">
+<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/EmployeeResultsScreenshot.PNG" width="250">
+<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/EmployeeReviewResultScreenshot.PNG" width="250"></br>
+Van links naar rechts: overzicht van alle werknemers; alle beoordelingen die uitgevoerd zijn voor de gekozen werknemer; resultaat van eerder uitgevoerde review.</br></br>
+
+<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/NewsFeedScreenshot.PNG" width="250">
+<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/AddNewsScreenshot.PNG" width="250">
+<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/NewsItemScreenshot.PNG" width="250"></br>
+Van links naar rechts: overzicht van alle nieuwberichten; schrijven van een nieuwsbericht; bekijken van een nieuwsbericht.</br></br>
+</p>
+
 # Referenties
 
 Hieronder is een overzicht gegeven van de bronnen die zijn geraadpleegd, om bepaalde problemen in de ontwikkeling van **COM**COM op te lossen. Veel van de bronnen zijn op meerdere plaatsen, in verschillende ViewControllers gebruikt; onder aan iedere ViewController staat welke bronnen specifiek daar zijn gebruikt. Ik zou graag nog speciaal willen verwijzen naar bron 25, de Ray Wenderlich Firebase tutorial, omdat deze aan de basis stond van vrijwel alle Firebase functionaliteit in de app.
