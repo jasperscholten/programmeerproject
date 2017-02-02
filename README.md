@@ -13,3 +13,8 @@ Wanneer een beoordeling is uitgevoerd, kan deze worden opgeslagen. Alle beoordel
 De tweede functionaliteit die **COM**COM biedt, draait om het delen van nieuwsitems. Admin gebruikers kunnen een nieuwsbericht plaatsen, met titel, tekst en eventueel afbeelding, om de medewerkers van hun vestiging te informeren over zaken die spelen. Op die manier kan iedereen up-to-date blijven met wat er gebeurt, ook als ze een tijd niet aanwezig zijn geweest. Het idee is dat dit de samenwerking bevordert en misverstanden voorkomt. Iedere werknemer kan hierbij de berichten inzien, maar alleen admin gebruikers kunnen nieuwsberichten ook verwijderen.
 
 > Curious of the app? You can start by taking a look at the screenshots below, but you could also download the complete project. Any questions? Send me an e-mail at j.o.scholten@student.vu.nl
+
+<p align="center"><i>
+This project is licensed under the terms of the MIT license.</br>
+Jasper Scholten, 2017
+</i></p>
