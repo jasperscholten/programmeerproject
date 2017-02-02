@@ -787,20 +787,30 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Opmerkingen" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJc-pn-UTo">
-                                            <rect key="frame" x="20" y="20" width="335" height="130"/>
+                                            <rect key="frame" x="20" y="20" width="335" height="110"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="130" id="kek-FQ-BZ4"/>
+                                                <constraint firstAttribute="height" constant="110" id="uOZ-M5-ohr"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpI-ug-Qbf">
+                                            <rect key="frame" x="20" y="138" width="335" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="KpI-ug-Qbf" secondAttribute="bottom" constant="8" id="4zh-be-1xT"/>
                                         <constraint firstItem="gJc-pn-UTo" firstAttribute="leading" secondItem="0TS-ia-I4s" secondAttribute="leading" constant="20" id="ep3-6R-xbt"/>
+                                        <constraint firstItem="KpI-ug-Qbf" firstAttribute="leading" secondItem="0TS-ia-I4s" secondAttribute="leading" constant="20" id="fpz-8s-oqa"/>
                                         <constraint firstAttribute="trailing" secondItem="gJc-pn-UTo" secondAttribute="trailing" constant="20" id="gqW-i2-sFc"/>
+                                        <constraint firstItem="KpI-ug-Qbf" firstAttribute="top" secondItem="gJc-pn-UTo" secondAttribute="bottom" constant="8" id="k19-1F-F06"/>
                                         <constraint firstItem="gJc-pn-UTo" firstAttribute="top" secondItem="0TS-ia-I4s" secondAttribute="top" constant="20" id="p3r-Uz-cIS"/>
+                                        <constraint firstAttribute="trailing" secondItem="KpI-ug-Qbf" secondAttribute="trailing" constant="20" id="vzT-D0-52K"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
@@ -855,13 +865,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="observatorName" destination="KpI-ug-Qbf" id="HuR-b6-1VR"/>
                         <outlet property="remarkField" destination="gJc-pn-UTo" id="Luw-zo-E3I"/>
                         <outlet property="reviewFormTableView" destination="gqB-zg-ilw" id="app-GU-dyV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQ8-h8-ys0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4088.8000000000002" y="-1360.569715142429"/>
+            <point key="canvasLocation" x="4088.8000000000002" y="-1361.4692653673164"/>
         </scene>
         <!--Medewerkers-->
         <scene sceneID="PWf-T2-qZh">

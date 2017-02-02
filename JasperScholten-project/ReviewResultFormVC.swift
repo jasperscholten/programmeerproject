@@ -23,6 +23,7 @@ class ReviewResultFormVC: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: - Outlets
     @IBOutlet weak var reviewFormTableView: UITableView!
     @IBOutlet weak var remarkField: UITextView!
+    @IBOutlet weak var observatorName: UILabel!
     
     // MARK: - UIViewController lifecycle
     override func viewDidLoad() {
@@ -35,6 +36,7 @@ class ReviewResultFormVC: UIViewController, UITableViewDataSource, UITableViewDe
                 if reviewData.reviewID == self.reviewID {
                     self.populateTable(newResult: reviewData.result)
                     self.remarkField.text = reviewData.remark
+                    self.observatorName.text = "Beoordelaar: \(reviewData.observatorName)"
                 }
             }
         })
