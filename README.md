@@ -14,6 +14,9 @@ De tweede functionaliteit die **COM**COM biedt, draait om het delen van nieuwsit
 
 > Curious of the app? You can start by taking a look at the screenshots below, but you could also download the complete project. Any questions? Send me an e-mail at j.o.scholten@student.vu.nl
 
+# Screenshots
+# Acknowledgements
+
 <p align="center"><i>
 This project is licensed under the terms of the Apache license.</br>
 Jasper Scholten, 2017
