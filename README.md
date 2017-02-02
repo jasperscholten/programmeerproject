@@ -16,6 +16,7 @@ De tweede functionaliteit die **COM**COM biedt, draait om het delen van nieuwsit
 
 # Screenshots
 # Acknowledgements
+# Referenties
 
 <p align="center"><i>
 This project is licensed under the terms of the Apache license.</br>
