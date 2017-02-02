@@ -75,5 +75,6 @@ Hieronder is een overzicht gegeven van de bronnen die zijn geraadpleegd, om bepa
 
 <p align="center"><i>
 This project is licensed under the terms of the Apache license.</br>
-Jasper Scholten, 2017
+Jasper Scholten, 2017</br></br>
+<img src="https://img.shields.io/badge/Better%20Code-%207%20%2F%2010-FFCB00.svg">
 </i></p>

@@ -6,7 +6,7 @@
 
 <p align="center">
 <img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/addReviewScreenshot.png" width="300">
-<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/newsItemScreenshot.png" width="300"></br>
+<img src="https://github.com/jasperscholten/programmeerproject/blob/master/doc/NewsItemScreenshot.PNG" width="300"></br>
 <i><b>Links:</b> uitvoeren van een beoordeling. <b>Rechts:</b> tonen van een nieuwsitem.</i>
 </p>
 
