@@ -244,9 +244,9 @@ Het zijn nu misschien ietwat veel for- en if-statements, maar deze oplossing lij
 **Dit is de TODO lijst die ik nu nog heb staan:**
 
 **'Brede' klussen**
-- [ ] Final Report schrijven
-- [ ] PROCESS updaten —> Overal een oplossing voor gevonden?
-- [ ] README updaten
+- [x] Final Report schrijven
+- [x] PROCESS updaten —> Overal een oplossing voor gevonden?
+- [x] README updaten
 - [ ] State restoration
 - [x] Code netjes maken
 - [x] Comments
@@ -255,7 +255,7 @@ Het zijn nu misschien ietwat veel for- en if-statements, maar deze oplossing lij
 **Specifiek programmeren**
 - [x] Huidige gebruiker niet tonen in lijsten
 - [x] Nieuwsfoto niet tonen wanneer niet bestaat
-- [ ] Statische menu’s vastzetten in portrait --> Alleen nog AddEmployee
+- [x] Statische menu’s vastzetten in portrait --> Alleen nog AddEmployee
 - [ ] Spinners toevoegen
 - [x] Switch goed in cel plaatsen
 - [ ] Constraints van addText in AddNewsItemVC gaat bij draaien nog fout.
